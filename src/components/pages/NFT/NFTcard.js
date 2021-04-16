@@ -26,13 +26,13 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ClubCard(props) {
+export default function NFTcard(props) {
   const classes = useStyles();
 
   return (
     <Grid item xs={12} sm={6} md={4}>
       <Card className={classes.card}>
-        <Link to={'/clubs/' + props.name} style={{textDecoration: 'none'}} color="inherit">
+        <Link to={'/NFT/' + props.id} style={{textDecoration: 'none'}} color="inherit">
           <CardActionArea>
             <CardMedia className={classes.media} image={props.image} />
             <CardContent>
