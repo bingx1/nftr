@@ -15,14 +15,12 @@ import LoyaltyIcon from '@material-ui/icons/Loyalty';
 const useStyles = makeStyles(() => ({
   root: {
     background: '#2A363B',
-    border: 0,
     width: '100%',
     zIndex: 2,
     padding: 0,
-    display: 'cover',
   },
   toolbar: {
-    minHeight: 20,
+    height: 50,
   },
   logoIcon: {
     flexGrow: 1,
@@ -47,12 +45,12 @@ const useStyles = makeStyles(() => ({
 const Navbar = () => {
   const classes = useStyles();
   return (
-    <AppBar className={classes.root} position='fixed'>
-      <Toolbar className={classes.toolbar}>
+    <AppBar className={classes.root} position='static'>
+      <Toolbar className={classes.toolbar} variant='dense'>
         <Link class={classes.logoIcon} to='/'>
           <IconButton>
             <LoyaltyIcon style={{ color: 'abcda9' }}></LoyaltyIcon>
-            <Typography class={classes.logoText}>NFTr</Typography>
+            <Typography class={classes.logoText}>NFTR</Typography>
           </IconButton>
         </Link>
 
