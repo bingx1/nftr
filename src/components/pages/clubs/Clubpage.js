@@ -1,8 +1,8 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import { Paper } from '@material-ui/core';
+import {Paper, Slide} from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
@@ -29,7 +29,8 @@ const useStyles = makeStyles({
   },
   title: {
     fontSize: 70,
-    fontFamily: 'Abril Fatface',
+    fontFamily: 'Poppins',
+    fontWeight: 700,
     lineHeight: 1.1,
   },
   subtitle: {
@@ -48,17 +49,21 @@ function Clubpage() {
 
   return (
     <Paper className={classes.wrapper}>
-      <Card className={classes.root}>
-        <Typography className={classes.overlay}>
-          <Typography className={classes.title}>
-            UMCPC
-            <br />
-          </Typography>
-          <Typography className={classes.subtitle}>
-            University of Melbourne Competitive Programming Club
-          </Typography>
-        </Typography>
-      </Card>
+      <Slide direction='right' in={true} timeout={1000} mountOnEnter>
+        <Card className={classes.root}>
+          <Slide direction='right' in={true} timeout={1000} mountOnEnter>
+            <Typography className={classes.overlay}>
+              <Typography className={classes.title}>
+                UMCPC.
+              <br />
+              </Typography>
+              <Typography className={classes.subtitle}>
+                University of Melbourne Competitive Programming Club
+            </Typography>
+            </Typography>
+          </Slide>
+        </Card>
+      </Slide>
     </Paper>
   );
 }

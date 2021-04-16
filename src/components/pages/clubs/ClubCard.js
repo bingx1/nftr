@@ -1,15 +1,29 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import { CardActionArea, CardMedia, Grid } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import {CardActionArea, CardMedia, Grid} from '@material-ui/core';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles({
-  card: {},
+  card: {
+    backgroundColor: '#99B898',
+  },
   media: {
     height: 50,
+  },
+  text: {
+    fontFamily: 'Poppins',
+    fontSize: 26,
+    fontWeight: 700,
+    textTransform: 'none',
+    boxShadow: 'none',
+    backgroundColor: 0,
+    borderColor: 0,
+    paddingLeft: '10px',
+    variant: 'h1',
+    color: '#f5eacf',
   },
 });
 
@@ -19,11 +33,11 @@ export default function SimpleCard(props) {
   return (
     <Grid item xs={12} sm={6} md={4}>
       <Card className={classes.card}>
-        <Link to={'/clubs/' + props.name}>
+        <Link to={'/clubs/' + props.name} style={{textDecoration: 'none'}} color="inherit">
           <CardActionArea>
             <CardMedia className={classes.media} image={props.image} />
             <CardContent>
-              <Typography gutterBottom variant='h5' component='h2'>
+              <Typography className={classes.text} gutterBottom variant='h5' component='h2'>
                 {props.name}
               </Typography>
             </CardContent>
