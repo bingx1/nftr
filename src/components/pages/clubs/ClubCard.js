@@ -1,9 +1,9 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import {CardActionArea, CardMedia} from '@material-ui/core';
+import { CardActionArea, CardMedia, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles({
   card: {
@@ -23,8 +23,8 @@ export default function SimpleCard(props) {
         <CardActionArea>
           <CardMedia className={classes.media} image={props.image} />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              {props.clubName}
+            <Typography gutterBottom variant='h5' component='h2'>
+              {props.name}
             </Typography>
           </CardContent>
         </CardActionArea>
