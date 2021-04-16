@@ -3,7 +3,7 @@ import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
-import { Button, Paper, Slide } from '@material-ui/core';
+import { Box, Button, Paper, Slide } from '@material-ui/core';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import NavButton from '../../layout/NavButton';
 
@@ -12,13 +12,12 @@ const useStyles = makeStyles({
     borderRadius: 0,
     position: 'relative',
     width: '100%',
-    height: '20rem',
+
     zIndex: 1,
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    background: 'linear-gradient(90deg, #99B898 0%, #FECEAB 70%, #FF847F 100%)',
     boxShadow: 'none',
   },
   media: {
@@ -47,7 +46,15 @@ const useStyles = makeStyles({
     paddingRight: 10,
   },
   wrapper: {
-    background: '#FF847F',
+    position: 'relative',
+    width: '100%',
+    zIndex: 0,
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    background:
+      'linear-gradient(135deg, #99B898 0%, #FECEAB 70%, #FF847F 100%)',
   },
   buttonStyle: {
     color: '#2A363B',
@@ -67,7 +74,7 @@ function LandingCard({ checked, handleChange }) {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.wrapper}>
+    <Box className={classes.wrapper}>
       <Slide direction='right' in={true} timeout={1000} mountOnEnter>
         <Card className={classes.root}>
           <Slide direction='right' in={true} timeout={2000} mountOnEnter>
@@ -91,7 +98,7 @@ function LandingCard({ checked, handleChange }) {
           </Slide>
         </Card>
       </Slide>
-    </Paper>
+    </Box>
   );
 }
 

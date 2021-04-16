@@ -50,6 +50,7 @@ const Navbar = () => {
         </Link>
 
         <NavButton url='/clubs' text='clubs.' />
+        <NavButton url='/nfttest' text='NFTtest.' />
         <NavButton url='/profile' text='profile.' />
         <Link className={classes.accountIcon} to='/Profile'>
           <IconButton>

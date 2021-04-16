@@ -58,7 +58,7 @@ function AboutCard() {
         <Grid xs={4} sm={4}>
           <ContactMailIcon
             className={classes.icon}
-            style={{ color: '#99B898' }}
+            style={{ color: '#2A363B' }}
           />
         </Grid>
         <Grid xs={false} sm={2} />
