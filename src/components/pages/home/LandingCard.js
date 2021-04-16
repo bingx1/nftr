@@ -63,7 +63,7 @@ const useStyles = makeStyles({
   },
 });
 
-function LandingCard({ checked, handleChange }) {
+function LandingCard() {
   const classes = useStyles();
 
   return (

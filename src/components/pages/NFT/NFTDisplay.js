@@ -3,7 +3,17 @@ import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
-import { Box, Button, Paper, Slide } from '@material-ui/core';
+import {
+  Backdrop,
+  Box,
+  Button,
+  CardActionArea,
+  CardMedia,
+  CircularProgress,
+  Grid,
+  Paper,
+  Slide,
+} from '@material-ui/core';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import NavButton from '../../layout/NavButton';
 
@@ -12,34 +22,34 @@ const useStyles = makeStyles({
     borderRadius: 0,
     position: 'relative',
     width: '100%',
-
-    zIndex: 1,
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
+    zIndex: 10,
     boxShadow: 'none',
+    background: 'none',
   },
-  media: {
-    height: 500,
+  card: {
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+    zIndex: 1,
+    height: '95rem',
+    backgroundColor: '#f5eacf',
+    marginTop: '5rem',
   },
-  overlay: {
-    position: 'absolute',
-    top: '90px',
-    left: '65px',
-    color: '#2A363B',
-  },
+
   title: {
-    fontSize: 70,
+    padding: '2rem 2rem 0',
+    fontSize: '7.5ch',
     fontFamily: 'Poppins',
     fontWeight: 700,
     lineHeight: 1.1,
+    color: '#2A363B',
   },
   subtitle: {
+    padding: '1rem 2rem',
     fontFamily: 'Poppins',
     fontSize: 20,
     fontWeight: 500,
     lineHeight: 1,
+    color: '#2A363B',
   },
   linkStyle: {
     textDecoration: 'none',
@@ -47,14 +57,10 @@ const useStyles = makeStyles({
   },
   wrapper: {
     position: 'relative',
-    width: '100%',
+    height: '100rem',
     zIndex: 0,
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
     background:
-      'linear-gradient(135deg, #99B898 0%, #FECEAB 70%, #FF847F 100%)',
+      'linear-gradient(135deg, #99B898 0%, #FECEAB 40%, #FF847F 100%)',
   },
   buttonStyle: {
     color: '#2A363B',
@@ -68,38 +74,74 @@ const useStyles = makeStyles({
     borderColor: 0,
     padding: 0,
   },
+  minMedia: {
+    width: '100%',
+    alignContent: 'centre',
+    height: '40rem',
+    position: 'relative',
+  },
+  expandedMedia: {
+    width: '100%',
+    height: '100%',
+    display: 'block',
+    position: 'relative',
+    margin: 'auto',
+  },
+  mediawrapper: {
+    padding: '2rem',
+  },
+  backdrop: {
+    zIndex: 100,
+    color: '#fff',
+  },
 });
 
-function LandingCard({ checked, handleChange }) {
+function NFTCard() {
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleToggle = () => {
+    setOpen(!open);
+  };
 
   return (
     <Box className={classes.wrapper}>
-      <Slide direction='right' in={true} timeout={1000} mountOnEnter>
-        <Card className={classes.root}>
-          <Slide direction='right' in={true} timeout={2000} mountOnEnter>
-            <Typography className={classes.overlay}>
-              <Typography className={classes.title}>
-                NFTR.
-                <br />
-              </Typography>
-              <Typography className={classes.subtitle}>
-                Create and collect NFTs for university and clubs
-              </Typography>
-              <Typography className={classes.subtitle}>
-                <Link className={classes.linkStyle} to='clubs'>
-                  <Button className={classes.buttonStyle}>
-                    <KeyboardArrowRightIcon size='100px' />
-                    start checking out our clubs now...
-                  </Button>
-                </Link>
-              </Typography>
+      <Grid item container className={classes.root} direction='row' spacing={1}>
+        <Grid xs={false} sm={2} />
+        <Grid xs={12} sm={8}>
+          <Card className={classes.card}>
+            <Typography className={classes.title}>
+              CodeBrew 2021 1st place.
             </Typography>
-          </Slide>
-        </Card>
-      </Slide>
+            <Typography className={classes.subtitle}>
+              Issuer: Bing <br />
+              Current Owner: Hao
+            </Typography>
+            <CardActionArea
+              className={classes.mediawrapper}
+              onClick={handleToggle}
+            >
+              <CardMedia
+                className={classes.minMedia}
+                image='https://images.unsplash.com/photo-1554188248-986adbb73be4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+                title='NFT Image'
+              />
+            </CardActionArea>
+          </Card>
+        </Grid>
+        <Grid xs={false} sm={2} />
+      </Grid>
+      <Backdrop className={classes.backdrop} open={open} onClick={handleClose}>
+        <CardMedia
+          className={classes.expandedMedia}
+          image='https://images.unsplash.com/photo-1554188248-986adbb73be4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+          title='NFT Image'
+        />
+      </Backdrop>
     </Box>
   );
 }
 
-export default LandingCard;
+export default NFTCard;
