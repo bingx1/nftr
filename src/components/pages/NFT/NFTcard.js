@@ -30,7 +30,7 @@ export default function NFTcard(props) {
   const classes = useStyles();
 
   return (
-    <Grid item xs={12} sm={6} md={4}>
+    <Grid item xs={12} sm={6} md={3}>
       <Card className={classes.card}>
         <Link to={'/NFT/' + props.id} style={{textDecoration: 'none'}} color="inherit">
           <CardActionArea>

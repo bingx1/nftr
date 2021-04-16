@@ -86,6 +86,7 @@ function Clubpage() {
         <NFTcard name='NFT 1' id='1' />
         <NFTcard name='NFT 2' id='2' />
         <NFTcard name='NFT 3' id='3' />
+        <NFTcard name='NFT 4' id='4' />
       </Grid>
     </div>
 
