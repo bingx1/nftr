@@ -1,10 +1,4 @@
-import {
-  AppBar,
-  Button,
-  IconButton,
-  Toolbar,
-  Typography,
-} from '@material-ui/core';
+import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import React from 'react';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { makeStyles } from '@material-ui/styles';
@@ -48,16 +42,16 @@ const Navbar = () => {
   return (
     <AppBar className={classes.root} position='static'>
       <Toolbar className={classes.toolbar} variant='dense'>
-        <Link class={classes.logoIcon} to='/'>
+        <Link className={classes.logoIcon} to='/'>
           <IconButton>
             <LoyaltyIcon style={{ color: 'abcda9' }}></LoyaltyIcon>
-            <Typography class={classes.logoText}>NFTR</Typography>
+            <Typography className={classes.logoText}>NFTR</Typography>
           </IconButton>
         </Link>
 
         <NavButton url='/clubs' text='clubs.' />
         <NavButton url='/profile' text='profile.' />
-        <Link class={classes.accountIcon} to='/Profile'>
+        <Link className={classes.accountIcon} to='/Profile'>
           <IconButton>
             <AccountCircleIcon style={{ color: 'abcda9' }} />
           </IconButton>
