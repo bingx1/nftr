@@ -13,11 +13,13 @@ const useStyles = makeStyles({
     borderRadius: 0,
     position: 'relative',
     width: '100%',
+    height: '1000px',
     zIndex: 1,
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
+    background: 'linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%)',
   },
   media: {
     height: 500,
@@ -43,16 +45,16 @@ export default function LandingCard({ checked, handleChange }) {
   const classes = useStyles();
 
   return (
-    <Slide direction='down' in={true} timeout={2000} mountOnEnter>
+    <Slide direction='right' in={true} timeout={2000} mountOnEnter>
       <Card className={classes.root}>
-        <CardActionArea>
+        {/* <CardActionArea>
           <CardMedia
             className={classes.media}
             image='https://images.unsplash.com/photo-1545989253-02cc26577f88?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
             title='Contemplative Reptile'
           />
-        </CardActionArea>
-        <Slide direction='right' in={true} timeout={2000} mountOnEnter>
+        </CardActionArea> */}
+        <Slide direction='right' in={true} timeout={2500} mountOnEnter>
           <Typography className={classes.overlay}>
             <Typography className={classes.head}>
               non- <br />
