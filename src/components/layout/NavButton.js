@@ -10,8 +10,9 @@ const useStyles = makeStyles(() => ({
   buttonStyle: {
     variant: 'h1',
     color: '#f5eacf',
-    fontSize: 18,
     fontFamily: 'Poppins',
+    fontSize: 18,
+    fontWeight: 600,
     textTransform: 'none',
     boxShadow: 'none',
     backgroundColor: 0,

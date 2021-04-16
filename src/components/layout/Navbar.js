@@ -32,8 +32,9 @@ const useStyles = makeStyles(() => ({
   logoText: {
     variant: 'h1',
     color: '#f5eacf',
-    fontSize: 18,
     fontFamily: 'Poppins',
+    fontSize: 18,
+    fontWeight: 700,
     textTransform: 'none',
     boxShadow: 'none',
     backgroundColor: 0,
