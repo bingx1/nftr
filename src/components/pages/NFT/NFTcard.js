@@ -1,48 +1,113 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import {CardActionArea, CardMedia, Grid} from '@material-ui/core';
-import {Link} from 'react-router-dom';
+import {
+  Backdrop,
+  CardActionArea,
+  CardMedia,
+  Grid,
+  Slide,
+} from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
-  card: {
-    backgroundColor: '#99B898',
-  },
-  media: {
-    height: 50,
-  },
-  text: {
-    fontFamily: 'Poppins',
-    fontSize: 26,
-    fontWeight: 700,
-    textTransform: 'none',
+  root: {
+    borderRadius: 0,
+    position: 'relative',
+    width: '100%',
+    zIndex: 10,
     boxShadow: 'none',
-    backgroundColor: 0,
-    borderColor: 0,
-    paddingLeft: '10px',
-    color: '#f5eacf',
+    background: 'none',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+  },
+  card: {
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
+    zIndex: 1,
+    height: '95rem',
+    backgroundColor: '#f5eacf',
+  },
+  title: {
+    padding: '2rem 2rem 0',
+    fontSize: '7.5ch',
+    fontFamily: 'Poppins',
+    fontWeight: 700,
+    lineHeight: 1.1,
+    color: '#2A363B',
+  },
+  subtitle: {
+    padding: '1rem 2rem',
+    fontFamily: 'Poppins',
+    fontSize: 20,
+    fontWeight: 500,
+    lineHeight: 1,
+    color: '#2A363B',
+  },
+  wrapper: {
+    position: 'static',
+    height: '100rem',
+    zIndex: 0,
+    background:
+      'linear-gradient(135deg, #99B898 0%, #FECEAB 40%, #FF847F 100%)',
+  },
+  minMedia: {
+    width: '100%',
+    alignContent: 'centre',
+    height: '40rem',
+    position: 'relative',
+  },
+  expandedMedia: {
+    width: '100%',
+    height: '100%',
+    display: 'block',
+    position: 'relative',
+    margin: 'auto',
+  },
+  mediawrapper: {
+    padding: '2rem',
+  },
+  backdrop: {
+    zIndex: 100,
+    color: '#fff',
   },
 });
 
-export default function NFTcard(props) {
+function NFTcard(props) {
   const classes = useStyles();
 
   return (
-    <Grid item xs={12} sm={6} md={3}>
+    <>
       <Card className={classes.card}>
-        <Link to={'/NFT/' + props.id} style={{textDecoration: 'none'}} color="inherit">
-          <CardActionArea>
-            <CardMedia className={classes.media} image={props.image} />
-            <CardContent>
-              <Typography className={classes.text} gutterBottom variant='h5' component='h2'>
-                {props.name}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Link>
+        <Typography className={classes.title}>
+          CodeBrew 2021 1st place.
+        </Typography>
+        <Typography className={classes.subtitle}>
+          Issuer: Bing <br />
+          Current Owner: Hao
+        </Typography>
+        <CardActionArea
+          className={classes.mediawrapper}
+          onClick={props.handleToggle}
+        >
+          <CardMedia
+            className={classes.minMedia}
+            image='https://images.unsplash.com/photo-1554188248-986adbb73be4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+            title='NFT Image'
+          />
+        </CardActionArea>
       </Card>
-    </Grid>
+      <Backdrop
+        className={classes.backdrop}
+        open={props.open}
+        onClick={props.handleClose}
+      >
+        <img src='https://images.unsplash.com/photo-1554188248-986adbb73be4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80' />
+      </Backdrop>
+    </>
   );
 }
+
+export default NFTcard;

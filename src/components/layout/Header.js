@@ -10,10 +10,11 @@ const useStyles = makeStyles(() => ({
   root: {
     background: '#2A363B',
     width: '100%',
-    zIndex: 2,
+    zIndex: 100,
     padding: 0,
   },
   toolbar: {
+    zIndex: 50,
     height: 50,
   },
   logoIcon: {
@@ -37,7 +38,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Navbar = () => {
+const Header = () => {
   const classes = useStyles();
   return (
     <AppBar className={classes.root} position='static'>
@@ -62,4 +63,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Header;

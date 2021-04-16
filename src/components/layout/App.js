@@ -1,11 +1,13 @@
 import PageRouter from '../../routes/PageRouter';
-import Navbar from './Navbar';
+import Header from './Header';
+import Footer from './Footer';
 
 function App() {
   return (
     <div className='App'>
-      <Navbar />
+      <Header />
       <PageRouter />
+      <Footer />
     </div>
   );
 }
