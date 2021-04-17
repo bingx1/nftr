@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     background: 'none',
     boxShadow: 'none',
+    margin: '1rem',
   },
   background: {
     position: 'static',
@@ -36,15 +37,17 @@ const useStyles = makeStyles((theme) => ({
     margin: '3rem 3rem',
   },
   button: {
-    variant: 'h1',
-    color: '#f5eacf',
+    color: '#FECEAB',
     fontFamily: 'Poppins',
     fontSize: 18,
     fontWeight: 600,
     textTransform: 'none',
+    backgroundColor: '#FF847C',
     boxShadow: 'none',
-    backgroundColor: 0,
-    borderColor: 0,
+    margin: '4rem 0 0 0',
+    '&:hover': {
+      backgroundColor: 'rgb(7, 177, 77, 0.42)',
+    },
   },
 }));
 
@@ -110,7 +113,7 @@ function NFTFormPage() {
                       spacing={1}
                     >
                       <Typography className={classes.title}>
-                        Mint an NFT!
+                        Mint an NFT
                       </Typography>
 
                       <Grid item xs={10}>
@@ -123,6 +126,7 @@ function NFTFormPage() {
                           component={TextField}
                           type='text'
                           label='Issuer'
+                          color='secondary'
                         />
                       </Grid>
                       <Grid item xs={10}>
@@ -135,6 +139,7 @@ function NFTFormPage() {
                           component={TextField}
                           type='text'
                           label='Recipient'
+                          color='secondary'
                         />
                       </Grid>
                       <Grid item xs={10}>
@@ -147,6 +152,7 @@ function NFTFormPage() {
                           component={TextField}
                           type='text'
                           label='Event'
+                          color='secondary'
                         />
                       </Grid>
 
@@ -161,6 +167,7 @@ function NFTFormPage() {
                           multiline
                           type='text'
                           label='Image URL'
+                          color='secondary'
                         />
                       </Grid>
 
@@ -174,15 +181,15 @@ function NFTFormPage() {
                           multiline
                           type='text'
                           label='Description'
+                          color='secondary'
                         />
                       </Grid>
 
                       <Grid item xs={10}>
                         <Grid container justify='center'>
                           <Button
-                            className='classes.button'
+                            className={classes.button}
                             variant='contained'
-                            color='secondary'
                             type='submit'
                           >
                             Submit

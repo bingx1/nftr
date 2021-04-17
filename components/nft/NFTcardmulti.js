@@ -1,9 +1,9 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import {Box, CardActionArea, CardMedia, Grid} from '@material-ui/core';
+import { Box, CardActionArea, CardMedia, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles({
   card: {
@@ -35,9 +35,7 @@ export default function NFTcardmulti(props) {
       <Card className={classes.card}>
         <CardActionArea href={'/NFT/' + props.id}>
           <CardContent>
-            <Typography className={classes.text}>
-              {props.name}
-            </Typography>
+            <Typography className={classes.text}>{props.name}</Typography>
           </CardContent>
           <Box className={classes.mediawrapper}>
             <CardMedia className={classes.media} image={props.image} />

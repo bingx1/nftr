@@ -20,7 +20,6 @@ const useStyles = makeStyles({
     zIndex: 1,
     height: '95rem',
     backgroundColor: '#f5eacf',
-    margin: '2rem',
   },
   title: {
     padding: '2rem 2rem 0',
@@ -73,10 +72,10 @@ function NFTcard(props) {
   return (
     <>
       <Card className={classes.card}>
-        <Typography className={classes.title}>{props.title} </Typography>
+        <Typography className={classes.title}>{props.event}</Typography>
         <Typography className={classes.subtitle}>
           Issuer: {props.issuer} <br />
-          Current Owner: Hao
+          Current Owner: {props.recipient}
         </Typography>
         <CardActionArea
           className={classes.mediawrapper}
@@ -84,17 +83,20 @@ function NFTcard(props) {
         >
           <CardMedia
             className={classes.minMedia}
-            image={props.img}
+            image={props.image}
             title='NFT Image'
           />
         </CardActionArea>
+        <Typography className={classes.subtitle}>
+          {props.description}
+        </Typography>
       </Card>
       <Backdrop
         className={classes.backdrop}
         open={props.open}
         onClick={props.handleClose}
       >
-        <img src='https://images.unsplash.com/photo-1554188248-986adbb73be4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80' />
+        <img href={props.image} />
       </Backdrop>
     </>
   );

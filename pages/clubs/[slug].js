@@ -1,11 +1,11 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import {Box, Paper, IconButton, CardActions} from '@material-ui/core';
+import { Box, Paper, IconButton, CardActions, Slide } from '@material-ui/core';
 import NFTcardmulti from '../../components/nft/NFTcardmulti';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import EmailIcon from '@material-ui/icons/Email';
 import ChatIcon from '@material-ui/icons/Chat';
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     overflow: 'hidden',
     boxShadow: 'none',
     background: 'none',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   media: {
     height: 500,
@@ -105,51 +105,55 @@ const useStyles = makeStyles({
 function Clubpage() {
   const classes = useStyles();
   const router = useRouter();
-  const {slug} = router.query;
+  const { slug } = router.query;
 
   return (
     <Box className={classes.wrapper}>
-      <Grid container alignItems='center' className={classes.root}>
-        <Box className={classes.box}>
-          <Card className={classes.card} elevation={0}>
-            <Typography className={classes.overlay}>
-              <Typography className={classes.title}>
-                {slug}.
-                <br />
+      <Slide direction='left' in={true} timeout={1000} mountOnEnter>
+        <Grid container alignItems='center' className={classes.root}>
+          <Box className={classes.box}>
+            <Card className={classes.card} elevation={0}>
+              <Typography className={classes.overlay}>
+                <Typography className={classes.title}>
+                  {slug}.
+                  <br />
+                </Typography>
+                <Typography className={classes.subtitle}>
+                  University of Melbourne Competitive Programming Club
+                </Typography>
               </Typography>
-              <Typography className={classes.subtitle}>
-                University of Melbourne Competitive Programming Club
-              </Typography>
-            </Typography>
-          </Card>
-        </Box>
+            </Card>
+          </Box>
 
-        <Box item className={classes.socials}>
-          <IconButton className={classes.icon}>
-            <FacebookIcon />
-          </IconButton>
-          <IconButton className={classes.icon}>
-            <EmailIcon />
-          </IconButton>
-          <IconButton className={classes.icon}>
-            <ChatIcon />
-          </IconButton>
-        </Box>
-      </Grid>
+          <Box item className={classes.socials}>
+            <IconButton className={classes.icon}>
+              <FacebookIcon />
+            </IconButton>
+            <IconButton className={classes.icon}>
+              <EmailIcon />
+            </IconButton>
+            <IconButton className={classes.icon}>
+              <ChatIcon />
+            </IconButton>
+          </Box>
+        </Grid>
+      </Slide>
       <Grid container justify='center' className={classes.grid} spacing={4}>
         <Grid item xs={12}>
           <Paper elevation={0} className={classes.section}>
             <Typography className={classes.text}>Available NFTs.</Typography>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={8} xl={4}>
-          <Grid item container spacing={1} xs={12}>
-            <NFTcardmulti name='NFT 1' id='1' />
-            <NFTcardmulti name='NFT 2' id='2' />
-            <NFTcardmulti name='NFT 3' id='3' />
-            <NFTcardmulti name='NFT 4' id='4' />
+        <Slide direction='right' in={true} timeout={1000} mountOnEnter>
+          <Grid item xs={12} sm={8} xl={4}>
+            <Grid item container spacing={1} xs={12}>
+              <NFTcardmulti name='NFT 1' id='1' />
+              <NFTcardmulti name='NFT 2' id='2' />
+              <NFTcardmulti name='NFT 3' id='3' />
+              <NFTcardmulti name='NFT 4' id='4' />
+            </Grid>
           </Grid>
-        </Grid>
+        </Slide>
       </Grid>
       <Box height='10px' />
     </Box>

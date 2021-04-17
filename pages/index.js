@@ -1,11 +1,12 @@
 import React from 'react';
-import {makeStyles, ThemeProvider} from '@material-ui/core/styles';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Link from 'next/link';
-import {Button, Grid, Paper} from '@material-ui/core';
+import { Button, Grid, Paper, Slide } from '@material-ui/core';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
-import {Box} from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import NFTcarousel from '../components/nft/NFTcarousel';
+import { Link as scrolllink, animateScroll as scroll } from 'react-scroll';
 
 const useStyles = makeStyles({
   root: {
@@ -68,30 +69,41 @@ function Home() {
   return (
     <Paper className={classes.wrapper}>
       <Box className={classes.root}>
-        <Typography className={classes.textLayout}>
-          <Typography className={classes.title}>NFTR.</Typography>
-          <Typography className={classes.subtitle}>
-            Create and collect NFTs for university and clubs
-          </Typography>
-          <Typography className={classes.subtitle}>
-            <Link href='clubs'>
-              <a className={classes.linkStyle}>
+        <Slide direction='top' in={true} timeout={1000} mountOnEnter>
+          <Typography className={classes.textLayout}>
+            <Typography className={classes.title}>NFTR.</Typography>
+            <Typography className={classes.subtitle}>
+              Create and collect NFTs for university and clubs
+            </Typography>
+            <Typography className={classes.subtitle}>
+              <scrolllink
+                activeClass='active'
+                to='section1'
+                spy={true}
+                smooth={true}
+                offset={70}
+                duration={500}
+              >
                 <Button className={classes.buttonStyle}>
                   <KeyboardArrowRightIcon size='100px' />
                   start checking out our clubs now...
                 </Button>
-              </a>
-            </Link>
+              </scrolllink>
+            </Typography>
           </Typography>
-        </Typography>
+        </Slide>
       </Box>
-      <Grid container direction='row'>
-        <Grid item xs={false} sm={3} xl={4} />
-        <Grid item xs={12} sm={6} xl={4}>
-          <NFTcarousel />
-        </Grid>
-        <Grid item xs={false} sm={3} xl={4} />
-      </Grid>
+      <Slide direction='up' in={true} timeout={1000} mountOnEnter>
+        <section name='section1'>
+          <Grid container direction='row' id='card-carousel'>
+            <Grid item xs={false} sm={3} xl={4} />
+            <Grid item xs={12} sm={6} xl={4}>
+              <NFTcarousel />
+            </Grid>
+            <Grid item xs={false} sm={3} xl={4} />
+          </Grid>
+        </section>
+      </Slide>
     </Paper>
   );
 }

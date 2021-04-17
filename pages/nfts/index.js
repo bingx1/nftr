@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   },
 });
 
-function NFTCard() {
+function NFTSingleCardDisplay(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleClose = () => {
@@ -29,22 +29,25 @@ function NFTCard() {
   };
 
   return (
-    <>
-      <Grid container className={classes.root} direction='row'>
-        <Grid xs={false} sm={2} xl={4} />
-        <Grid className={classes.grid} xs={12} sm={8} xl={4}>
+    <Box className={classes.wrapper}>
+      <Grid container className={classes.root} direction='row' spacing={1}>
+        <Grid item xs={false} sm={2} xl={4} />
+        <Grid item className={classes.grid} xs={12} sm={8} xl={4}>
           <NFTcard
-            title='Codebrew 1st Place'
-            img='https://images.unsplash.com/photo-1554188248-986adbb73be4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+            issuer={props.issuer}
+            recipient={props.recipient}
+            event={props.event}
+            image={props.image}
+            description={props.description}
             handleToggle={handleToggle}
             handleClose={handleClose}
             open={open}
           />
         </Grid>
-        <Grid xs={false} sm={2} xl={4} />
+        <Grid item xs={false} sm={2} xl={4} />
       </Grid>
-    </>
+    </Box>
   );
 }
 
-export default NFTCard;
+export default NFTSingleCardDisplay;
