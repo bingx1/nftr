@@ -3,9 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import { CardActionArea, CardContent, Paper, Slide } from '@material-ui/core';
+import { Paper, Slide } from '@material-ui/core';
 import NFTcard from '../../components/nft/NFTcard';
-import SocialShare from 'react-simple-social';
 
 const useStyles = makeStyles({
   root: {
