@@ -46,7 +46,9 @@ export default async function (req, res) {
             const studentid = res.body.studentid;
             const walletid = res.body.walletid;
             await addStudent(studentid, walletid);
+            res.status(200).send("Success");
         } catch(err){
-            
+            res.status(500).send("Already existed");
         }
+    }
 }
