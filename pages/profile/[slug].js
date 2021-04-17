@@ -10,7 +10,7 @@ import {
   Box,
   Slide,
 } from '@material-ui/core';
-import NFTcardmulti from '../../components/nft/NFTcardmulti';
+import NFTcardmini from '../../components/nft/NFTcardmini';
 import {useRouter} from 'next/router';
 
 const useStyles = makeStyles({
@@ -96,10 +96,10 @@ function Profile() {
           <Grid item xs={12}>
             <Typography className={classes.text}>Your NFTs.</Typography>
           </Grid>
-          <NFTcardmulti name='NFT 1' id='1' />
-          <NFTcardmulti name='NFT 2' id='2' />
-          <NFTcardmulti name='NFT 3' id='3' />
-          <NFTcardmulti name='NFT 4' id='4' />
+          <NFTcardmini name='NFT 1' id='1' />
+          <NFTcardmini name='NFT 2' id='2' />
+          <NFTcardmini name='NFT 3' id='3' />
+          <NFTcardmini name='NFT 4' id='4' />
         </Grid>
       </Slide>
       <Box height='15px' />
