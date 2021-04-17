@@ -53,15 +53,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const onSubmit = async (values) => {
-  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-  await sleep(300);
-  window.alert(JSON.stringify(values, 0, 2));
-};
-
 function NFTFormPage() {
   const classes = useStyles();
-  const [selectedFile, setSelectedFile] = useState(null);
+
+  const [issuer, setIssuer] = useState('');
+  const [recipient, setRecipient] = useState('');
+  const [event, setEvent] = useState('');
+  const [image, setImage] = useState('');
+  const [description, setDescription] = useState('');
+
+  const handleChangeIssuer = (e) => {
+    setIssuer(e.target.value);
+  };
+  const handleChangeRecipient = (e) => {
+    setRecipient(e.target.value);
+  };
+  const handleChangeEvent = (e) => {
+    setEvent(e.target.value);
+  };
+  const handleChangeImage = (e) => {
+    setImage(e.target.value);
+  };
+  const handleChangeDescription = (e) => {
+    setDescription(e.target.value);
+  };
+
+  const onSubmit = (e) => {
+    alert(issuer + recipient + event + image + description);
+  };
 
   return (
     <Box className={classes.background}>
@@ -89,6 +108,8 @@ function NFTFormPage() {
                           fullWidth
                           required
                           name='issuer'
+                          value={issuer}
+                          onChange={handleChangeIssuer}
                           component={TextField}
                           type='text'
                           label='Issuer'
@@ -99,6 +120,8 @@ function NFTFormPage() {
                           fullWidth
                           required
                           name='recipient'
+                          value={recipient}
+                          onChange={handleChangeRecipient}
                           component={TextField}
                           type='text'
                           label='Recipient'
@@ -109,17 +132,25 @@ function NFTFormPage() {
                           fullWidth
                           required
                           name='event'
+                          value={event}
+                          onChange={handleChangeEvent}
                           component={TextField}
-                          type='event'
+                          type='text'
                           label='Event'
                         />
                       </Grid>
 
                       <Grid item xs={8}>
-                        <input
-                          type='file'
-                          value={selectedFile}
-                          onChange={(e) => setSelectedFile(e.target.files[0])}
+                        <Field
+                          fullWidth
+                          required
+                          name='image'
+                          value={image}
+                          onChange={handleChangeImage}
+                          component={TextField}
+                          multiline
+                          type='text'
+                          label='Image URL'
                         />
                       </Grid>
 
@@ -127,8 +158,11 @@ function NFTFormPage() {
                         <Field
                           fullWidth
                           name='description'
+                          value={description}
+                          onChange={handleChangeDescription}
                           component={TextField}
                           multiline
+                          type='text'
                           label='Description'
                         />
                       </Grid>
