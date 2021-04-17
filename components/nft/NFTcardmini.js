@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -59,7 +59,7 @@ export default function NFTcardmulti(props) {
   const avatarClasses = useAvatarStyles();
 
   return (
-    <Grid item xs={4} sm={2}>
+    <Grid item xs={6} sm={4} md={3}>
       <Grid container justify='center'>
         <Link href={'/NFT/' + props.tokenID}>
           <a>

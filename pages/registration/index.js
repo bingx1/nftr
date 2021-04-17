@@ -119,7 +119,6 @@ function LogInPage(props) {
                         <Grid item xs={10}>
                           <Field
                             fullWidth
-                            required
                             name='StudentID'
                             value={StudentID}
                             onChange={handleChangeStudentID}
@@ -132,7 +131,6 @@ function LogInPage(props) {
                         <Grid item xs={10}>
                           <Field
                             fullWidth
-                            required
                             name='DestinationAddress'
                             value={DestinationAddress}
                             onChange={handleChangeDestinationAddress}

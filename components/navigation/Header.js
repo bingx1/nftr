@@ -1,14 +1,14 @@
-import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
+import {AppBar, IconButton, Toolbar, Typography} from "@material-ui/core";
 import React from "react";
 import Blockies from "react-blockies";
-import { makeStyles } from "@material-ui/styles";
+import {makeStyles} from "@material-ui/styles";
 import Link from "next/link";
 import NavButton from "./NavButton";
 import LoyaltyIcon from "@material-ui/icons/Loyalty";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import useWeb3Modal from "../hooks/UseWeb3Modal";
 import LockIcon from "@material-ui/icons/Lock";
-import { Button } from "@material-ui/core";
+import {Button} from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -62,7 +62,7 @@ const Header = (props) => {
         <Link href="/">
           <a className={classes.logoIcon}>
             <IconButton>
-              <LoyaltyIcon style={{ color: "#abcda9" }}></LoyaltyIcon>
+              <LoyaltyIcon style={{color: "#abcda9"}}></LoyaltyIcon>
               <Typography className={classes.logoText}>NFTR</Typography>
             </IconButton>
           </a>
@@ -85,11 +85,15 @@ const Header = (props) => {
           logoutOfWeb3Modal={ret ? ret[2] : undefined}
         />
         {ret && ret[0] ? (
-          <Link href={"/profile/" + id}>
-            <a className={classes.accountIcon}>
-              <Blockies seed={ret[0].provider.selectedAddress} />
-            </a>
-          </Link>
+          <div>
+            <Link href={"/profile/" + id}>
+              <a className={classes.accountIcon}>
+                <Button>
+                  <Blockies seed={ret[0].provider.selectedAddress} />
+                </Button>
+              </a>
+            </Link>
+          </div>
         ) : (
           <></>
         )}
@@ -98,20 +102,22 @@ const Header = (props) => {
   );
 };
 
-function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
+function WalletButton({provider, loadWeb3Modal, logoutOfWeb3Modal}) {
   return (
-    <Button
-      onClick={() => {
-        if (!provider) {
-          loadWeb3Modal();
-        } else {
-          logoutOfWeb3Modal();
-        }
-      }}
-      style={{ color: "#abcda9" }}
-    >
-      {!provider ? <LockOpenIcon /> : <LockIcon />}
-    </Button>
+    <div>
+      <Button
+        onClick={() => {
+          if (!provider) {
+            loadWeb3Modal();
+          } else {
+            logoutOfWeb3Modal();
+          }
+        }}
+        style={{color: "#abcda9"}}
+      >
+        {!provider ? <LockOpenIcon /> : <LockIcon />}
+      </Button>
+    </div>
   );
 }
 export default Header;

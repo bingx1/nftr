@@ -24,7 +24,9 @@ const useStyles = makeStyles({
     zIndex: 1,
     display: "flex",
     flexWrap: "wrap",
-    justifyContent: "space-around",
+    justifyContent: "left",
+    paddingLeft: "32px",
+    alignContent: "center",
     overflow: "hidden",
     boxShadow: "none",
     background: "none",
@@ -57,12 +59,21 @@ const useStyles = makeStyles({
     paddingRight: "30px",
   },
   card: {
-    backgroundColor: "#99B898",
+    background: "none",
+    justifyContent: "center",
+    justify: "center",
+    width: "150%",
+    height: "100px",
   },
   wrapper: {
     background:
       "linear-gradient(135deg, #99B898 0%, #FECEAB 70%, #FF847F 100%)",
     height: "100rem",
+  },
+  button: {
+    marginTop: "-0.75rem",
+    marginLeft: "-1.2rem",
+    color: "#000000",
   },
   text: {
     fontFamily: "Poppins",
@@ -70,6 +81,7 @@ const useStyles = makeStyles({
     fontWeight: 700,
     marginLeft: "50px",
     color: "#2A363B",
+    marginBottom: "10px",
   },
 });
 
@@ -84,17 +96,22 @@ function Profile() {
         <Slide direction="right" in={true} timeout={1000} mountOnEnter>
           <Card className={classes.root}>
             <Slide direction="right" in={true} timeout={1000} mountOnEnter>
-              <Typography className={classes.overlay}>
+              <Box>
                 <Typography className={classes.title}>Your Profile.</Typography>
-                <Card className={classes.root}>
-                  <Typography className={classes.subtitle}>{slug}</Typography>
-                  <IconButton
-                    onClick={() => navigator.clipboard.writeText(slug)}
-                  >
-                    <FileCopyOutlinedIcon />
-                  </IconButton>
-                </Card>
-              </Typography>
+                <Grid container className={classes.card} spacing={1}>
+                  <Grid item xs={8} >
+                    <Typography className={classes.subtitle}>{slug}</Typography>
+                  </Grid>
+                  <Grid item xs={4} >
+                    <IconButton
+                      onClick={() => navigator.clipboard.writeText(slug)}
+                      className={classes.button}
+                    >
+                      <FileCopyOutlinedIcon />
+                    </IconButton>
+                  </Grid>
+                </Grid>
+              </Box>
             </Slide>
           </Card>
         </Slide>
