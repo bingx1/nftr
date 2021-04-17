@@ -1,12 +1,14 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import { Box, Paper, Slide } from '@material-ui/core';
+import {Box, Paper, IconButton, CardActions} from '@material-ui/core';
 import NFTcardmulti from '../../components/nft/NFTcardmulti';
-import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
+import {useRouter} from 'next/router';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import EmailIcon from '@material-ui/icons/Email';
+import ChatIcon from '@material-ui/icons/Chat';
 
 const useStyles = makeStyles({
   root: {
@@ -68,6 +70,15 @@ const useStyles = makeStyles({
     background:
       'linear-gradient(135deg, #99B898 0%, #FECEAB 70%, #FF847F 100%)',
   },
+  socials: {
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    alignItems: 'center',
+    justify: 'center',
+    flexWrap: 'wrap',
+    display: 'flex',
+    background: 'none',
+  },
   section: {
     justifyContent: 'space-around',
     overflow: 'hidden',
@@ -98,34 +109,45 @@ const useStyles = makeStyles({
 
 function Clubpage() {
   const classes = useStyles();
+  const router = useRouter();
+  const {slug} = router.query;
 
   return (
     <Box className={classes.wrapper}>
-      <Box className={classes.root}>
-        <Card className={classes.card}>
-          <Typography className={classes.overlay}>
-            <Typography className={classes.title}>
-              UMCPC.
+      <Grid container className={classes.root}>
+        <Grid item xs={12}>
+          <Card className={classes.card}>
+            <Typography className={classes.overlay}>
+              <Typography className={classes.title}>
+                {slug}.
               <br />
+              </Typography>
+              <Typography>
+                University of Melbourne Competitive Programming Club
             </Typography>
-            <Typography>
-              University of Melbourne Competitive Programming Club
             </Typography>
-            <Typography>
-              University of Melbourne Competitive Programming Club
-            </Typography>
-          </Typography>
-        </Card>
-      </Box>
-      <Grid container className={classes.grid} spacing={4}>
+          </Card>
+        </Grid>
+      </Grid>
+      <Grid container justify='center' className={classes.grid} spacing={4}>
+        <Grid item className={classes.socials}>
+          <IconButton>
+            <FacebookIcon />
+          </IconButton>
+          <IconButton>
+            <EmailIcon />
+          </IconButton>
+          <IconButton>
+            <ChatIcon />
+          </IconButton>
+        </Grid>
         <Grid item xs={12}>
           <Paper elevation={0} className={classes.section}>
             <Typography className={classes.text}>Available NFTs.</Typography>
           </Paper>
         </Grid>
-        <Grid item xs={false} sm={2} xl={4} />
-        <Grid item justify='center' xs={12} sm={8} xl={4}>
-          <Grid container direction='row' spacing={1}>
+        <Grid item xs={12} sm={8} xl={4}>
+          <Grid item container spacing={1} xs={12}>
             <NFTcardmulti name='NFT 1' id='1' />
             <NFTcardmulti name='NFT 2' id='2' />
             <NFTcardmulti name='NFT 3' id='3' />
@@ -133,6 +155,7 @@ function Clubpage() {
           </Grid>
         </Grid>
       </Grid>
+      <Box height='10px' />
     </Box>
   );
 }

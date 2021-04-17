@@ -1,7 +1,7 @@
-import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
+import {AppBar, IconButton, Toolbar, Typography} from '@material-ui/core';
 import React from 'react';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { makeStyles } from '@material-ui/styles';
+import {makeStyles} from '@material-ui/styles';
 import Link from 'next/link';
 import NavButton from './NavButton';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
@@ -46,7 +46,7 @@ const Header = () => {
         <Link href='/'>
           <a className={classes.logoIcon}>
             <IconButton>
-              <LoyaltyIcon style={{ color: 'abcda9' }}></LoyaltyIcon>
+              <LoyaltyIcon style={{color: '#abcda9'}}></LoyaltyIcon>
               <Typography className={classes.logoText}>NFTR</Typography>
             </IconButton>
           </a>
@@ -58,7 +58,7 @@ const Header = () => {
         <Link href='/profile'>
           <a className={classes.accountIcon}>
             <IconButton>
-              <AccountCircleIcon style={{ color: 'abcda9' }} />
+              <AccountCircleIcon style={{color: '#abcda9'}} />
             </IconButton>
           </a>
         </Link>

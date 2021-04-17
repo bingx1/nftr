@@ -1,10 +1,10 @@
 import React from 'react';
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import {makeStyles, ThemeProvider} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Link from 'next/link';
-import { Button, Grid, Paper } from '@material-ui/core';
+import {Button, Grid, Paper} from '@material-ui/core';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
-
+import {Box} from '@material-ui/core';
 import NFTcarousel from '../components/nft/NFTcarousel';
 
 const useStyles = makeStyles({
