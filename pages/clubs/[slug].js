@@ -3,14 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-<<<<<<< HEAD:src/components/pages/clubs/Clubpage.js
-import {CardActionArea, CardContent, Paper, Slide} from '@material-ui/core';
-import NFTcard from '../NFT/NFTcard';
-import SocialShare from 'react-simple-social';
-=======
 import { CardActionArea, CardContent, Paper, Slide } from '@material-ui/core';
 import NFTcard from '../../components/nft/NFTcard';
->>>>>>> next.js:pages/clubs/[slug].js
+import SocialShare from 'react-simple-social';
 
 const useStyles = makeStyles({
   root: {
@@ -63,11 +58,7 @@ const useStyles = makeStyles({
     fontFamily: 'Poppins',
     fontSize: 24,
     fontWeight: 700,
-<<<<<<< HEAD:src/components/pages/clubs/Clubpage.js
-    color: '#2A363B'
-=======
     color: '#f5eacf',
->>>>>>> next.js:pages/clubs/[slug].js
   },
 });
 
@@ -93,23 +84,20 @@ function Clubpage() {
           </Card>
         </Slide>
         <Card>
-          <Typography>
-            Hellooooooooooooooooooooo
-          </Typography>
+          <Typography>Hellooooooooooooooooooooo</Typography>
           <SocialShare
             sites={['facebook']}
             color='gray'
-            theme="minimal"
-            height="20"
-            width="20" />
+            theme='minimal'
+            height='20'
+            width='20'
+          />
         </Card>
       </Paper>
       <Grid container className={classes.grid} spacing={4}>
         <Grid item xs={12}>
           <Paper elevation={0}>
-            <Typography className={classes.text}>
-              Available NFTs.
-          </Typography>
+            <Typography className={classes.text}>Available NFTs.</Typography>
           </Paper>
         </Grid>
         <NFTcard name='NFT 1' id='1' />
@@ -117,12 +105,7 @@ function Clubpage() {
         <NFTcard name='NFT 3' id='3' />
         <NFTcard name='NFT 4' id='4' />
       </Grid>
-<<<<<<< HEAD:src/components/pages/clubs/Clubpage.js
     </Paper>
-
-=======
-    </div>
->>>>>>> next.js:pages/clubs/[slug].js
   );
 }
 
