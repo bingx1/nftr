@@ -1,18 +1,18 @@
 import React from 'react';
 import NFTcardmini from './NFTcardmini';
 import { Grid } from '@material-ui/core';
-import { useRouter } from 'next/router';
 import useSWR from 'swr';
+import { useRouter } from 'next/router';
 
 const fetcher = (url) => fetch(url).then(console.log(url), (res) => res.json());
 
 function Items() {
   const router = useRouter();
-  const { slug } = router.query;
   const { data, error } = useSWR(
     router.query.id ? `/api/user/${router.query.id}` : null,
     fetcher
-  );
+  )
+
 
   if (error) return <div>Failed to load user</div>;
   if (!data) return <div>Loading...</div>;

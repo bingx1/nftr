@@ -21,7 +21,6 @@ const usersContract = new web3.eth.Contract(contract2.abi, contractAddress2);
 export default async function (req, res) {
     const { slug } = req.query
     console.log(slug);
-    // const usersContract = new web3.eth.Contract(contract.abi, contractAddress2);
     const address = await usersContract.methods.getAddressFromID(slug).call();
     console.log(address);
     const nfts = await fetch_json(address);
@@ -30,7 +29,6 @@ export default async function (req, res) {
 
 
 async function fetch_json(address){
-    // const address = await usersContract.methods.getAddressFromID(studentn).call();
     const balances = await web3.alchemy.getTokenBalances(address, [contractAddress]);
     const balance = balances.tokenBalances[0].tokenBalance;
     const metadata = await web3.alchemy.getTokenMetadata(contractAddress);

@@ -90,19 +90,14 @@ const useStyles = makeStyles({
 
 // const fetcher = (url) => fetch(url).then(console.log(url), (res) => res.json());
 
+
 function Profile() {
   const classes = useStyles();
-  const router = useRouter();
-  const { slug } = router.query;
+  const router = useRouter()
   // const { data, error } = useSwr(
   //   router.query.id ? `/api/user/${router.query.id}` : null,
   //   fetcher
-  // );
-
-  // if (error) return <div>Failed to load user</div>;
-  // if (!data) return <div>Loading...</div>;
-  // console.log(data);
-
+  // )
   return (
     <Paper className={classes.wrapper}>
       <Paper className={classes.root}>
@@ -113,11 +108,11 @@ function Profile() {
                 <Typography className={classes.title}>Your Profile.</Typography>
                 <Grid container className={classes.card} spacing={1}>
                   <Grid item xs={8}>
-                    <Typography className={classes.subtitle}>{slug}</Typography>
+                    <Typography className={classes.subtitle}>{router.query.id}</Typography>
                   </Grid>
                   <Grid item xs={4}>
                     <IconButton
-                      onClick={() => navigator.clipboard.writeText(slug)}
+                      onClick={() => navigator.clipboard.writeText(router.query.id)}
                       className={classes.button}
                     >
                       <FileCopyOutlinedIcon />
