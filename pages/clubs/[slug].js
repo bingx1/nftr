@@ -3,11 +3,26 @@ import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import {Paper, Slide} from '@material-ui/core';
+import {Box, Paper, Slide} from '@material-ui/core';
 import NFTcardmulti from '../../components/nft/NFTcardmulti';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles({
   root: {
+    borderRadius: 0,
+    position: 'relative',
+    width: '100%',
+    height: '20rem',
+    zIndex: 1,
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    boxShadow: 'none',
+    background: 'none',
+  },
+  card: {
     borderRadius: 0,
     position: 'relative',
     width: '100%',
@@ -67,30 +82,38 @@ const useStyles = makeStyles({
     fontWeight: 700,
     color: '#2A363B',
   },
+  item: {
+    flexDirection: 'row',
+    height: '100px',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'green',
+  },
+  iconbox: {
+    justifyContent: 'center',
+    flexDirection: 'column',
+    flex: 1,
+  },
 });
 
 function Clubpage() {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.wrapper}>
-      <Paper className={classes.root}>
-        <Slide direction='right' in={true} timeout={1000} mountOnEnter>
-          <Card className={classes.root}>
-            <Slide direction='right' in={true} timeout={1000} mountOnEnter>
-              <Typography className={classes.overlay}>
-                <Typography className={classes.title}>
-                  UMCPC.
+    <Box className={classes.wrapper}>
+      <Box className={classes.root}>
+        <Card className={classes.card}>
+          <Typography className={classes.overlay}>
+            <Typography className={classes.title}>
+              UMCPC.
                   <br />
+            </Typography>
+            <Typography>
+              University of Melbourne Competitive Programming Club
                 </Typography>
-                <Typography>
-                  University of Melbourne Competitive Programming Club
-                </Typography>
-              </Typography>
-            </Slide>
-          </Card>
-        </Slide>
-      </Paper>
+          </Typography>
+        </Card>
+      </Box>
       <Grid container className={classes.grid} spacing={2}>
         <Grid item xs={12}>
           <Paper elevation={0} className={classes.section}>
@@ -107,7 +130,7 @@ function Clubpage() {
           </Grid>
         </Grid>
       </Grid>
-    </Paper >
+    </Box >
   );
 }
 
