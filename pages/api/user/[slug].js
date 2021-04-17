@@ -15,22 +15,22 @@ const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
 
 const contract2 = require("../../../artifacts/contracts/users.sol/users.json"); // for Hardhat
 const contractAddress2 = "0xF57Dd24ac0150464494D5a162eb7227d9812726B";
-const usersContract = new web3.eth.Contract(contract.abi, contractAddress2);
+const usersContract = new web3.eth.Contract(contract2.abi, contractAddress2);
 
 // // Responds to student 
 export default async function (req, res) {
     const { slug } = req.query
     console.log(slug);
     // const usersContract = new web3.eth.Contract(contract.abi, contractAddress2);
-    // const address = await usersContract.methods.getAddressFromID(slug).call();
-    // console.log(address);
-    const nfts = await fetch_json(slug);
+    const address = await usersContract.methods.getAddressFromID(slug).call();
+    console.log(address);
+    const nfts = await fetch_json(address);
     res.status(200).send(nfts);
 }
 
 
-async function fetch_json(studentn){
-    const address = await usersContract.methods.getAddressFromID(studentn).call();
+async function fetch_json(address){
+    // const address = await usersContract.methods.getAddressFromID(studentn).call();
     const balances = await web3.alchemy.getTokenBalances(address, [contractAddress]);
     const balance = balances.tokenBalances[0].tokenBalance;
     const metadata = await web3.alchemy.getTokenMetadata(contractAddress);
