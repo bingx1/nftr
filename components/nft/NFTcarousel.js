@@ -64,7 +64,8 @@ function NFTCarousel() {
       indicatorContainerProps={{
         style: {
           position: 'static',
-          marginTop: '-40rem',
+          marginTop: '-35rem',
+          marginBottom: '5rem',
           textAlign: 'flex-start',
         },
       }}

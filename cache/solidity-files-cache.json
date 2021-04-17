@@ -606,6 +606,40 @@
       "artifacts": [
         "IERC165"
       ]
+    },
+    "/home/bing/Documents/hackathon/codebrew2021/contracts/users.sol": {
+      "lastModificationDate": 1618660086613,
+      "contentHash": "319e77e068bd554b5b4db96303e5123c",
+      "sourceName": "contracts/users.sol",
+      "solcConfig": {
+        "version": "0.7.3",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "0.7.3"
+      ],
+      "artifacts": [
+        "users"
+      ]
     }
   }
 }

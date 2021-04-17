@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-import { Box, Button, Card, Paper, Typography } from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
+import {Box, Button, Card, Paper, Typography} from '@material-ui/core';
 import Grow from '@material-ui/core/Grow';
 import TextField from '@material-ui/core/TextField';
-import { Field, Form } from 'react-final-form';
+import {Field, Form} from 'react-final-form';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -108,7 +108,7 @@ function NFTFormPage() {
             <Card className={classes.root}>
               <Form
                 onSubmit={onSubmit}
-                render={({ handleSubmit }) => (
+                render={({handleSubmit}) => (
                   <form onSubmit={handleSubmit}>
                     <Paper className={classes.form}>
                       <Grid
@@ -125,7 +125,6 @@ function NFTFormPage() {
                         <Grid item xs={10}>
                           <Field
                             fullWidth
-                            required
                             name='issuer'
                             value={issuer}
                             onChange={handleChangeIssuer}
@@ -137,7 +136,6 @@ function NFTFormPage() {
                         <Grid item xs={10}>
                           <Field
                             fullWidth
-                            required
                             name='recipient'
                             value={recipient}
                             onChange={handleChangeRecipient}
@@ -149,7 +147,6 @@ function NFTFormPage() {
                         <Grid item xs={10}>
                           <Field
                             fullWidth
-                            required
                             name='event'
                             value={event}
                             onChange={handleChangeEvent}
@@ -162,7 +159,6 @@ function NFTFormPage() {
                         <Grid item xs={10}>
                           <Field
                             fullWidth
-                            required
                             name='image'
                             value={image}
                             onChange={handleChangeImage}
@@ -201,7 +197,7 @@ function NFTFormPage() {
                         <Grid item xs={10}>
                           <Grid container justify='center'>
                             <Button
-                              className='classes.button'
+                              className={classes.button}
                               variant='contained'
                               color='secondary'
                               type='submit'
