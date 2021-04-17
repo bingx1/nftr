@@ -11,8 +11,8 @@ const useStyles = makeStyles({
     borderRadius: 5,
   },
   media: {
-    width: '100%',
-    height: '5rem',
+    width: '40%',
+    height: '50px',
     position: 'relative',
     borderRadius: 3,
   },
@@ -38,9 +38,6 @@ export default function ClubCard(props) {
             <CardContent>
               <Typography className={classes.text}>{props.name}</Typography>
             </CardContent>
-            {/* <Box className={classes.mediawrapper}>
-              <CardMedia className={classes.media} image={props.image} />
-            </Box> */}
           </CardActionArea>
         </Link>
       </Card>
