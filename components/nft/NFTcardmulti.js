@@ -27,15 +27,17 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ClubCard(props) {
+export default function NFTcardmulti(props) {
   const classes = useStyles();
 
   return (
     <Grid item xs={8} sm={4}>
       <Card className={classes.card}>
-        <CardActionArea href={'/clubs/' + props.name}>
+        <CardActionArea href={'/NFT/' + props.id}>
           <CardContent>
-            <Typography className={classes.text}>{props.name}</Typography>
+            <Typography className={classes.text}>
+              {props.name}
+            </Typography>
           </CardContent>
           <Box className={classes.mediawrapper}>
             <CardMedia className={classes.media} image={props.image} />
