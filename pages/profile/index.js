@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     borderRadius: 0,
     position: 'relative',
     width: '100%',
-    height: '20rem',
+    height: 'rem',
     zIndex: 1,
     display: 'flex',
     flexWrap: 'wrap',

@@ -72,7 +72,7 @@ const Header = (props) => {
         <NavButton url='/clubs' text='clubs.' />
         <NavButton url='/nftform' text='create.' />
 
-        {ret && ret[0] ? <NavButton url={'/' + id} text={id} /> : ''}
+        {ret && ret[0] ? <NavButton url={'/profile/' + id} text={id} /> : ''}
 
         <WalletButton
           provider={ret ? ret[0] : undefined}
