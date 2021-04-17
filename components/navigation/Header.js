@@ -1,14 +1,14 @@
-import {AppBar, IconButton, Toolbar, Typography} from '@material-ui/core';
+import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import React from 'react';
 import Blockies from 'react-blockies';
-import {makeStyles} from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
 import Link from 'next/link';
 import NavButton from './NavButton';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import useWeb3Modal from '../hooks/UseWeb3Modal';
 import LockIcon from '@material-ui/icons/Lock';
-import {Button} from '@material-ui/core';
+import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -55,29 +55,25 @@ const useStyles = makeStyles(() => ({
 const Header = (props) => {
   const ret = useWeb3Modal();
   const classes = useStyles();
-  const id = ret && ret[0] ? (ret[0].provider.selectedAddress).slice(2, 10) : null
+  const id =
+    ret && ret[0] ? ret[0].provider.selectedAddress.slice(2, 10) : null;
   return (
     <AppBar className={classes.root} position='static'>
       <Toolbar className={classes.toolbar} variant='dense'>
         <Link href='/'>
           <a className={classes.logoIcon}>
             <IconButton>
-              <LoyaltyIcon style={{color: '#abcda9'}}></LoyaltyIcon>
+              <LoyaltyIcon style={{ color: '#abcda9' }}></LoyaltyIcon>
               <Typography className={classes.logoText}>NFTR</Typography>
             </IconButton>
           </a>
         </Link>
 
-        {ret && ret[0] ? (
-          <NavButton url={"/" + id} text={id} />
-        ) : (
-          ''
-        )}
+        {ret && ret[0] ? <NavButton url={'/' + id} text={id} /> : ''}
         <NavButton url='/clubs' text='clubs.' />
-        <NavButton url='/nfts' text='NFTs.' />
         <NavButton url='/nftform' text='create.' />
         {ret && ret[0] ? (
-          <Link href={"/profile/" + id}>
+          <Link href={'/profile/' + id}>
             <a className={classes.accountIcon}>
               <Blockies seed={ret[0].provider.selectedAddress} />
             </a>
@@ -95,7 +91,7 @@ const Header = (props) => {
   );
 };
 
-function WalletButton({provider, loadWeb3Modal, logoutOfWeb3Modal}) {
+function WalletButton({ provider, loadWeb3Modal, logoutOfWeb3Modal }) {
   return (
     <Button
       onClick={() => {
@@ -105,7 +101,7 @@ function WalletButton({provider, loadWeb3Modal, logoutOfWeb3Modal}) {
           logoutOfWeb3Modal();
         }
       }}
-      style={{color: '#abcda9'}}
+      style={{ color: '#abcda9' }}
     >
       {!provider ? <LockOpenIcon /> : <LockIcon />}
     </Button>
