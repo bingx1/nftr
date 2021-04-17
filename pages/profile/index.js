@@ -1,9 +1,9 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import {CardActionArea, CardContent, Paper, Slide} from '@material-ui/core';
+import { CardActionArea, CardContent, Paper, Slide } from '@material-ui/core';
 import NFTcard from '../../components/nft/NFTcard';
 
 const useStyles = makeStyles({
@@ -56,7 +56,7 @@ const useStyles = makeStyles({
     fontFamily: 'Poppins',
     fontSize: 24,
     fontWeight: 700,
-    color: '#2A363B'
+    color: '#2A363B',
   },
 });
 
@@ -72,7 +72,7 @@ function Clubpage() {
               <Typography className={classes.overlay}>
                 <Typography className={classes.title}>
                   Your Profile.
-              <br />
+                  <br />
                 </Typography>
               </Typography>
             </Slide>
@@ -82,9 +82,7 @@ function Clubpage() {
       <Grid container className={classes.grid} spacing={4}>
         <Grid item xs={12}>
           <Paper elevation={0}>
-            <Typography className={classes.text}>
-              Your NFTs.
-          </Typography>
+            <Typography className={classes.text}>Your NFTs.</Typography>
           </Paper>
         </Grid>
         <NFTcard name='NFT 1' id='1' />
@@ -93,7 +91,6 @@ function Clubpage() {
         <NFTcard name='NFT 4' id='4' />
       </Grid>
     </Paper>
-
   );
 }
 

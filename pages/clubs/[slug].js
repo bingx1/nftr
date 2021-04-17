@@ -1,10 +1,10 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import {CardActionArea, CardContent, Paper, Slide} from '@material-ui/core';
-import NFTcard from '../../components/nft/NFTcard'
+import { CardActionArea, CardContent, Paper, Slide } from '@material-ui/core';
+import NFTcard from '../../components/nft/NFTcard';
 
 const useStyles = makeStyles({
   root: {
@@ -56,7 +56,7 @@ const useStyles = makeStyles({
     fontFamily: 'Poppins',
     fontSize: 20,
     fontWeight: 700,
-    color: '#f5eacf'
+    color: '#f5eacf',
   },
 });
 
@@ -72,11 +72,11 @@ function Clubpage() {
               <Typography className={classes.overlay}>
                 <Typography className={classes.title}>
                   UMCPC.
-              <br />
+                  <br />
                 </Typography>
                 <Typography className={classes.subtitle}>
                   University of Melbourne Competitive Programming Club
-            </Typography>
+                </Typography>
               </Typography>
             </Slide>
           </Card>
@@ -89,7 +89,6 @@ function Clubpage() {
         <NFTcard name='NFT 4' id='4' />
       </Grid>
     </div>
-
   );
 }
 
