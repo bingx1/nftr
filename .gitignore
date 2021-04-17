@@ -10,6 +10,7 @@
 
 #env
 .env
+.next
 
 # production
 /build

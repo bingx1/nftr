@@ -1,13 +1,11 @@
 import React from 'react';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import { Link } from 'react-router-dom';
-import { Button, Grid, IconButton, Paper } from '@material-ui/core';
+import Link from 'next/link';
+import { Button, Grid, Paper } from '@material-ui/core';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
-import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 
-import NFTcard from '../NFT/NFTcard';
-import NFTcarousel from '../NFT/NFTcarousel';
+import NFTcarousel from '../components/nft/NFTcarousel';
 
 const useStyles = makeStyles({
   root: {
@@ -63,7 +61,6 @@ const useStyles = makeStyles({
     borderColor: 0,
     padding: 0,
   },
-  grid: {},
 });
 
 function Home() {
@@ -78,21 +75,23 @@ function Home() {
             Create and collect NFTs for university and clubs
           </Typography>
           <Typography className={classes.subtitle}>
-            <Link className={classes.linkStyle} to='clubs'>
-              <Button className={classes.buttonStyle}>
-                <KeyboardArrowRightIcon size='100px' />
-                start checking out our clubs now...
-              </Button>
+            <Link href='clubs'>
+              <a className={classes.linkStyle}>
+                <Button className={classes.buttonStyle}>
+                  <KeyboardArrowRightIcon size='100px' />
+                  start checking out our clubs now...
+                </Button>
+              </a>
             </Link>
           </Typography>
         </Typography>
       </Paper>
-      <Grid item container className={classes.grid} direction='row' spacing={1}>
-        <Grid container xs={false} sm={3} xl={4} />
+      <Grid container direction='row' spacing={1}>
+        <Grid xs={false} sm={3} xl={4} />
         <Grid xs={12} sm={6} xl={4}>
           <NFTcarousel />
         </Grid>
-        <Grid container xs={false} sm={3} xl={4} />
+        <Grid xs={false} sm={3} xl={4} />
       </Grid>
     </Paper>
   );

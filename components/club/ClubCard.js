@@ -4,7 +4,6 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { Box, CardActionArea, CardMedia, Grid } from '@material-ui/core';
-import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   card: {

@@ -1,11 +1,10 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import {CardActionArea, CardContent, Paper, Slide} from '@material-ui/core';
-import NFTcard from '../NFT/NFTcard';
-import SocialShare from 'react-simple-social';
+import { CardActionArea, CardContent, Paper, Slide } from '@material-ui/core';
+import NFTcard from '../../components/nft/NFTcard';
 
 const useStyles = makeStyles({
   root: {
@@ -15,11 +14,11 @@ const useStyles = makeStyles({
     height: '20rem',
     zIndex: 1,
     display: 'flex',
-    flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
     boxShadow: 'none',
+    background: 'none',
   },
   media: {
     height: 500,
@@ -58,11 +57,11 @@ const useStyles = makeStyles({
     fontFamily: 'Poppins',
     fontSize: 24,
     fontWeight: 700,
-    color: '#2A363B'
+    color: '#2A363B',
   },
 });
 
-function Clubpage() {
+function Profile() {
   const classes = useStyles();
 
   return (
@@ -73,35 +72,17 @@ function Clubpage() {
             <Slide direction='right' in={true} timeout={1000} mountOnEnter>
               <Typography className={classes.overlay}>
                 <Typography className={classes.title}>
-                  UMCPC.
-              <br />
-                </Typography>
-                <Typography>
-                  University of Melbourne Competitive Programming Club
+                  Your Profile.
+                  <br />
                 </Typography>
               </Typography>
             </Slide>
           </Card>
         </Slide>
-        <Card>
-          <Typography>
-            Hellooooooooooooooooooooo
-          </Typography>
-          <SocialShare
-            sites={['facebook']}
-            color='gray'
-            theme="minimal"
-            height="20"
-            width="20" />
-        </Card>
       </Paper>
       <Grid container className={classes.grid} spacing={4}>
         <Grid item xs={12}>
-          <Paper elevation={0}>
-            <Typography className={classes.text}>
-              Available NFTs.
-          </Typography>
-          </Paper>
+          <Typography className={classes.text}>Your NFTs.</Typography>
         </Grid>
         <NFTcard name='NFT 1' id='1' />
         <NFTcard name='NFT 2' id='2' />
@@ -109,8 +90,7 @@ function Clubpage() {
         <NFTcard name='NFT 4' id='4' />
       </Grid>
     </Paper>
-
   );
 }
 
-export default Clubpage;
+export default Profile;

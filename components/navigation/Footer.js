@@ -2,7 +2,6 @@ import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import React from 'react';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { makeStyles } from '@material-ui/styles';
-import { Link } from 'react-router-dom';
 import NavButton from './NavButton';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
 

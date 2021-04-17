@@ -2,7 +2,7 @@ import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import React from 'react';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { makeStyles } from '@material-ui/styles';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import NavButton from './NavButton';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
 
@@ -43,20 +43,24 @@ const Header = () => {
   return (
     <AppBar className={classes.root} position='static'>
       <Toolbar className={classes.toolbar} variant='dense'>
-        <Link className={classes.logoIcon} to='/'>
-          <IconButton>
-            <LoyaltyIcon style={{ color: 'abcda9' }}></LoyaltyIcon>
-            <Typography className={classes.logoText}>NFTR</Typography>
-          </IconButton>
+        <Link href='/'>
+          <a className={classes.logoIcon}>
+            <IconButton>
+              <LoyaltyIcon style={{ color: 'abcda9' }}></LoyaltyIcon>
+              <Typography className={classes.logoText}>NFTR</Typography>
+            </IconButton>
+          </a>
         </Link>
 
         <NavButton url='/clubs' text='clubs.' />
-        <NavButton url='/nfttest' text='NFTtest.' />
+        <NavButton url='/nfts' text='NFTs.' />
         <NavButton url='/profile' text='profile.' />
-        <Link className={classes.accountIcon} to='/Profile'>
-          <IconButton>
-            <AccountCircleIcon style={{ color: 'abcda9' }} />
-          </IconButton>
+        <Link href='/profile'>
+          <a className={classes.accountIcon}>
+            <IconButton>
+              <AccountCircleIcon style={{ color: 'abcda9' }} />
+            </IconButton>
+          </a>
         </Link>
       </Toolbar>
     </AppBar>

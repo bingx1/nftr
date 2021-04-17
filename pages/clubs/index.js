@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-import ClubCard from './ClubCard';
+import ClubCard from '../../components/club/ClubCard';
 import { Box } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -17,22 +17,25 @@ const useStyles = makeStyles({
   },
 });
 
-function Clubs() {
+function clubs() {
   const classes = useStyles();
 
   return (
     <Box className={classes.background}>
       <Grid container className={classes.root}>
         <Grid xs={false} sm={2} xl={4} />
-        <Grid container xs={12} sm={8} xl={4} direction='row' spacing={1}>
-          <ClubCard name='UMCPC' />
-          <ClubCard name='CISSA' />
-          <ClubCard name='MISC' />
-          <ClubCard name='MESS' />
-          <ClubCard name='SAS' />
-          <ClubCard name='UMSU' />
-          <ClubCard name='M-ASS' />
-          <ClubCard name='DES' />
+
+        <Grid xs={12} sm={8} xl={4}>
+          <Grid container direction='row' spacing={1}>
+            <ClubCard name='UMCPC' />
+            <ClubCard name='CISSA' />
+            <ClubCard name='MISC' />
+            <ClubCard name='MESS' />
+            <ClubCard name='SAS' />
+            <ClubCard name='UMSU' />
+            <ClubCard name='M-ASS' />
+            <ClubCard name='DES' />
+          </Grid>
         </Grid>
         <Grid xs={false} sm={2} xl={4} />
       </Grid>
@@ -40,4 +43,4 @@ function Clubs() {
   );
 }
 
-export default Clubs;
+export default clubs;
