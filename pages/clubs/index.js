@@ -27,14 +27,14 @@ function clubs() {
 
         <Grid item xs={12} sm={8} xl={4}>
           <Grid container direction='row' spacing={1}>
-            <ClubCard name='UMCPC' />
-            <ClubCard name='CISSA' />
-            <ClubCard name='MISC' />
-            <ClubCard name='MESS' />
-            <ClubCard name='SAS' />
-            <ClubCard name='UMSU' />
-            <ClubCard name='M-ASS' />
-            <ClubCard name='DES' />
+            <ClubCard name='UMCPC' about='University of Melbourne Competitive Programming Club' />
+            <ClubCard name='CISSA' about='Computing & Information Systems Students Association' />
+            <ClubCard name='MISC' about='University of Melbourne Information Security Club' />
+            <ClubCard name='ARES' about='Aerospace and Rocket Engieering Society' />
+            <ClubCard name='SSS' about='Science Students Society' />
+            <ClubCard name='UMSU' about='University of Melbourne Student Union' />
+            <ClubCard name='M-ASS' about='Arts Students Society' />
+            <ClubCard name='DES' about='Design Students Society' />
           </Grid>
         </Grid>
       </Grid>

@@ -1,11 +1,11 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import { Box, Paper, IconButton, CardActions } from '@material-ui/core';
+import {Box, Paper, IconButton, CardActions} from '@material-ui/core';
 import NFTcardmulti from '../../components/nft/NFTcardmulti';
-import { useRouter } from 'next/router';
+import {useRouter} from 'next/router';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import EmailIcon from '@material-ui/icons/Email';
 import ChatIcon from '@material-ui/icons/Chat';
@@ -15,33 +15,21 @@ const useStyles = makeStyles({
     borderRadius: 0,
     position: 'relative',
     width: '100%',
-    height: '20rem',
+    height: '16rem',
     zIndex: 1,
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     overflow: 'hidden',
     boxShadow: 'none',
     background: 'none',
-  },
-  card: {
-    borderRadius: 0,
-    position: 'relative',
-    width: '100%',
-    height: '20rem',
-    zIndex: 1,
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
-    boxShadow: 'none',
-    background: 'none',
+    flexDirection: 'column'
   },
   media: {
     height: 500,
   },
   overlay: {
-    position: 'absolute',
+    position: 'center',
     top: '90px',
     left: '65px',
     color: '#2A363B',
@@ -54,7 +42,6 @@ const useStyles = makeStyles({
   },
   subtitle: {
     fontFamily: 'Poppins',
-    fontSize: 20,
     fontWeight: 500,
     lineHeight: 1,
   },
@@ -64,7 +51,9 @@ const useStyles = makeStyles({
     paddingRight: '30px',
   },
   card: {
-    backgroundColor: '#99B898',
+    justifyItems: 'center',
+    background: 'none',
+    padding: '10px',
   },
   wrapper: {
     background:
@@ -105,42 +94,49 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     flex: 1,
   },
+  box: {
+    justifyContent: 'center',
+  },
+  icon: {
+    color: '#2A363B',
+  },
 });
 
 function Clubpage() {
   const classes = useStyles();
   const router = useRouter();
-  const { slug } = router.query;
+  const {slug} = router.query;
 
   return (
     <Box className={classes.wrapper}>
-      <Grid container className={classes.root}>
-        <Grid item xs={12}>
-          <Card className={classes.card}>
+      <Grid container alignItems='center' className={classes.root}>
+        <Box className={classes.box}>
+          <Card className={classes.card} elevation={0}>
             <Typography className={classes.overlay}>
               <Typography className={classes.title}>
                 {slug}.
                 <br />
               </Typography>
-              <Typography>
+              <Typography className={classes.subtitle}>
                 University of Melbourne Competitive Programming Club
               </Typography>
             </Typography>
           </Card>
-        </Grid>
-      </Grid>
-      <Grid container justify='center' className={classes.grid} spacing={4}>
-        <Grid item className={classes.socials}>
-          <IconButton>
+        </Box>
+
+        <Box item className={classes.socials}>
+          <IconButton className={classes.icon}>
             <FacebookIcon />
           </IconButton>
-          <IconButton>
+          <IconButton className={classes.icon}>
             <EmailIcon />
           </IconButton>
-          <IconButton>
+          <IconButton className={classes.icon}>
             <ChatIcon />
           </IconButton>
-        </Grid>
+        </Box>
+      </Grid>
+      <Grid container justify='center' className={classes.grid} spacing={4}>
         <Grid item xs={12}>
           <Paper elevation={0} className={classes.section}>
             <Typography className={classes.text}>Available NFTs.</Typography>
