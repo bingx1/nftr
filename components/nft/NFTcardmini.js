@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import Link from 'next/link';
+
 import {
   Avatar,
   Box,
@@ -59,13 +61,15 @@ export default function NFTcardmulti(props) {
   return (
     <Grid item xs={4} sm={2}>
       <Grid container justify='center'>
-        <div className={avatarClasses.root}>
-          <Avatar
-            alt='Remy Sharp'
-            src={props.image}
-            className={avatarClasses.large}
-          />
-        </div>
+        <Link href={'/NFT/' + props.tokenID}>
+          <a>
+            <Avatar
+              alt='Remy Sharp'
+              src={props.image}
+              className={avatarClasses.large}
+            />
+          </a>
+        </Link>
       </Grid>
       <Grid container justify='center'>
         <Typography className={classes.text}>{props.name}</Typography>

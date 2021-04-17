@@ -145,7 +145,7 @@ function LogInPage(props) {
 
                         <Grid item xs={10}>
                           <Grid container justify='center'>
-                            <Link href='profile'>
+                            <Link href={'/profile/' + StudentID}>
                               <a className={classes.link}>
                                 <Button
                                   className={classes.button}
