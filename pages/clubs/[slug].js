@@ -58,6 +58,8 @@ const useStyles = makeStyles({
     padding: '10px',
   },
   wrapper: {
+    height: '100rem',
+
     background:
       'linear-gradient(135deg, #99B898 0%, #FECEAB 70%, #FF847F 100%)',
   },
