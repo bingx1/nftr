@@ -46,7 +46,7 @@ const Header = () => {
         <Link href='/'>
           <a className={classes.logoIcon}>
             <IconButton>
-              <LoyaltyIcon style={{color: '#abcda9'}}></LoyaltyIcon>
+              <LoyaltyIcon style={{ color: '#abcda9' }}></LoyaltyIcon>
               <Typography className={classes.logoText}>NFTR</Typography>
             </IconButton>
           </a>
@@ -58,7 +58,7 @@ const Header = () => {
         <Link href='/profile'>
           <a className={classes.accountIcon}>
             <IconButton>
-              <AccountCircleIcon style={{color: '#abcda9'}} />
+              <AccountCircleIcon style={{ color: '#abcda9' }} />
             </IconButton>
           </a>
         </Link>
