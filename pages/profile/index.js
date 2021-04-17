@@ -18,6 +18,7 @@ const useStyles = makeStyles({
     justifyContent: 'space-around',
     overflow: 'hidden',
     boxShadow: 'none',
+    background: 'none',
   },
   media: {
     height: 500,
@@ -81,9 +82,7 @@ function Clubpage() {
       </Paper>
       <Grid container className={classes.grid} spacing={4}>
         <Grid item xs={12}>
-          <Paper elevation={0}>
-            <Typography className={classes.text}>Your NFTs.</Typography>
-          </Paper>
+          <Typography className={classes.text}>Your NFTs.</Typography>
         </Grid>
         <NFTcard name='NFT 1' id='1' />
         <NFTcard name='NFT 2' id='2' />
