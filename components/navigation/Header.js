@@ -69,7 +69,7 @@ const Header = (props) => {
         </Link>
 
         {ret && ret[0] ? (
-          <NavButton url={"/" + id} text={id} />
+          <NavButton url={"/profile/" + id} text={id} />
         ) : (
           ''
         )}
