@@ -102,7 +102,7 @@ function Profile() {
           <NFTcardmini name='NFT 4' id='4' />
         </Grid>
       </Grow>
-      <Box height='15px' />
+      <Box />
     </Paper>
   );
 }

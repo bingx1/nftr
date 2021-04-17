@@ -155,9 +155,21 @@ function Clubpage() {
               id='1'
               image='https://codebrew.com.au/images/remote_work.png'
             />
-            <NFTcardmini name='NFT 2' id='2' />
-            <NFTcardmini name='NFT 3' id='3' />
-            <NFTcardmini name='NFT 4' id='4' />
+            <NFTcardmini
+              name='NFT 2'
+              id='2'
+              image='https://codebrew.com.au/images/social_good.png'
+            />{' '}
+            <NFTcardmini
+              name='NFT 3'
+              id='3'
+              image='https://codebrew.com.au/images/mental_health.png'
+            />
+            <NFTcardmini
+              name='NFT 4'
+              id='4'
+              image='https://codebrew.com.au/images/remote_work.png'
+            />
           </Grid>
         </Grow>
       </Grid>
