@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
   form: {
     zIndex: 1,
     height: '100%',
-    margin: '1rem',
     background: 'none',
     boxShadow: 'none',
   },
@@ -28,17 +27,13 @@ const useStyles = makeStyles((theme) => ({
     background:
       'linear-gradient(135deg, #99B898 0%, #FECEAB 40%, #FF847F 100%)',
   },
-  textField: {
-    margin: '1rem',
-    width: '100%',
-  },
   title: {
     fontSize: '2rem',
     fontFamily: 'Poppins',
     fontWeight: 700,
     lineHeight: 1.1,
     color: '#2A363B',
-    margin: '2rem 1rem 1rem',
+    margin: '3rem 3rem',
   },
   button: {
     variant: 'h1',
@@ -99,8 +94,8 @@ function NFTFormPage() {
   return (
     <Box className={classes.background}>
       <Grid container>
-        <Grid item xs={false} sm={2} xl={4} />
-        <Grid item xs={12} sm={8} xl={4}>
+        <Grid item xs={false} sm={3} xl={4} />
+        <Grid item xs={12} sm={6} xl={4}>
           <Card className={classes.root}>
             <Form
               onSubmit={onSubmit}
@@ -109,15 +104,16 @@ function NFTFormPage() {
                   <Paper className={classes.form}>
                     <Grid
                       container
-                      alignItems='flex-start'
                       justify='center'
-                      spacing={2}
+                      alignContent='center'
+                      direction='column'
+                      spacing={1}
                     >
                       <Typography className={classes.title}>
                         Mint an NFT!
                       </Typography>
 
-                      <Grid item xs={8}>
+                      <Grid item xs={10}>
                         <Field
                           fullWidth
                           required
@@ -129,7 +125,7 @@ function NFTFormPage() {
                           label='Issuer'
                         />
                       </Grid>
-                      <Grid item xs={8}>
+                      <Grid item xs={10}>
                         <Field
                           fullWidth
                           required
@@ -141,7 +137,7 @@ function NFTFormPage() {
                           label='Recipient'
                         />
                       </Grid>
-                      <Grid item xs={8}>
+                      <Grid item xs={10}>
                         <Field
                           fullWidth
                           required
@@ -154,7 +150,7 @@ function NFTFormPage() {
                         />
                       </Grid>
 
-                      <Grid item xs={8}>
+                      <Grid item xs={10}>
                         <Field
                           fullWidth
                           required
@@ -168,7 +164,7 @@ function NFTFormPage() {
                         />
                       </Grid>
 
-                      <Grid item xs={8}>
+                      <Grid item xs={10}>
                         <Field
                           fullWidth
                           name='description'
@@ -181,12 +177,12 @@ function NFTFormPage() {
                         />
                       </Grid>
 
-                      <Grid item xs={8}>
+                      <Grid item xs={10}>
                         <Grid container justify='center'>
                           <Button
                             className='classes.button'
                             variant='contained'
-                            color='primary'
+                            color='secondary'
                             type='submit'
                           >
                             Submit
@@ -200,7 +196,7 @@ function NFTFormPage() {
             />
           </Card>
         </Grid>
-        <Grid xs={false} sm={2} xl={4} />
+        <Grid xs={false} sm={3} xl={4} />
       </Grid>
     </Box>
   );
