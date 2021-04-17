@@ -29,8 +29,8 @@ function NFTCard() {
   };
 
   return (
-    <Box className={classes.wrapper}>
-      <Grid container className={classes.root} direction='row' spacing={1}>
+    <>
+      <Grid container className={classes.root} direction='row'>
         <Grid xs={false} sm={2} xl={4} />
         <Grid className={classes.grid} xs={12} sm={8} xl={4}>
           <NFTcard
@@ -43,7 +43,7 @@ function NFTCard() {
         </Grid>
         <Grid xs={false} sm={2} xl={4} />
       </Grid>
-    </Box>
+    </>
   );
 }
 

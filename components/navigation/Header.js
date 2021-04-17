@@ -54,7 +54,7 @@ const Header = () => {
 
         <NavButton url='/clubs' text='clubs.' />
         <NavButton url='/nfts' text='NFTs.' />
-        <NavButton url='/profile' text='profile.' />
+        <NavButton url='/nftform' text='create.' />
         <Link href='/profile'>
           <a className={classes.accountIcon}>
             <IconButton>

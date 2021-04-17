@@ -82,16 +82,6 @@ function Clubpage() {
             </Slide>
           </Card>
         </Slide>
-        <Card>
-          <Typography>Hellooooooooooooooooooooo</Typography>
-          <SocialShare
-            sites={['facebook']}
-            color='gray'
-            theme='minimal'
-            height='20'
-            width='20'
-          />
-        </Card>
       </Paper>
       <Grid container className={classes.grid} spacing={4}>
         <Grid item xs={12}>

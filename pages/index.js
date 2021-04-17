@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   media: {
     height: 500,
   },
-  overlay: {
+  textLayout: {
     position: 'center',
     paddingTop: '5rem',
     color: '#2A363B',
@@ -43,7 +43,6 @@ const useStyles = makeStyles({
   },
   linkStyle: {
     textDecoration: 'none',
-    paddingRight: 10,
   },
   wrapper: {
     background:
@@ -68,8 +67,8 @@ function Home() {
 
   return (
     <Paper className={classes.wrapper}>
-      <Paper className={classes.root}>
-        <Typography className={classes.overlay}>
+      <Box className={classes.root}>
+        <Typography className={classes.textLayout}>
           <Typography className={classes.title}>NFTR.</Typography>
           <Typography className={classes.subtitle}>
             Create and collect NFTs for university and clubs
@@ -85,8 +84,8 @@ function Home() {
             </Link>
           </Typography>
         </Typography>
-      </Paper>
-      <Grid container direction='row' spacing={1}>
+      </Box>
+      <Grid container direction='row'>
         <Grid xs={false} sm={3} xl={4} />
         <Grid xs={12} sm={6} xl={4}>
           <NFTcarousel />
