@@ -72,7 +72,7 @@ function Home() {
     <Paper className={classes.wrapper}>
       <Box className={classes.root}>
         <Slide
-          direction={slide ? 'up' : 'down'}
+          direction={slide ? 'top' : 'down'}
           in={!slide}
           out={slide}
           timeout={1000}
@@ -83,19 +83,24 @@ function Home() {
               Create and collect NFTs for university and clubs
             </Typography>
             <Typography className={classes.subtitle}>
-              <Link href='clubs'>
-                <a className={classes.linkStyle}>
-                  <Button className={classes.buttonStyle} onClick={setSlide}>
-                    <KeyboardArrowRightIcon size='100px' />
-                    start checking out our clubs now...
-                  </Button>
-                </a>
-              </Link>
+              {/* <Link href='clubs'> */}
+              <a className={classes.linkStyle}>
+                <Button className={classes.buttonStyle} onClick={setSlide}>
+                  <KeyboardArrowRightIcon size='100px' />
+                  start checking out our clubs now...
+                </Button>
+              </a>
+              {/* </Link> */}
             </Typography>
           </Typography>
         </Slide>
       </Box>
-      <Slide direction='up' in={true} timeout={1000} mountOnEnter>
+      <Slide
+        direction={slide ? 'top' : 'down'}
+        in={!slide}
+        out={slide}
+        timeout={1000}
+      >
         <Grid container direction='row'>
           <Grid item xs={false} sm={3} xl={4} />
           <Grid item xs={12} sm={6} xl={4}>

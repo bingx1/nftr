@@ -59,6 +59,7 @@ function NFTFormPage() {
   const [event, setEvent] = useState('');
   const [image, setImage] = useState('');
   const [description, setDescription] = useState('');
+  const [destinationAddress, setDestinationAddress] = useState('');
 
   const handleChangeIssuer = (e) => {
     setIssuer(e.target.value);
@@ -75,6 +76,9 @@ function NFTFormPage() {
   const handleChangeDescription = (e) => {
     setDescription(e.target.value);
   };
+  const handleChangeDestinationAddress = (e) => {
+    setDestinationAddress(e.target.value);
+  };
 
   const onSubmit = async (e) => {
     const res = await fetch('/api/register', {
@@ -84,6 +88,7 @@ function NFTFormPage() {
         event,
         image,
         description,
+        destinationAddress,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -178,6 +183,18 @@ function NFTFormPage() {
                             multiline
                             type='text'
                             label='Description'
+                          />
+                        </Grid>
+                        <Grid item xs={10}>
+                          <Field
+                            fullWidth
+                            name='destinationaddress'
+                            value={destinationAddress}
+                            onChange={handleChangeDestinationAddress}
+                            component={TextField}
+                            multiline
+                            type='text'
+                            label='Destination Address'
                           />
                         </Grid>
 
