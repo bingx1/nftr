@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { Box, Grid } from '@material-ui/core';
 
-import NFTcard from './NFTcard';
+import NFTcard from '../../components/nft/NFTcard';
 
 const useStyles = makeStyles({
   root: {
@@ -30,7 +30,7 @@ function NFTCard() {
 
   return (
     <Box className={classes.wrapper}>
-      <Grid item container className={classes.root} direction='row' spacing={1}>
+      <Grid container className={classes.root} direction='row' spacing={1}>
         <Grid xs={false} sm={2} xl={4} />
         <Grid className={classes.grid} xs={12} sm={8} xl={4}>
           <NFTcard

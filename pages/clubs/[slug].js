@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import {CardActionArea, CardContent, Paper, Slide} from '@material-ui/core';
-import NFTcard from '../NFT/NFTcard'
+import NFTcard from '../../components/nft/NFTcard'
 
 const useStyles = makeStyles({
   root: {
