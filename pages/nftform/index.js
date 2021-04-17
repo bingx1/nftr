@@ -81,7 +81,7 @@ function NFTFormPage() {
   };
 
   const onSubmit = async (e) => {
-    const res = await fetch('/api/register', {
+    const res = await fetch('/api/mint-nft', {
       body: JSON.stringify({
         issuer,
         recipient,

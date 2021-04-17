@@ -36,7 +36,7 @@ export default async function (req, res) {
       //the transaction
       const tx = {
         from: PUBLIC_KEY,
-        to: destinationAddress,
+        to: contractAddress,
         nonce: nonce,
         gas: 500000,
         data: nftContract.methods.mintNFT(PUBLIC_KEY, tokenURI).encodeABI(),
