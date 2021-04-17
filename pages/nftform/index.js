@@ -78,15 +78,22 @@ function NFTFormPage() {
     setDescription(e.target.value);
   };
 
-  const onSubmit = (e) => {
-    const string = JSON.stringify({
-      issuer,
-      recipient,
-      event,
-      image,
-      description,
+  const onSubmit = async (e) => {
+    const res = await fetch('/api/register', {
+      body: JSON.stringify({
+        issuer,
+        recipient,
+        event,
+        image,
+        description,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
     });
-    alert(string);
+
+    const result = await res.json();
   };
 
   return (
