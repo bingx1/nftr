@@ -4,7 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import {CardActionArea, CardContent, Paper, Slide} from '@material-ui/core';
-import NFTcard from '../NFT/NFTcard'
+import NFTcard from '../NFT/NFTcard';
+import SocialShare from 'react-simple-social';
 
 const useStyles = makeStyles({
   root: {
@@ -14,6 +15,7 @@ const useStyles = makeStyles({
     height: '20rem',
     zIndex: 1,
     display: 'flex',
+    flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
@@ -81,6 +83,17 @@ function Clubpage() {
             </Slide>
           </Card>
         </Slide>
+        <Card>
+          <Typography>
+            Hellooooooooooooooooooooo
+          </Typography>
+          <SocialShare
+            sites={['facebook']}
+            color='gray'
+            theme="minimal"
+            height="20"
+            width="20" />
+        </Card>
       </Paper>
       <Grid container className={classes.grid} spacing={4}>
         <Grid item xs={12}>
