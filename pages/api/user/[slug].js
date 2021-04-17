@@ -13,16 +13,54 @@ const contractAddress = "0x2eb1cd1fdcbadc3ccf3f67e1283bafd888b1e7b5";
 const web3 = createAlchemyWeb3(API_URL);
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
 
-async function main(){
-    const balances = await web3.alchemy.getTokenBalances(PUBLIC_KEY, [contractAddress]);
+const contract2 = require("../../../artifacts/contracts/users.sol/users.json"); // for Hardhat
+const contractAddress2 = "0xF57Dd24ac0150464494D5a162eb7227d9812726B";
+const usersContract = new web3.eth.Contract(contract.abi, contractAddress2);
+
+// // Responds to student 
+export default async function (req, res) {
+    const { slug } = req.query
+    console.log(slug);
+    // const usersContract = new web3.eth.Contract(contract.abi, contractAddress2);
+    // const address = await usersContract.methods.getAddressFromID(slug).call();
+    // console.log(address);
+    const nfts = await fetch_json(slug);
+    res.status(200).send(nfts);
+}
+
+
+async function fetch_json(studentn){
+    const address = await usersContract.methods.getAddressFromID(studentn).call();
+    const balances = await web3.alchemy.getTokenBalances(address, [contractAddress]);
     const balance = balances.tokenBalances[0].tokenBalance;
     const metadata = await web3.alchemy.getTokenMetadata(contractAddress);
     console.log(metadata);
+    var items = []
     for(var i = 0; i < balance; i++) {
-        const id = await nftContract.methods.tokenOfOwnerByIndex(PUBLIC_KEY, i).call();
-        console.log(id);
-        // .then((id) => { console.log(id) });       
-      }    
+        const id = await nftContract.methods.tokenOfOwnerByIndex(address, i).call();
+        const uri = await nftContract.methods.tokenURI(id).call();
+        const json = await getJSON(uri);
+        // console.log(json);
+        items.push(json);
+      }
+    return items;    
 }
 
-main();
+
+const getJSON = (uri) => {
+    console.log(uri);
+    return axios.get(uri)
+        .then(function (json) {
+            console.log("Successfully retrived the json from the URI");
+            console.log(json.data);
+            return json.data;
+            //handle response here
+        })
+        .catch(function (error) {
+            console.log("An error occured while retreiving the json", error);
+            //handle error here
+        });
+};
+
+
+// main();

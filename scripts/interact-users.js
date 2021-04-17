@@ -70,10 +70,11 @@ async function addStudent(studentid, address) {
 
 async function main() {
     // const res = await usersContract.methods.getAddressFromID(833684).call();
+    // console.log(res)
     // await usersContract.methods.recordExistance(833684).send();
     // const result = await usersContract.methods.userExists(833684).call();
     // console.log(result);
-    await addStudent(833684, "0x2032267227cd086ceE851C07CCd2A3AdcB77DfBF");
+    // await addStudent(833684, "0x2032267227cd086ceE851C07CCd2A3AdcB77DfBF");
 }
 
 
