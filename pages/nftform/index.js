@@ -79,7 +79,14 @@ function NFTFormPage() {
   };
 
   const onSubmit = (e) => {
-    alert(issuer + recipient + event + image + description);
+    const string = JSON.stringify({
+      issuer,
+      recipient,
+      event,
+      image,
+      description,
+    });
+    alert(string);
   };
 
   return (
