@@ -99,8 +99,8 @@ function NFTFormPage() {
   return (
     <Box className={classes.background}>
       <Grid container>
-        <Grid xs={false} sm={2} xl={4} />
-        <Grid xs={12} sm={8} xl={4}>
+        <Grid item xs={false} sm={2} xl={4} />
+        <Grid item xs={12} sm={8} xl={4}>
           <Card className={classes.root}>
             <Form
               onSubmit={onSubmit}

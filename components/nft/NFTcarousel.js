@@ -3,7 +3,6 @@ import Carousel from 'react-material-ui-carousel';
 import NFTcard from './NFTcard';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
-import { Home } from '@material-ui/icons';
 
 function Example(props) {
   var items = [
@@ -58,6 +57,7 @@ function Example(props) {
           title={item.name}
           img={item.img}
           issuer={item.issuer}
+          open={false}
         />
       ))}
     </Carousel>

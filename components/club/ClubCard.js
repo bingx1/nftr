@@ -1,9 +1,9 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import {Box, CardActionArea, CardMedia, Grid} from '@material-ui/core';
+import { Box, CardActionArea, CardMedia, Grid } from '@material-ui/core';
 import Link from 'next/link';
 
 const useStyles = makeStyles({

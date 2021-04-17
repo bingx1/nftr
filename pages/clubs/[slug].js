@@ -1,11 +1,11 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import {Box, Paper, IconButton, CardActions} from '@material-ui/core';
+import { Box, Paper, IconButton, CardActions } from '@material-ui/core';
 import NFTcardmulti from '../../components/nft/NFTcardmulti';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import EmailIcon from '@material-ui/icons/Email';
 import ChatIcon from '@material-ui/icons/Chat';
@@ -110,7 +110,7 @@ const useStyles = makeStyles({
 function Clubpage() {
   const classes = useStyles();
   const router = useRouter();
-  const {slug} = router.query;
+  const { slug } = router.query;
 
   return (
     <Box className={classes.wrapper}>
@@ -120,11 +120,11 @@ function Clubpage() {
             <Typography className={classes.overlay}>
               <Typography className={classes.title}>
                 {slug}.
-              <br />
+                <br />
               </Typography>
               <Typography>
                 University of Melbourne Competitive Programming Club
-            </Typography>
+              </Typography>
             </Typography>
           </Card>
         </Grid>

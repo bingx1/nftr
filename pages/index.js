@@ -86,11 +86,11 @@ function Home() {
         </Typography>
       </Box>
       <Grid container direction='row'>
-        <Grid xs={false} sm={3} xl={4} />
-        <Grid xs={12} sm={6} xl={4}>
+        <Grid item xs={false} sm={3} xl={4} />
+        <Grid item xs={12} sm={6} xl={4}>
           <NFTcarousel />
         </Grid>
-        <Grid xs={false} sm={3} xl={4} />
+        <Grid item xs={false} sm={3} xl={4} />
       </Grid>
     </Paper>
   );
