@@ -70,6 +70,8 @@ const Header = (props) => {
         </Link>
 
         <NavButton url='/clubs' text='clubs.' />
+        <NavButton url='/registration' text='register.' />
+
         <NavButton url='/nftform' text='create.' />
 
         {ret && ret[0] ? <NavButton url={'/profile/' + id} text={id} /> : ''}
