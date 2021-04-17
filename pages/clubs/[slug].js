@@ -3,8 +3,8 @@ import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import {CardActionArea, CardContent, Paper, Slide} from '@material-ui/core';
-import NFTcard from '../../components/nft/NFTcard';
+import {Paper, Slide} from '@material-ui/core';
+import NFTcardmulti from '../../components/nft/NFTcardmulti';
 
 const useStyles = makeStyles({
   root: {
@@ -91,18 +91,23 @@ function Clubpage() {
           </Card>
         </Slide>
       </Paper>
-      <Grid container className={classes.grid} spacing={4}>
+      <Grid container className={classes.grid} spacing={2}>
         <Grid item xs={12}>
           <Paper elevation={0} className={classes.section}>
             <Typography className={classes.text}>Available NFTs.</Typography>
           </Paper>
         </Grid>
-        <NFTcard name='NFT 1' id='1' />
-        <NFTcard name='NFT 2' id='2' />
-        <NFTcard name='NFT 3' id='3' />
-        <NFTcard name='NFT 4' id='4' />
+        <Grid item xs={false} sm={2} xl={4} />
+        <Grid item justify='center' xs={12} sm={8} xl={4}>
+          <Grid container direction='row' spacing={1}>
+            <NFTcardmulti name='NFT 1' id='1' />
+            <NFTcardmulti name='NFT 2' id='2' />
+            <NFTcardmulti name='NFT 3' id='3' />
+            <NFTcardmulti name='NFT 4' id='4' />
+          </Grid>
+        </Grid>
       </Grid>
-    </Paper>
+    </Paper >
   );
 }
 

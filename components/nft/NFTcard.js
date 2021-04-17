@@ -30,7 +30,7 @@ const useStyles = makeStyles({
   },
   title: {
     padding: '2rem 2rem 0',
-    fontSize: '7.5ch',
+    fontSize: '2rem',
     fontFamily: 'Poppins',
     fontWeight: 700,
     lineHeight: 1.1,
@@ -81,7 +81,7 @@ function NFTcard(props) {
       <Card className={classes.card}>
         <Typography className={classes.title}>{props.title} </Typography>
         <Typography className={classes.subtitle}>
-          Issuer: Bing <br />
+          Issuer: {props.issuer} <br />
           Current Owner: Hao
         </Typography>
         <CardActionArea
