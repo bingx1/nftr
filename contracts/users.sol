@@ -1,19 +1,23 @@
 pragma solidity 0.7.3;
 
-contract ProofOfExistance {
+contract users {
 
-    mapping(bytes32 => address) public registry;
+    mapping(int32 => address) public registry;
 
-    event LogDocumentRegistered(address claimant, bytes32 document);
+    event LogStudentRegistered(address claimant, int32 studentid);
 
-    function userExists(bytes32 userHash) public view returns(bool doesIndeed) {
-        return(registry[userHash] != address(0));
+    function userExists(int32 studentid) public view returns(bool doesIndeed) {
+        return(registry[studentid] != address(0));
     }
 
-    function recordExistance(bytes32 userHash) public {
-        require(!userExists(userHash));
-        registry[userHash] = msg.sender;
-        emit LogDocumentRegistered(msg.sender, userHash);
+    function recordExistance(int32 studentid) public {
+        require(!userExists(studentid));
+        registry[studentid] = msg.sender;
+        emit LogStudentRegistered(msg.sender, studentid);
     }
 
+    function getAddressFromID(int32 studentid) public view returns (address) {
+        require(userExists(studentid));
+        return registry[studentid];
+    }
 }

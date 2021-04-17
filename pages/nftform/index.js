@@ -59,6 +59,7 @@ function NFTFormPage() {
   const [event, setEvent] = useState('');
   const [image, setImage] = useState('');
   const [description, setDescription] = useState('');
+  const [destinationAddress, setDestinationAddress] = useState('');
 
   const handleChangeIssuer = (e) => {
     setIssuer(e.target.value);
@@ -75,6 +76,9 @@ function NFTFormPage() {
   const handleChangeDescription = (e) => {
     setDescription(e.target.value);
   };
+  const handleChangeDestinationAddress = (e) => {
+    setDestinationAddress(e.target.value);
+  };
 
   const onSubmit = async (e) => {
     const res = await fetch('/api/register', {
@@ -84,6 +88,7 @@ function NFTFormPage() {
         event,
         image,
         description,
+        destinationAddress,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -120,44 +125,43 @@ function NFTFormPage() {
                         <Grid item xs={10}>
                           <Field
                             fullWidth
-                            required
                             name='issuer'
                             value={issuer}
                             onChange={handleChangeIssuer}
                             component={TextField}
                             type='text'
                             label='Issuer'
+                            color='secondary'
                           />
                         </Grid>
                         <Grid item xs={10}>
                           <Field
                             fullWidth
-                            required
                             name='recipient'
                             value={recipient}
                             onChange={handleChangeRecipient}
                             component={TextField}
                             type='text'
                             label='Recipient'
+                            color='secondary'
                           />
                         </Grid>
                         <Grid item xs={10}>
                           <Field
                             fullWidth
-                            required
                             name='event'
                             value={event}
                             onChange={handleChangeEvent}
                             component={TextField}
                             type='text'
                             label='Event'
+                            color='secondary'
                           />
                         </Grid>
 
                         <Grid item xs={10}>
                           <Field
                             fullWidth
-                            required
                             name='image'
                             value={image}
                             onChange={handleChangeImage}
@@ -165,6 +169,7 @@ function NFTFormPage() {
                             multiline
                             type='text'
                             label='Image URL'
+                            color='secondary'
                           />
                         </Grid>
 
@@ -178,13 +183,27 @@ function NFTFormPage() {
                             multiline
                             type='text'
                             label='Description'
+                            color='secondary'
+                          />
+                        </Grid>
+                        <Grid item xs={10}>
+                          <Field
+                            fullWidth
+                            name='destinationaddress'
+                            value={destinationAddress}
+                            onChange={handleChangeDestinationAddress}
+                            component={TextField}
+                            multiline
+                            type='text'
+                            label='Destination Address'
+                            color='secondary'
                           />
                         </Grid>
 
                         <Grid item xs={10}>
                           <Grid container justify='center'>
                             <Button
-                              className='classes.button'
+                              className={classes.button}
                               variant='contained'
                               color='secondary'
                               type='submit'

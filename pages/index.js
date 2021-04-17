@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Link from 'next/link';
+import { Link } from 'next/link';
+import { useRouter } from 'next/router';
+
 import { Button, Grid, Paper, Slide } from '@material-ui/core';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import { Box } from '@material-ui/core';
 import NFTcarousel from '../components/nft/NFTcarousel';
-import { Link as scrolllink, animateScroll as scroll } from 'react-scroll';
 
 const useStyles = makeStyles({
   root: {
@@ -42,7 +43,7 @@ const useStyles = makeStyles({
     fontWeight: 500,
     lineHeight: 1,
   },
-  linkStyle: {
+  link: {
     textDecoration: 'none',
   },
   wrapper: {
@@ -65,44 +66,49 @@ const useStyles = makeStyles({
 
 function Home() {
   const classes = useStyles();
+  const [slide, setSlide] = useState(false);
+  const router = useRouter();
+
+  const handleChangeSlide = () => {
+    setSlide((slide) => !slide);
+    setTimeout(function () {
+      router.push('clubs');
+    }, 1000);
+  };
 
   return (
     <Paper className={classes.wrapper}>
       <Box className={classes.root}>
-        <Slide direction='top' in={true} timeout={1000} mountOnEnter>
+        <Slide direction='down' in={!slide} out={slide} timeout={1000}>
           <Typography className={classes.textLayout}>
             <Typography className={classes.title}>NFTR.</Typography>
             <Typography className={classes.subtitle}>
               Create and collect NFTs for university and clubs
             </Typography>
             <Typography className={classes.subtitle}>
-              <scrolllink
-                activeClass='active'
-                to='section1'
-                spy={true}
-                smooth={true}
-                offset={70}
-                duration={500}
+              {/* <Link href='clubs'>
+                <a className={classes.linkStyle}> */}
+              <Button
+                className={classes.buttonStyle}
+                onClick={handleChangeSlide}
               >
-                <Button className={classes.buttonStyle}>
-                  <KeyboardArrowRightIcon size='100px' />
-                  start checking out our clubs now...
-                </Button>
-              </scrolllink>
+                <KeyboardArrowRightIcon size='100px' />
+                start checking out our clubs now...
+              </Button>
+              {/* </a>
+              </Link> */}
             </Typography>
           </Typography>
         </Slide>
       </Box>
-      <Slide direction='up' in={true} timeout={1000} mountOnEnter>
-        <section name='section1'>
-          <Grid container direction='row' id='card-carousel'>
-            <Grid item xs={false} sm={3} xl={4} />
-            <Grid item xs={12} sm={6} xl={4}>
-              <NFTcarousel />
-            </Grid>
-            <Grid item xs={false} sm={3} xl={4} />
+      <Slide direction='up' in={!slide} out={slide} timeout={1000}>
+        <Grid container direction='row'>
+          <Grid item xs={false} sm={3} xl={4} />
+          <Grid item xs={12} sm={6} xl={4}>
+            <NFTcarousel />
           </Grid>
-        </section>
+          <Grid item xs={false} sm={3} xl={4} />
+        </Grid>
       </Slide>
     </Paper>
   );

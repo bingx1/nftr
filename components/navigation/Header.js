@@ -42,9 +42,8 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Header = () => {
+const Header = (props) => {
   const ret = useWeb3Modal();
-  console.log(ret);
   const classes = useStyles();
   return (
     <AppBar className={classes.root} position="static">
@@ -66,7 +65,7 @@ const Header = () => {
         <NavButton url="/nfts" text="NFTs." />
         <NavButton url="/nftform" text="create." />
         {ret && ret[0] ? (
-          <Link href="/profile">
+          <Link href={props.isLoggedIn ? "/profile" : "/registration"}>
             <a className={classes.accountIcon}>
               <Blockies seed={ret[0].provider.selectedAddress} />
             </a>
