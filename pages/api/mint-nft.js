@@ -19,19 +19,21 @@ export default async function (req, res) {
         const url_body = 'https://gateway.pinata.cloud/ipfs/';
         const hashcode = await pinJSONToIPFS(PINATA_PUBLIC_KEY, PINATA_SECRET_KEY, req.body);
         const ipfs_url = url_body + hashcode
-        const result = await mintNFT(ipfs_url)
+        console.log(req.body);
+        const result = await mintNFT(ipfs_url, req.body.destinationAddress)
         console.log(result);
         res.status(200).send(result)
     }
 }
   
-async function mintNFT(tokenURI) {
+async function mintNFT(tokenURI, destinationAddress) {
   const nonce = await web3.eth.getTransactionCount(PUBLIC_KEY, "latest"); //get latest nonce
   console.log(tokenURI);
+  console.log(destinationAddress);
   //the transaction
   const tx = {
     from: PUBLIC_KEY,
-    to: contractAddress,
+    to: destinationAddress,
     nonce: nonce,
     gas: 500000,
     data: nftContract.methods.mintNFT(PUBLIC_KEY, tokenURI).encodeABI(),
@@ -45,7 +47,7 @@ async function mintNFT(tokenURI) {
         function (err, hash) {
           if (!err) {
             console.log("The hash of your transaction is: ", hash, "\nCheck Alchemy's Mempool to view the status of your transaction!");
-            return hash;
+            // return hash;
           } else {
             console.log("Something went wrong when submitting your transaction:",err);
           }
