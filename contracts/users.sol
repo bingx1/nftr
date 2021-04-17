@@ -10,10 +10,10 @@ contract users {
         return(registry[studentid] != address(0));
     }
 
-    function recordExistance(int32 studentid) public {
-        require(!userExists(studentid));
-        registry[studentid] = msg.sender;
-        emit LogStudentRegistered(msg.sender, studentid);
+    function recordExistance(int32 studentid, address sender) public {
+        require(!userExists(studentid), "error already exists");
+        registry[studentid] = sender;
+        emit LogStudentRegistered(sender, studentid);
     }
 
     function getAddressFromID(int32 studentid) public view returns (address) {

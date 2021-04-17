@@ -608,8 +608,8 @@
       ]
     },
     "/home/bing/Documents/hackathon/codebrew2021/contracts/users.sol": {
-      "lastModificationDate": 1618660086613,
-      "contentHash": "319e77e068bd554b5b4db96303e5123c",
+      "lastModificationDate": 1618675471715,
+      "contentHash": "3069105dbe58feb7685eaaedb3848470",
       "sourceName": "contracts/users.sol",
       "solcConfig": {
         "version": "0.7.3",
