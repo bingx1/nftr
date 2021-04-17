@@ -57,7 +57,7 @@ const Header = (props) => {
         <NavButton url='/nftform' text='create.' />
         <Link href={props.isLoggedIn ? '/profile' : '/registration'}>
           <a className={classes.accountIcon}>
-            <IconButton onClick={props.setLogIn}>
+            <IconButton>
               <AccountCircleIcon style={{ color: '#abcda9' }} />
             </IconButton>
           </a>

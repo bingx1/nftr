@@ -12,11 +12,12 @@ function MyApp({ Component, pageProps }) {
   const setLogIn = () => {
     setLoggedIn((loggedIn) => !loggedIn);
   };
+
   return (
     <div className='App'>
       <ThemeProvider theme={theme}>
-        <Header isLoggedIn={loggedIn} setLogIn={setLogIn} />
-        <Component {...pageProps} />
+        <Header isLoggedIn={loggedIn} />
+        <Component {...pageProps} setLogIn={setLogIn} />
         <Footer />
       </ThemeProvider>
     </div>

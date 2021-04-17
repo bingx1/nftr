@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function NFTFormPage(props) {
+function LogInPage(props) {
   const classes = useStyles();
 
   const [StudentID, setStudentID] = useState('');
@@ -145,15 +145,19 @@ function NFTFormPage(props) {
 
                         <Grid item xs={10}>
                           <Grid container justify='center'>
-                            <Button
-                              className={classes.button}
-                              variant='contained'
-                              color='secondary'
-                              type='submit'
-                              onClick={props.setLogin}
-                            >
-                              Login
-                            </Button>
+                            <Link href='profile'>
+                              <a className={classes.linkStyle}>
+                                <Button
+                                  className={classes.button}
+                                  variant='contained'
+                                  color='secondary'
+                                  type='submit'
+                                  onClick={props.setLogIn}
+                                >
+                                  Login
+                                </Button>
+                              </a>
+                            </Link>
                           </Grid>
                         </Grid>
                       </Grid>
@@ -169,4 +173,4 @@ function NFTFormPage(props) {
     </Box>
   );
 }
-export default NFTFormPage;
+export default LogInPage;
