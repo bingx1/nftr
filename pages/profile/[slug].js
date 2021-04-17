@@ -1,73 +1,75 @@
-import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import {makeStyles} from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Card from "@material-ui/core/Card";
+import Typography from "@material-ui/core/Typography";
 import {
   CardActionArea,
   CardContent,
   Paper,
   Box,
   Slide,
-} from '@material-ui/core';
-import NFTcardmini from '../../components/nft/NFTcardmini';
-import {useRouter} from 'next/router';
+  IconButton,
+} from "@material-ui/core";
+import FileCopyOutlinedIcon from "@material-ui/icons/FileCopyOutlined";
+import NFTcardmini from "../../components/nft/NFTcardmini";
+import {useRouter} from "next/router";
 
 const useStyles = makeStyles({
   root: {
     borderRadius: 0,
-    position: 'relative',
-    width: '100%',
-    height: '20rem',
+    position: "relative",
+    width: "100%",
+    height: "20rem",
     zIndex: 1,
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
-    boxShadow: 'none',
-    background: 'none',
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    overflow: "hidden",
+    boxShadow: "none",
+    background: "none",
   },
   media: {
     height: 500,
   },
   overlay: {
-    position: 'absolute',
-    top: '90px',
-    left: '65px',
-    color: '#2A363B',
+    position: "absolute",
+    top: "90px",
+    left: "65px",
+    color: "#2A363B",
   },
   title: {
     fontSize: 70,
-    fontFamily: 'Poppins',
+    fontFamily: "Poppins",
     fontWeight: 700,
     lineHeight: 1.1,
   },
   subtitle: {
-    fontFamily: 'Poppins',
-    marginLeft: '15px',
+    fontFamily: "Poppins",
+    marginLeft: "15px",
     fontSize: 24,
     fontWeight: 500,
     lineHeight: 1,
   },
   grid: {
-    paddingTop: '30px',
-    paddingLeft: '30px',
-    paddingRight: '30px',
+    paddingTop: "30px",
+    paddingLeft: "30px",
+    paddingRight: "30px",
   },
   card: {
-    backgroundColor: '#99B898',
+    backgroundColor: "#99B898",
   },
   wrapper: {
     background:
-      'linear-gradient(135deg, #99B898 0%, #FECEAB 70%, #FF847F 100%)',
-    height: '100rem',
+      "linear-gradient(135deg, #99B898 0%, #FECEAB 70%, #FF847F 100%)",
+    height: "100rem",
   },
   text: {
-    fontFamily: 'Poppins',
+    fontFamily: "Poppins",
     fontSize: 24,
     fontWeight: 700,
-    marginLeft: '50px',
-    color: '#2A363B',
+    marginLeft: "50px",
+    color: "#2A363B",
   },
 });
 
@@ -79,33 +81,36 @@ function Profile() {
   return (
     <Paper className={classes.wrapper}>
       <Paper className={classes.root}>
-        <Slide direction='right' in={true} timeout={1000} mountOnEnter>
+        <Slide direction="right" in={true} timeout={1000} mountOnEnter>
           <Card className={classes.root}>
-            <Slide direction='right' in={true} timeout={1000} mountOnEnter>
+            <Slide direction="right" in={true} timeout={1000} mountOnEnter>
               <Typography className={classes.overlay}>
-                <Typography className={classes.title}>
-                  Your Profile.
-                </Typography>
-                <Typography className={classes.subtitle}>
-                  {"ID: " + slug}
-                </Typography>
+                <Typography className={classes.title}>Your Profile.</Typography>
+                <Card className={classes.root}>
+                  <Typography className={classes.subtitle}>{slug}</Typography>
+                  <IconButton
+                    onClick={() => navigator.clipboard.writeText(slug)}
+                  >
+                    <FileCopyOutlinedIcon />
+                  </IconButton>
+                </Card>
               </Typography>
             </Slide>
           </Card>
         </Slide>
       </Paper>
-      <Slide direction='left' in={true} timeout={1000} mountOnEnter>
+      <Slide direction="left" in={true} timeout={1000} mountOnEnter>
         <Grid container className={classes.grid} spacing={1}>
           <Grid item xs={12}>
             <Typography className={classes.text}>Your NFTs.</Typography>
           </Grid>
-          <NFTcardmini name='NFT 1' id='1' />
-          <NFTcardmini name='NFT 2' id='2' />
-          <NFTcardmini name='NFT 3' id='3' />
-          <NFTcardmini name='NFT 4' id='4' />
+          <NFTcardmini name="NFT 1" id="1" />
+          <NFTcardmini name="NFT 2" id="2" />
+          <NFTcardmini name="NFT 3" id="3" />
+          <NFTcardmini name="NFT 4" id="4" />
         </Grid>
       </Slide>
-      <Box height='15px' />
+      <Box height="15px" />
     </Paper>
   );
 }
