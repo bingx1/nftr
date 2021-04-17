@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Link from 'next/link';
+import { Link } from 'next/link';
+import { useRouter } from 'next/router';
+
 import { Button, Grid, Paper, Slide } from '@material-ui/core';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import { Box } from '@material-ui/core';
@@ -41,7 +43,7 @@ const useStyles = makeStyles({
     fontWeight: 500,
     lineHeight: 1,
   },
-  linkStyle: {
+  link: {
     textDecoration: 'none',
   },
   wrapper: {
@@ -65,42 +67,41 @@ const useStyles = makeStyles({
 function Home() {
   const classes = useStyles();
   const [slide, setSlide] = useState(false);
+  const router = useRouter();
+
   const handleChangeSlide = () => {
     setSlide((slide) => !slide);
+    setTimeout(function () {
+      router.push('clubs');
+    }, 1000);
   };
+
   return (
     <Paper className={classes.wrapper}>
       <Box className={classes.root}>
-        <Slide
-          direction={slide ? 'top' : 'down'}
-          in={!slide}
-          out={slide}
-          timeout={1000}
-        >
+        <Slide direction='down' in={!slide} out={slide} timeout={1000}>
           <Typography className={classes.textLayout}>
             <Typography className={classes.title}>NFTR.</Typography>
             <Typography className={classes.subtitle}>
               Create and collect NFTs for university and clubs
             </Typography>
             <Typography className={classes.subtitle}>
-              {/* <Link href='clubs'> */}
-              <a className={classes.linkStyle}>
-                <Button className={classes.buttonStyle} onClick={setSlide}>
-                  <KeyboardArrowRightIcon size='100px' />
-                  start checking out our clubs now...
-                </Button>
-              </a>
-              {/* </Link> */}
+              {/* <Link href='clubs'>
+                <a className={classes.linkStyle}> */}
+              <Button
+                className={classes.buttonStyle}
+                onClick={handleChangeSlide}
+              >
+                <KeyboardArrowRightIcon size='100px' />
+                start checking out our clubs now...
+              </Button>
+              {/* </a>
+              </Link> */}
             </Typography>
           </Typography>
         </Slide>
       </Box>
-      <Slide
-        direction={slide ? 'top' : 'down'}
-        in={!slide}
-        out={slide}
-        timeout={1000}
-      >
+      <Slide direction='up' in={!slide} out={slide} timeout={1000}>
         <Grid container direction='row'>
           <Grid item xs={false} sm={3} xl={4} />
           <Grid item xs={12} sm={6} xl={4}>

@@ -38,7 +38,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Header = () => {
+const Header = (props) => {
   const classes = useStyles();
   return (
     <AppBar className={classes.root} position='static'>
@@ -53,11 +53,11 @@ const Header = () => {
         </Link>
 
         <NavButton url='/clubs' text='clubs.' />
-        <NavButton url='/nfts' text='NFTs.' />
+        {/* <NavButton url='/nfts' text='NFTs.' /> */}
         <NavButton url='/nftform' text='create.' />
-        <Link href='/profile'>
+        <Link href={props.isLoggedIn ? '/profile' : '/registration'}>
           <a className={classes.accountIcon}>
-            <IconButton>
+            <IconButton onClick={props.setLogIn}>
               <AccountCircleIcon style={{ color: '#abcda9' }} />
             </IconButton>
           </a>
