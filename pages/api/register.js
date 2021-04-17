@@ -43,8 +43,8 @@ async function addStudent(studentid, address) {
 export default async function (req, res) {
     if (req.method === "POST") {
         try{
-            const studentid = res.body.studentid;
-            const walletid = res.body.walletid;
+            const studentid = req.body.studentid;
+            const walletid = req.body.walletid;
             await addStudent(studentid, walletid);
             res.status(200).send("Success");
         } catch(err){

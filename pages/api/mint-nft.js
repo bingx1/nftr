@@ -23,13 +23,17 @@ export default async function (req, res) {
         req.body
       );
       const ipfs_url = url_body + hashcode;
-      const result = await mintNFT(ipfs_url, req.body.destinationAddress);
+      // Mints an NFT for Bing
+      const result = await mintNFT(ipfs_url);
+      // Bing sends the NFT
+      const tokenid = await nftContract.methods.totalSupply().call();
+      console.log("The token id is ", tokenid + 1);
       console.log(result);
       res.status(200).send(result);
     }
   }
   
-  async function mintNFT(tokenURI, destinationAddress) {
+  async function mintNFT(tokenURI) {
     return new Promise(async (resolve, reject) => {
       const nonce = await web3.eth.getTransactionCount(PUBLIC_KEY, "latest"); //get latest nonce
       console.log(tokenURI);
@@ -94,3 +98,46 @@ const pinJSONToIPFS = (pinataApiKey, pinataSecretApiKey, JSONBody) => {
             //handle error here
         });
 };
+
+async function sendNFT(tokenid, destinationAddress) {
+  return new Promise(async (resolve, reject) => {
+    const nonce = await web3.eth.getTransactionCount(PUBLIC_KEY, "latest"); //get latest nonce
+    console.log(tokenURI);
+    //the transaction
+    const tx = {
+      from: PUBLIC_KEY,
+      to: destinationAddress,
+      nonce: nonce,
+      gas: 500000,
+      data: nftContract.methods.safeTransferFrom(PUBLIC_KEY, destinationAddress, tokenid).encodeABI(),
+    };
+    const signPromise = web3.eth.accounts.signTransaction(tx, PRIVATE_KEY);
+
+    signPromise
+      .then((signedTx) => {
+        web3.eth.sendSignedTransaction(signedTx.rawTransaction, function (
+          err,
+          hash
+        ) {
+          if (!err) {
+            console.log(
+              "The hash of your transaction is: ",
+              hash,
+              "\nCheck Alchemy's Mempool to view the status of your transaction!"
+            );
+            resolve(hash);
+          } else {
+            console.log(
+              "Something went wrong when submitting your transaction:",
+              err
+            );
+            reject();
+          }
+        });
+      })
+      .catch((err) => {
+        console.log(" Promise failed:", err);
+        reject();
+      });
+  });
+}

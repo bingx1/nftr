@@ -1,8 +1,8 @@
 import React from 'react';
 import NFTcardmini from './NFTcardmini';
 import { Grid } from '@material-ui/core';
-import { useRouter } from 'next/router';
 import useSWR from 'swr';
+import { useRouter } from 'next/router';
 
 // const fetcher = (url) => fetch(url).then(console.log(url), (res) => res.json());
 
