@@ -1,20 +1,13 @@
 import React from 'react';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
-import {
-  Button,
-  Divider,
-  Grid,
-  IconButton,
-  Paper,
-  Slide,
-} from '@material-ui/core';
+import { Button, Grid, IconButton, Paper } from '@material-ui/core';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 
 import NFTcard from '../NFT/NFTcard';
+import NFTcarousel from '../NFT/NFTcarousel';
 
 const useStyles = makeStyles({
   root: {
@@ -34,9 +27,8 @@ const useStyles = makeStyles({
     height: 500,
   },
   overlay: {
-    position: 'absolute',
-    top: '90px',
-    left: '65px',
+    position: 'center',
+    paddingTop: '5rem',
     color: '#2A363B',
   },
   title: {
@@ -96,33 +88,11 @@ function Home() {
         </Typography>
       </Paper>
       <Grid item container className={classes.grid} direction='row' spacing={1}>
-        <Grid
-          container
-          xs={false}
-          sm={2}
-          xl={4}
-          justify='center'
-          alignContent='center'
-        >
-          <IconButton>
-            <KeyboardArrowLeftIcon fontSize='large' />
-          </IconButton>
+        <Grid container xs={false} sm={3} xl={4} />
+        <Grid xs={12} sm={6} xl={4}>
+          <NFTcarousel />
         </Grid>
-        <Grid xs={12} sm={8} xl={4}>
-          <NFTcard />
-        </Grid>
-        <Grid
-          container
-          xs={false}
-          sm={2}
-          xl={4}
-          justify='center'
-          alignContent='center'
-        >
-          <IconButton>
-            <KeyboardArrowRightIcon fontSize='large' />
-          </IconButton>
-        </Grid>
+        <Grid container xs={false} sm={3} xl={4} />
       </Grid>
     </Paper>
   );

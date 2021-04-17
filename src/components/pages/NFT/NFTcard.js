@@ -24,8 +24,7 @@ const useStyles = makeStyles({
     overflow: 'hidden',
   },
   card: {
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
+    borderRadius: 25,
     zIndex: 1,
     height: '95rem',
     backgroundColor: '#f5eacf',
@@ -48,7 +47,7 @@ const useStyles = makeStyles({
   },
   wrapper: {
     position: 'static',
-    height: '100rem',
+    height: '50rem',
     zIndex: 0,
     background:
       'linear-gradient(135deg, #99B898 0%, #FECEAB 40%, #FF847F 100%)',
@@ -70,7 +69,7 @@ const useStyles = makeStyles({
     padding: '2rem',
   },
   backdrop: {
-    zIndex: 100,
+    zIndex: 50,
     color: '#fff',
   },
 });
@@ -81,9 +80,7 @@ function NFTcard(props) {
   return (
     <>
       <Card className={classes.card}>
-        <Typography className={classes.title}>
-          CodeBrew 2021 1st place.
-        </Typography>
+        <Typography className={classes.title}>{props.title} </Typography>
         <Typography className={classes.subtitle}>
           Issuer: Bing <br />
           Current Owner: Hao
@@ -94,7 +91,7 @@ function NFTcard(props) {
         >
           <CardMedia
             className={classes.minMedia}
-            image='https://images.unsplash.com/photo-1554188248-986adbb73be4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+            image={props.img}
             title='NFT Image'
           />
         </CardActionArea>
