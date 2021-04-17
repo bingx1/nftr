@@ -3,8 +3,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import { Box, Paper, IconButton, CardActions, Slide } from '@material-ui/core';
-import NFTcardmulti from '../../components/nft/NFTcardmulti';
+import {
+  Box,
+  Paper,
+  IconButton,
+  CardActions,
+  Slide,
+  Grow,
+} from '@material-ui/core';
+import NFTcardmini from '../../components/nft/NFTcardmini';
 import { useRouter } from 'next/router';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import EmailIcon from '@material-ui/icons/Email';
@@ -44,11 +51,6 @@ const useStyles = makeStyles({
     fontFamily: 'Poppins',
     fontWeight: 500,
     lineHeight: 1,
-  },
-  grid: {
-    paddingTop: '30px',
-    paddingLeft: '30px',
-    paddingRight: '30px',
   },
   card: {
     justifyItems: 'center',
@@ -144,16 +146,18 @@ function Clubpage() {
             <Typography className={classes.text}>Available NFTs.</Typography>
           </Paper>
         </Grid>
-        <Slide direction='right' in={true} timeout={1000} mountOnEnter>
-          <Grid item xs={12} sm={8} xl={4}>
-            <Grid item container spacing={1} xs={12}>
-              <NFTcardmulti name='NFT 1' id='1' />
-              <NFTcardmulti name='NFT 2' id='2' />
-              <NFTcardmulti name='NFT 3' id='3' />
-              <NFTcardmulti name='NFT 4' id='4' />
-            </Grid>
+        <Grow direction='up' in={true} timeout={1000} mountOnEnter>
+          <Grid container className={classes.grid} spacing={2} justify='center'>
+            <NFTcardmini
+              name='NFT 1'
+              id='1'
+              image='https://codebrew.com.au/images/remote_work.png'
+            />
+            <NFTcardmini name='NFT 2' id='2' />
+            <NFTcardmini name='NFT 3' id='3' />
+            <NFTcardmini name='NFT 4' id='4' />
           </Grid>
-        </Slide>
+        </Grow>
       </Grid>
       <Box height='10px' />
     </Box>

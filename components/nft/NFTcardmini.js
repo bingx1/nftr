@@ -7,17 +7,16 @@ import { Box, CardActionArea, CardMedia, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles({
   card: {
+    width: '10rem',
+    height: '10rem',
     backgroundColor: '#f5eacf',
-    borderRadius: 5,
+    borderRadius: '100%',
   },
   media: {
-    width: '100%',
-    height: '5rem',
-    position: 'relative',
-    borderRadius: 3,
-  },
-  mediawrapper: {
-    padding: '0 0.5rem 0.5rem 0.5rem',
+    display: 'block',
+    width: '50%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   text: {
     fontFamily: 'Poppins',
@@ -31,17 +30,17 @@ export default function NFTcardmulti(props) {
   const classes = useStyles();
 
   return (
-    <Grid item xs={8} sm={4}>
-      <Card className={classes.card}>
-        <CardActionArea href={'/NFT/' + props.id}>
-          <CardContent>
-            <Typography className={classes.text}>{props.name}</Typography>
-          </CardContent>
-          <Box className={classes.mediawrapper}>
+    <Grid item xs={4} sm={2}>
+      <Grid container justify='center'>
+        <Card className={classes.card}>
+          <CardActionArea href={'/NFT/' + props.id}>
             <CardMedia className={classes.media} image={props.image} />
-          </Box>
-        </CardActionArea>
-      </Card>
+          </CardActionArea>
+        </Card>
+      </Grid>
+      <Grid container justify='center'>
+        <Typography className={classes.text}>{props.name}</Typography>
+      </Grid>
     </Grid>
   );
 }

@@ -56,9 +56,9 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       backgroundColor: 'rgb(7, 177, 77, 0.42)',
     },
-    link: {
-      textDecoration: 'none',
-    },
+  },
+  link: {
+    textDecoration: 'none',
   },
 }));
 
@@ -113,7 +113,7 @@ function LogInPage(props) {
                           Log in first!
                         </Typography>
                         <Typography className={classes.subtitle}>
-                          To see your NFTs just enter...
+                          To see your NFTs enter in...
                         </Typography>
 
                         <Grid item xs={10}>
@@ -146,7 +146,7 @@ function LogInPage(props) {
                         <Grid item xs={10}>
                           <Grid container justify='center'>
                             <Link href='profile'>
-                              <a className={classes.linkStyle}>
+                              <a className={classes.link}>
                                 <Button
                                   className={classes.button}
                                   variant='contained'
