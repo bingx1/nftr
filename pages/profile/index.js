@@ -1,9 +1,15 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import {CardActionArea, CardContent, Paper, Box, Slide} from '@material-ui/core';
+import {
+  CardActionArea,
+  CardContent,
+  Paper,
+  Box,
+  Slide,
+} from '@material-ui/core';
 import NFTcardmulti from '../../components/nft/NFTcardmulti';
 
 const useStyles = makeStyles({
