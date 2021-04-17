@@ -1,7 +1,7 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 
-import { Box, Grid } from '@material-ui/core';
+import {Box, Grid} from '@material-ui/core';
 
 import NFTcard from './NFTcard';
 
@@ -30,8 +30,8 @@ function NFTCard() {
 
   return (
     <Box className={classes.wrapper}>
-      <Grid item container className={classes.root} direction='row' spacing={1}>
-        <Grid xs={false} sm={2} xl={4} />
+      <Grid container className={classes.root} direction='row' spacing={1}>
+        <Grid item xs={false} sm={2} xl={4} />
         <Grid className={classes.grid} xs={12} sm={8} xl={4}>
           <NFTcard
             title='Codebrew 1st Place'

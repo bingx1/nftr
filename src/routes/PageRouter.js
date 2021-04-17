@@ -1,10 +1,11 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 
 import Home from '../components/pages/home/Home';
 import Clubs from '../components/pages/clubs/Clubs';
 import NFTDisplay from '../components/pages/NFT/NFTDisplay';
 import Clubpage from '../components/pages/clubs/Clubpage';
+import Profile from '../components/pages/profile/Profile';
 
 const Main = () => {
   return (
@@ -14,6 +15,7 @@ const Main = () => {
       <Route exact path='/clubs' component={Clubs}></Route>
       <Route exact path='/clubs/:name' component={Clubpage}></Route>
       <Route exact path='/nfttest' component={NFTDisplay}></Route>
+      <Route exact path='/profile' component={Profile}></Route>
     </Switch>
   );
 };

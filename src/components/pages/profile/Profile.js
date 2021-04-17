@@ -60,7 +60,7 @@ const useStyles = makeStyles({
   },
 });
 
-function Clubpage() {
+function Profile() {
   const classes = useStyles();
 
   return (
@@ -97,4 +97,4 @@ function Clubpage() {
   );
 }
 
-export default Clubpage;
+export default Profile;
