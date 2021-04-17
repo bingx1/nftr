@@ -3,12 +3,14 @@ const API_URL = process.env.API_URL;
 const PUBLIC_KEY = process.env.PUBLIC_KEY;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
+const { hexlify } =  require("@ethersproject/bytes");
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(API_URL);
 
 const contract = require("../artifacts/contracts/users.sol/users.json"); // for Hardhat
 const contractAddress = "0xDF0c4587D5071D9B1d749a8F357C94106a96505b";
 const usersContract = new web3.eth.Contract(contract.abi, contractAddress);
+
 
 // Takes in a student ID and fetches the address of the students wallet. 
 async function addStudent(studentid) {
@@ -20,7 +22,9 @@ async function addStudent(studentid) {
       'from': PUBLIC_KEY,
       'to': contractAddress,
       'nonce': nonce,
-      'gas': gasEstimate, 
+      'gas': 50000,
+    //   'gasLimit' : hexlify(100000), 
+    //   'gasAmount' : 100000,
       'data': usersContract.methods.recordExistance(studentid).encodeABI()
     };
 
@@ -69,7 +73,7 @@ async function main() {
     // await usersContract.methods.recordExistance(833684).send();
     // const result = await usersContract.methods.userExists(833684).call();
     // console.log(result);
-    await addStudent(883684);
+    await addStudent(34);
 }
 
 
