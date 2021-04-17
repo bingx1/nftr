@@ -1,10 +1,10 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import { CardActionArea, CardContent, Paper, Slide } from '@material-ui/core';
-import NFTcard from '../../components/nft/NFTcard';
+import {CardActionArea, CardContent, Paper, Box, Slide} from '@material-ui/core';
+import NFTcardmulti from '../../components/nft/NFTcardmulti';
 
 const useStyles = makeStyles({
   root: {
@@ -80,15 +80,18 @@ function Profile() {
           </Card>
         </Slide>
       </Paper>
-      <Grid container className={classes.grid} spacing={4}>
-        <Grid item xs={12}>
-          <Typography className={classes.text}>Your NFTs.</Typography>
+      <Slide direction='left' in={true} timeout={1000} mountOnEnter>
+        <Grid container className={classes.grid} spacing={4}>
+          <Grid item xs={12}>
+            <Typography className={classes.text}>Your NFTs.</Typography>
+          </Grid>
+          <NFTcardmulti name='NFT 1' id='1' />
+          <NFTcardmulti name='NFT 2' id='2' />
+          <NFTcardmulti name='NFT 3' id='3' />
+          <NFTcardmulti name='NFT 4' id='4' />
         </Grid>
-        <NFTcard name='NFT 1' id='1' />
-        <NFTcard name='NFT 2' id='2' />
-        <NFTcard name='NFT 3' id='3' />
-        <NFTcard name='NFT 4' id='4' />
-      </Grid>
+      </Slide>
+      <Box height='15px' />
     </Paper>
   );
 }

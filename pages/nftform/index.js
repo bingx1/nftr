@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Card, Paper, Typography } from '@material-ui/core';
-
+import Grow from '@material-ui/core/Grow';
 import TextField from '@material-ui/core/TextField';
 import { Field, Form } from 'react-final-form';
 
@@ -96,115 +96,113 @@ function NFTFormPage() {
 
   return (
     <Box className={classes.background}>
-      <Grid container>
-        <Grid item xs={false} sm={3} xl={4} />
-        <Grid item xs={12} sm={6} xl={4}>
-          <Card className={classes.root}>
-            <Form
-              onSubmit={onSubmit}
-              render={({ handleSubmit }) => (
-                <form onSubmit={handleSubmit}>
-                  <Paper className={classes.form}>
-                    <Grid
-                      container
-                      justify='center'
-                      alignContent='center'
-                      direction='column'
-                      spacing={1}
-                    >
-                      <Typography className={classes.title}>
-                        Mint an NFT
-                      </Typography>
+      <Grow in={true} timeout={1000}>
+        <Grid container>
+          <Grid item xs={false} sm={3} xl={4} />
+          <Grid item xs={12} sm={6} xl={4}>
+            <Card className={classes.root}>
+              <Form
+                onSubmit={onSubmit}
+                render={({ handleSubmit }) => (
+                  <form onSubmit={handleSubmit}>
+                    <Paper className={classes.form}>
+                      <Grid
+                        container
+                        justify='center'
+                        alignContent='center'
+                        direction='column'
+                        spacing={1}
+                      >
+                        <Typography className={classes.title}>
+                          Mint an NFT!
+                        </Typography>
 
-                      <Grid item xs={10}>
-                        <Field
-                          fullWidth
-                          required
-                          name='issuer'
-                          value={issuer}
-                          onChange={handleChangeIssuer}
-                          component={TextField}
-                          type='text'
-                          label='Issuer'
-                          color='secondary'
-                        />
-                      </Grid>
-                      <Grid item xs={10}>
-                        <Field
-                          fullWidth
-                          required
-                          name='recipient'
-                          value={recipient}
-                          onChange={handleChangeRecipient}
-                          component={TextField}
-                          type='text'
-                          label='Recipient'
-                          color='secondary'
-                        />
-                      </Grid>
-                      <Grid item xs={10}>
-                        <Field
-                          fullWidth
-                          required
-                          name='event'
-                          value={event}
-                          onChange={handleChangeEvent}
-                          component={TextField}
-                          type='text'
-                          label='Event'
-                          color='secondary'
-                        />
-                      </Grid>
+                        <Grid item xs={10}>
+                          <Field
+                            fullWidth
+                            required
+                            name='issuer'
+                            value={issuer}
+                            onChange={handleChangeIssuer}
+                            component={TextField}
+                            type='text'
+                            label='Issuer'
+                          />
+                        </Grid>
+                        <Grid item xs={10}>
+                          <Field
+                            fullWidth
+                            required
+                            name='recipient'
+                            value={recipient}
+                            onChange={handleChangeRecipient}
+                            component={TextField}
+                            type='text'
+                            label='Recipient'
+                          />
+                        </Grid>
+                        <Grid item xs={10}>
+                          <Field
+                            fullWidth
+                            required
+                            name='event'
+                            value={event}
+                            onChange={handleChangeEvent}
+                            component={TextField}
+                            type='text'
+                            label='Event'
+                          />
+                        </Grid>
 
-                      <Grid item xs={10}>
-                        <Field
-                          fullWidth
-                          required
-                          name='image'
-                          value={image}
-                          onChange={handleChangeImage}
-                          component={TextField}
-                          multiline
-                          type='text'
-                          label='Image URL'
-                          color='secondary'
-                        />
-                      </Grid>
+                        <Grid item xs={10}>
+                          <Field
+                            fullWidth
+                            required
+                            name='image'
+                            value={image}
+                            onChange={handleChangeImage}
+                            component={TextField}
+                            multiline
+                            type='text'
+                            label='Image URL'
+                          />
+                        </Grid>
 
-                      <Grid item xs={10}>
-                        <Field
-                          fullWidth
-                          name='description'
-                          value={description}
-                          onChange={handleChangeDescription}
-                          component={TextField}
-                          multiline
-                          type='text'
-                          label='Description'
-                          color='secondary'
-                        />
-                      </Grid>
+                        <Grid item xs={10}>
+                          <Field
+                            fullWidth
+                            name='description'
+                            value={description}
+                            onChange={handleChangeDescription}
+                            component={TextField}
+                            multiline
+                            type='text'
+                            label='Description'
+                          />
+                        </Grid>
 
-                      <Grid item xs={10}>
-                        <Grid container justify='center'>
-                          <Button
-                            className={classes.button}
-                            variant='contained'
-                            type='submit'
-                          >
-                            Submit
-                          </Button>
+                        <Grid item xs={10}>
+                          <Grid container justify='center'>
+                            <Button
+                              className='classes.button'
+                              variant='contained'
+                              color='secondary'
+                              type='submit'
+                            >
+                              Submit
+                            </Button>
+                          </Grid>
                         </Grid>
                       </Grid>
-                    </Grid>
-                  </Paper>
-                </form>
-              )}
-            />
-          </Card>
+                    </Paper>
+                  </form>
+                )}
+              />
+            </Card>
+          </Grid>
+          <Grid xs={false} sm={3} xl={4} />
         </Grid>
-        <Grid xs={false} sm={3} xl={4} />
-      </Grid>
+      </Grow>
     </Box>
   );
 }
