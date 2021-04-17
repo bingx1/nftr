@@ -16,10 +16,11 @@ const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
 // mint-nft endpoint accepts POST requests with a JSON body, where the JSON body describes the metadata of the NFT.
 export default async function (req, res) {
     if (req.method === 'POST') {
-        const url_body = "https://gateway.pinata.cloud/ipfs/"
+        const url_body = 'https://gateway.pinata.cloud/ipfs/';
         const hashcode = await pinJSONToIPFS(PINATA_PUBLIC_KEY, PINATA_SECRET_KEY, req.body);
         const ipfs_url = url_body + hashcode
         const result = await mintNFT(ipfs_url)
+        console.log(result);
         res.status(200).send(result)
     }
 }
@@ -35,8 +36,8 @@ async function mintNFT(tokenURI) {
     gas: 500000,
     data: nftContract.methods.mintNFT(PUBLIC_KEY, tokenURI).encodeABI(),
   };
-
   const signPromise = web3.eth.accounts.signTransaction(tx, PRIVATE_KEY);
+
   signPromise
     .then((signedTx) => {
       web3.eth.sendSignedTransaction(
@@ -44,6 +45,7 @@ async function mintNFT(tokenURI) {
         function (err, hash) {
           if (!err) {
             console.log("The hash of your transaction is: ", hash, "\nCheck Alchemy's Mempool to view the status of your transaction!");
+            return hash;
           } else {
             console.log("Something went wrong when submitting your transaction:",err);
           }
@@ -52,10 +54,11 @@ async function mintNFT(tokenURI) {
     })
     .catch((err) => {
       console.log(" Promise failed:", err);
-    }); 
+    });
+
 }
 
-var pinJSONToIPFS = (pinataApiKey, pinataSecretApiKey, JSONBody) => {
+const pinJSONToIPFS = (pinataApiKey, pinataSecretApiKey, JSONBody) => {
     const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
     console.log(pinataApiKey, pinataSecretApiKey, JSONBody);
     return axios
