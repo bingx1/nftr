@@ -14,6 +14,7 @@ import {
 import FileCopyOutlinedIcon from "@material-ui/icons/FileCopyOutlined";
 import NFTcardmini from "../../components/nft/NFTcardmini";
 import {useRouter} from "next/router";
+import useSwr from 'swr';
 
 const useStyles = makeStyles({
   root: {
@@ -85,11 +86,19 @@ const useStyles = makeStyles({
   },
 });
 
+const fetcher = (url) => fetch(url).then(console.log(url), (res) => res.json());
+
 function Profile() {
   const classes = useStyles();
   const router = useRouter();
   const {slug} = router.query;
-
+  const { data, error } = useSwr(
+    router.query.id ? `/api/user/${router.query.id}` : null,
+    fetcher
+  )
+  if (error) return <div>Failed to load user</div>
+  if (!data) return <div>Loading...</div>
+  console.log(data);
   return (
     <Paper className={classes.wrapper}>
       <Paper className={classes.root}>
