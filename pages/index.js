@@ -1,8 +1,8 @@
 import React from 'react';
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import {makeStyles, ThemeProvider} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Link from 'next/link';
-import { Button, Grid, Paper } from '@material-ui/core';
+import {Button, Grid, Paper} from '@material-ui/core';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 
 import NFTcarousel from '../components/nft/NFTcarousel';
@@ -87,8 +87,8 @@ function Home() {
         </Typography>
       </Paper>
       <Grid container direction='row' spacing={1}>
-        <Grid xs={false} sm={3} xl={4} />
-        <Grid xs={12} sm={6} xl={4}>
+        <Grid item xs={false} sm={3} xl={4} />
+        <Grid item xs={12} sm={6} xl={4}>
           <NFTcarousel />
         </Grid>
         <Grid xs={false} sm={3} xl={4} />

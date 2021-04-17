@@ -1,11 +1,10 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
-import { CardActionArea, CardContent, Paper, Slide } from '@material-ui/core';
+import {CardActionArea, CardContent, Paper, Slide} from '@material-ui/core';
 import NFTcard from '../../components/nft/NFTcard';
-import SocialShare from 'react-simple-social';
 
 const useStyles = makeStyles({
   root: {
@@ -15,11 +14,11 @@ const useStyles = makeStyles({
     height: '20rem',
     zIndex: 1,
     display: 'flex',
-    flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
     boxShadow: 'none',
+    background: 'none',
   },
   media: {
     height: 500,
@@ -54,11 +53,19 @@ const useStyles = makeStyles({
     background:
       'linear-gradient(135deg, #99B898 0%, #FECEAB 70%, #FF847F 100%)',
   },
+  section: {
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    width: '100%',
+    flexWrap: 'wrap',
+    display: 'flex',
+    background: 'none',
+  },
   text: {
     fontFamily: 'Poppins',
     fontSize: 24,
     fontWeight: 700,
-    color: '#f5eacf',
+    color: '#2A363B',
   },
 });
 
@@ -83,20 +90,10 @@ function Clubpage() {
             </Slide>
           </Card>
         </Slide>
-        <Card>
-          <Typography>Hellooooooooooooooooooooo</Typography>
-          <SocialShare
-            sites={['facebook']}
-            color='gray'
-            theme='minimal'
-            height='20'
-            width='20'
-          />
-        </Card>
       </Paper>
       <Grid container className={classes.grid} spacing={4}>
         <Grid item xs={12}>
-          <Paper elevation={0}>
+          <Paper elevation={0} className={classes.section}>
             <Typography className={classes.text}>Available NFTs.</Typography>
           </Paper>
         </Grid>
