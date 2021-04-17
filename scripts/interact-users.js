@@ -3,25 +3,29 @@ const API_URL = process.env.API_URL;
 const PUBLIC_KEY = process.env.PUBLIC_KEY;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
+const { hexlify } =  require("@ethersproject/bytes");
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(API_URL);
 
-// const contract = require("./build/contracts/HelloWorld.json"); // for Truffle 
 const contract = require("../artifacts/contracts/users.sol/users.json"); // for Hardhat
 const contractAddress = "0xDF0c4587D5071D9B1d749a8F357C94106a96505b";
-const helloWorldContract = new web3.eth.Contract(contract.abi, contractAddress);
+const usersContract = new web3.eth.Contract(contract.abi, contractAddress);
 
-async function updateMessage(newMessage) {
+
+// Takes in a student ID and fetches the address of the students wallet. 
+async function addStudent(studentid) {
     const nonce = await web3.eth.getTransactionCount(PUBLIC_KEY, 'latest'); // get latest nonce
-    const gasEstimate = await helloWorldContract.methods.update(newMessage).estimateGas(); // estimate gas
+    const gasEstimate = await usersContract.methods.recordExistance(studentid).estimateGas(); // estimate gas
 
     // Create the transaction
     const tx = {
       'from': PUBLIC_KEY,
       'to': contractAddress,
       'nonce': nonce,
-      'gas': gasEstimate, 
-      'data': helloWorldContract.methods.update(newMessage).encodeABI()
+      'gas': 50000,
+    //   'gasLimit' : hexlify(100000), 
+    //   'gasAmount' : 100000,
+      'data': usersContract.methods.recordExistance(studentid).encodeABI()
     };
 
     // Sign the transaction
@@ -39,10 +43,44 @@ async function updateMessage(newMessage) {
     });
 }
 
+
+
+// async function main() {
+//     try{
+//         await usersContract.methods.recordExistance(833684).send();
+//         const res = await usersContract.methods.getAddressFromID(833684).call();
+//         console.log("The result is ", res);
+//         return res;
+//     } catch (err) {
+//         console.log("Error: ", err)
+//         return null;
+//     }
+// }
+
+// // console.log(JSON.stringify(contract.abi));
+
+// const address = main();
+// console.log(address);
+// if (address == null) {
+//     console.log("Not in the database")
+// }
+// else{
+//     console.log("In the database")
+// }
+
 async function main() {
-    const message = await helloWorldContract.methods.message().call();
-    console.log("The message is: " + message);
-    // await updateMessage("Hello Drupe!");
+    // const res = await usersContract.methods.getAddressFromID(833684).call();
+    // await usersContract.methods.recordExistance(833684).send();
+    // const result = await usersContract.methods.userExists(833684).call();
+    // console.log(result);
+    await addStudent(34);
 }
 
+
 main();
+
+
+// usersContract.methods.recordExistance(833684).send({from: '0x2032267227cd086ceE851C07CCd2A3AdcB77DfBF'})
+// .then(function(receipt){
+//    console.log(receipt); 
+// });
