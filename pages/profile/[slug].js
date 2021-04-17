@@ -60,6 +60,7 @@ const useStyles = makeStyles({
   wrapper: {
     background:
       'linear-gradient(135deg, #99B898 0%, #FECEAB 70%, #FF847F 100%)',
+    height: '100rem',
   },
   text: {
     fontFamily: 'Poppins',
