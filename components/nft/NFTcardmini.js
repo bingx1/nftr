@@ -1,5 +1,5 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   },
   text: {
     fontFamily: 'Poppins',
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 700,
     color: '#2A363B',
   },
@@ -54,17 +54,18 @@ const useAvatarStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NFTcardmulti(props) {
+function NFTcardmini(props) {
   const classes = useStyles();
   const avatarClasses = useAvatarStyles();
+  console.log(props.key);
 
   return (
     <Grid item xs={6} sm={4} md={3}>
       <Grid container justify='center'>
-        <Link href={'/NFT/' + props.tokenID}>
+        <Link href={'/nfts/' + props.id}>
           <a>
             <Avatar
-              alt='Remy Sharp'
+              alt='NFT'
               src={props.image}
               className={avatarClasses.large}
             />
@@ -72,8 +73,10 @@ export default function NFTcardmulti(props) {
         </Link>
       </Grid>
       <Grid container justify='center'>
-        <Typography className={classes.text}>{props.name}</Typography>
+        <Typography className={classes.text}>{props.issuer}</Typography>
       </Grid>
     </Grid>
   );
 }
+
+export default NFTcardmini;
