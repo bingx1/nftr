@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
@@ -87,7 +87,7 @@ function Profile() {
         </Slide>
       </Paper>
       <Slide direction='left' in={true} timeout={1000} mountOnEnter>
-        <Grid container className={classes.grid} spacing={4}>
+        <Grid container className={classes.grid} spacing={1}>
           <Grid item xs={12}>
             <Typography className={classes.text}>Your NFTs.</Typography>
           </Grid>
