@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   },
   text: {
     fontFamily: 'Poppins',
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 700,
     color: '#2A363B',
   },
@@ -31,16 +31,16 @@ export default function ClubCard(props) {
   const classes = useStyles();
 
   return (
-    <Grid item xs={8} sm={4}>
+    <Grid item xs={12} sm={12}>
       <Card className={classes.card}>
         <Link href={'/clubs/' + props.name}>
           <CardActionArea>
             <CardContent>
               <Typography className={classes.text}>{props.name}</Typography>
             </CardContent>
-            <Box className={classes.mediawrapper}>
+            {/* <Box className={classes.mediawrapper}>
               <CardMedia className={classes.media} image={props.image} />
-            </Box>
+            </Box> */}
           </CardActionArea>
         </Link>
       </Card>
