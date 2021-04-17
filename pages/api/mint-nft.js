@@ -13,14 +13,12 @@ const contractAddress = "0x2eb1cd1fdcbadc3ccf3f67e1283bafd888b1e7b5";
 const web3 = createAlchemyWeb3(API_URL);
 const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
 
-
+// mint-nft endpoint accepts POST requests with a JSON body, where the JSON body describes the metadata of the NFT.
 export default async function (req, res) {
     if (req.method === 'POST') {
         const url_body = "https://gateway.pinata.cloud/ipfs/"
         const hashcode = await pinJSONToIPFS(PINATA_PUBLIC_KEY, PINATA_SECRET_KEY, req.body);
         const ipfs_url = url_body + hashcode
-        // const url = "https://gateway.pinata.cloud/ipfs/QmXs529ewuVgwu6FrhGjYjfFPbZcgjoW7pJcSnLELrpuNN";
-        // await res.status(200).send("hello world")
         const result = await mintNFT(ipfs_url)
         res.status(200).send(result)
     }
@@ -28,7 +26,7 @@ export default async function (req, res) {
   
 async function mintNFT(tokenURI) {
   const nonce = await web3.eth.getTransactionCount(PUBLIC_KEY, "latest"); //get latest nonce
-
+  console.log(tokenURI);
   //the transaction
   const tx = {
     from: PUBLIC_KEY,
@@ -70,7 +68,7 @@ var pinJSONToIPFS = (pinataApiKey, pinataSecretApiKey, JSONBody) => {
         .then(function (hash, pin, time) {
             console.log("Json pinning was succesful");
             console.log(hash.data)
-            return hash.IpfsHash;
+            return hash.data.IpfsHash;
             //handle response here
         })
         .catch(function (error) {
