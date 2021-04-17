@@ -6,7 +6,7 @@ import {Box} from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
-    padding: '50px',
+    padding: '50px'
   },
   background: {
     position: 'static',
@@ -37,7 +37,6 @@ function clubs() {
             <ClubCard name='DES' />
           </Grid>
         </Grid>
-        <Grid xs={false} sm={2} xl={4} />
       </Grid>
     </Box>
   );

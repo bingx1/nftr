@@ -1,16 +1,12 @@
-import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
+import {AppBar, IconButton, Toolbar, Typography} from '@material-ui/core';
 import React from 'react';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { makeStyles } from '@material-ui/styles';
-import NavButton from './NavButton';
-import LoyaltyIcon from '@material-ui/icons/Loyalty';
+import {makeStyles} from '@material-ui/styles';
 
 const useStyles = makeStyles(() => ({
   root: {
     background: '#2A363B',
     width: '100%',
     zIndex: 100,
-    padding: 0,
   },
   toolbar: {
     zIndex: 50,

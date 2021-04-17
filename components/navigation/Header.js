@@ -1,7 +1,7 @@
-import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
+import {AppBar, IconButton, Toolbar, Typography} from '@material-ui/core';
 import React from 'react';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { makeStyles } from '@material-ui/styles';
+import {makeStyles} from '@material-ui/styles';
 import Link from 'next/link';
 import NavButton from './NavButton';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';

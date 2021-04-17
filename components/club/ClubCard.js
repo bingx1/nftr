@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import {Box, CardActionArea, CardMedia, Grid} from '@material-ui/core';
+import Link from 'next/link';
 
 const useStyles = makeStyles({
   card: {
@@ -33,14 +34,16 @@ export default function ClubCard(props) {
   return (
     <Grid item xs={8} sm={4}>
       <Card className={classes.card}>
-        <CardActionArea href={'/clubs/' + props.name}>
-          <CardContent>
-            <Typography className={classes.text}>{props.name}</Typography>
-          </CardContent>
-          <Box className={classes.mediawrapper}>
-            <CardMedia className={classes.media} image={props.image} />
-          </Box>
-        </CardActionArea>
+        <Link href={'/clubs/' + props.name}>
+          <CardActionArea>
+            <CardContent>
+              <Typography className={classes.text}>{props.name}</Typography>
+            </CardContent>
+            <Box className={classes.mediawrapper}>
+              <CardMedia className={classes.media} image={props.image} />
+            </Box>
+          </CardActionArea>
+        </Link>
       </Card>
     </Grid>
   );
