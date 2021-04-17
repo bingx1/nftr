@@ -69,9 +69,16 @@ const Header = (props) => {
           </a>
         </Link>
 
-        {ret && ret[0] ? <NavButton url={'/' + id} text={id} /> : ''}
         <NavButton url='/clubs' text='clubs.' />
         <NavButton url='/nftform' text='create.' />
+
+        {ret && ret[0] ? <NavButton url={'/' + id} text={id} /> : ''}
+
+        <WalletButton
+          provider={ret ? ret[0] : undefined}
+          loadWeb3Modal={ret ? ret[1] : undefined}
+          logoutOfWeb3Modal={ret ? ret[2] : undefined}
+        />
         {ret && ret[0] ? (
           <Link href={'/profile/' + id}>
             <a className={classes.accountIcon}>
@@ -81,11 +88,6 @@ const Header = (props) => {
         ) : (
           <></>
         )}
-        <WalletButton
-          provider={ret ? ret[0] : undefined}
-          loadWeb3Modal={ret ? ret[1] : undefined}
-          logoutOfWeb3Modal={ret ? ret[2] : undefined}
-        />
       </Toolbar>
     </AppBar>
   );

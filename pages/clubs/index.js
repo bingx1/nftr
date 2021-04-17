@@ -1,7 +1,7 @@
 import Grid from '@material-ui/core/Grid';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import ClubCard from '../../components/club/ClubCard';
-import {Box, Card, Grow, Slide, Typography} from '@material-ui/core';
+import { Box, Card, Grow, Slide, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
@@ -58,7 +58,7 @@ function clubs() {
                   <br />
                 </Typography>
                 <Typography className={classes.subtitle}>
-                  University of Melbourne Competitive Programming Club
+                  Checkout these club's NFTs
                 </Typography>
               </Typography>
             </Card>
