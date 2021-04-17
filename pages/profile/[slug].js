@@ -44,6 +44,7 @@ const useStyles = makeStyles({
   },
   subtitle: {
     fontFamily: 'Poppins',
+    marginLeft: '15px',
     fontSize: 24,
     fontWeight: 500,
     lineHeight: 1,
@@ -64,6 +65,7 @@ const useStyles = makeStyles({
     fontFamily: 'Poppins',
     fontSize: 24,
     fontWeight: 700,
+    marginLeft: '50px',
     color: '#2A363B',
   },
 });
