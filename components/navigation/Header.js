@@ -45,6 +45,7 @@ const useStyles = makeStyles(() => ({
 const Header = (props) => {
   const ret = useWeb3Modal();
   const classes = useStyles();
+  const id = ret && ret[0] ? (ret[0].provider.selectedAddress).slice(2, 10) : null
   return (
     <AppBar className={classes.root} position="static">
       <Toolbar className={classes.toolbar} variant="dense">
@@ -57,7 +58,7 @@ const Header = (props) => {
           </a>
         </Link>
         {ret && ret[0] ? (
-          <Typography> {ret[0].provider.selectedAddress} </Typography>
+          <NavButton url={"/" + id} text={id} />
         ) : (
           ""
         )}
@@ -65,7 +66,7 @@ const Header = (props) => {
         <NavButton url="/nfts" text="NFTs." />
         <NavButton url="/nftform" text="create." />
         {ret && ret[0] ? (
-          <Link href={props.isLoggedIn ? "/profile" : "/registration"}>
+          <Link href={"/profile/" + id}>
             <a className={classes.accountIcon}>
               <Blockies seed={ret[0].provider.selectedAddress} />
             </a>
