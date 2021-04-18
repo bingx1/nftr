@@ -152,7 +152,7 @@ function LogInPage(props) {
                                   type='submit'
                                   onClick={props.setLogIn}
                                 >
-                                  Login
+                                  View
                                 </Button>
                               </a>
                             </Link>
