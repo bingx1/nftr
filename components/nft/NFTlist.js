@@ -1,46 +1,60 @@
-import React from 'react';
-import NFTcardmini from './NFTcardmini';
-import { Grid } from '@material-ui/core';
-import useSWR from 'swr';
-import { useRouter } from 'next/router';
+import React, {useState, useCallback} from "react";
+import NFTcardmini from "./NFTcardmini";
+import {Grid} from "@material-ui/core";
+import useSWR from "swr";
+import {useRouter} from "next/router";
+import {useEffect} from "react";
 
-const fetcher = (url) => fetch(url).then(console.log(url), (res) => res.json());
+const fetcher = async (url) => {
+  console.log("Sending a request to API endpoint: ", url);
+  const res = await fetch(url);
+  if (res.ok) return await res.json();
+  console.log("error in response", res);
+  return null;
+};
 
-function useUser (id) {
-  console.log("Sending a request to API endpoint: ", `/api/user/${id}`)
-  const { data, error } = useSWR(`/api/user/${id}`, fetcher)
+function getUser(url) {
+  if (typeof window !== "undefined") {
+    const [user, setUser] = useState();
+    const [autoLoaded, setAutoLoaded] = useState(false);
 
-  return {
-    data: data,
-    isLoading: !error && !data,
-    isError: error
+    const loadUser = useCallback(async () => {
+      const newUser = await fetcher(url);
+      setUser(newUser);
+    }, [url]);
+
+    useEffect(() => {
+      if (!autoLoaded) {
+        loadUser();
+        setAutoLoaded(true);
+      }
+    }, [autoLoaded, setAutoLoaded, loadUser]);
+    return user;
   }
+  return null;
 }
 
-
 function Items(props) {
-  console.log("Passed down student id to NFTList", props.id);
-  const {data, isLoading, isError} = useUser(props.id)
-  if (isError) return <div>Failed to load user</div>;
-  if (isLoading) return <div>Loading...</div>;
+  const user = getUser(`/api/user/834063`);
+  if (!user) return <div>Failed to load user</div>;
   // return <div> {data.list}</div>
-  if (data) return console.log("Received payload from API, ", data);
-  // return (
-    // <Grid container spacing={1} justify='center'>
-      {/* {data.list[0]} */}
-      {/* {data["list"]} */}
-      {/* {data.list.map((NFTObj, i) => (
-        <NFTcardmini
-          id={i}
-          issuer={NFTObj.issuer}
-          recipient={NFTObj.recipient}
-          event={NFTObj.event}
-          image={NFTObj.image}
-          description={NFTObj.description}
-        />
-      ))} */}
-    // </Grid>
-  // );
+  else {
+    console.log("Received payload from API, ", user);
+    return (
+      <>
+        {user.list.map((NFTObj, i) => (
+          <NFTcardmini
+            id={i}
+            issuer={NFTObj.issuer}
+            recipient={NFTObj.recipient}
+            event={NFTObj.event}
+            image={NFTObj.image}
+            description={NFTObj.description}
+          />
+        ))}
+      </>
+    );
+  }
 }
 
 export default Items;
