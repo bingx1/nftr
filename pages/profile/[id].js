@@ -117,7 +117,7 @@ function Profile() {
   return (
     <Box className={classes.wrapper}>
       <Box className={classes.root}>
-        <Grow in={!maximiseNFT} out={maximiseNFT} timeout={1000} mountOnEnter>
+        <Grow in={true} timeout={1000} mountOnEnter>
           <Card className={classes.root}>
             <Box>
               <Typography className={classes.title}>Your Profile.</Typography>
@@ -142,13 +142,7 @@ function Profile() {
           </Card>
         </Grow>
       </Box>
-      <Slide
-        direction='up'
-        in={!maximiseNFT}
-        out={maximiseNFT}
-        timeout={1000}
-        mountOnEnter
-      >
+      <Slide direction='up' in={true} timeout={1000} mountOnEnter>
         <Grid container className={classes.grid} spacing={1}>
           <Grid item xs={12}>
             <Typography className={classes.text}>Your NFTs.</Typography>

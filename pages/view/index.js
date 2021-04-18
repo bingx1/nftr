@@ -65,21 +65,21 @@ const useStyles = makeStyles((theme) => ({
 function LogInPage(props) {
   const classes = useStyles();
 
-  const [StudentID, setStudentID] = useState('');
-  const [DestinationAddress, setDestinationAddress] = useState('');
+  const [studentid, setstudentid] = useState('');
+  const [walletid, setwalletid] = useState('');
 
-  const handleChangeStudentID = (e) => {
-    setStudentID(e.target.value);
+  const handleChangestudentid = (e) => {
+    setstudentid(e.target.value);
   };
-  const handleChangeDestinationAddress = (e) => {
-    setDestinationAddress(e.target.value);
+  const handleChangewalletid = (e) => {
+    setwalletid(e.target.value);
   };
 
   const onLogin = async (e) => {
     const res = await fetch('/api/register', {
       body: JSON.stringify({
-        StudentID,
-        DestinationAddress,
+        studentid,
+        walletid,
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -119,9 +119,9 @@ function LogInPage(props) {
                         <Grid item xs={10}>
                           <Field
                             fullWidth
-                            name='StudentID'
-                            value={StudentID}
-                            onChange={handleChangeStudentID}
+                            name='studentid'
+                            value={studentid}
+                            onChange={handleChangestudentid}
                             component={TextField}
                             type='text'
                             label='Student ID'
@@ -131,19 +131,19 @@ function LogInPage(props) {
                         <Grid item xs={10}>
                           <Field
                             fullWidth
-                            name='DestinationAddress'
-                            value={DestinationAddress}
-                            onChange={handleChangeDestinationAddress}
+                            name='walletid'
+                            value={walletid}
+                            onChange={handleChangewalletid}
                             component={TextField}
                             type='text'
-                            label='Destination Address'
+                            label='Wallet ID'
                             color='secondary'
                           />
                         </Grid>
 
                         <Grid item xs={10}>
                           <Grid container justify='center'>
-                            <Link href={'/profile/' + DestinationAddress}>
+                            <Link href={'/profile/' + walletid}>
                               <a className={classes.link}>
                                 <Button
                                   className={classes.button}

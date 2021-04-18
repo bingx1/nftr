@@ -112,10 +112,6 @@ function NFTFormPage() {
     setFormstage(false);
 
     setLoading(true);
-    setTimeout(function () {
-      setLoading(false);
-    }, 2000);
-    setFinished(true);
 
     const res = await fetch('/api/mint-nft', {
       body: JSON.stringify({
@@ -131,6 +127,8 @@ function NFTFormPage() {
       },
       method: 'POST',
     });
+    setLoading(false);
+    setFinished(true);
 
     const resultHash = await res.json();
     setHash((hash) => resultHash);
