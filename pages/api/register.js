@@ -6,7 +6,7 @@ const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(API_URL);
 
-const contract = require("../artifacts/contracts/users.sol/users.json"); // for Hardhat
+const contract = require("../../artifacts/contracts/users.sol/users.json"); // for Hardhat
 const contractAddress = "0xF57Dd24ac0150464494D5a162eb7227d9812726B";
 const usersContract = new web3.eth.Contract(contract.abi, contractAddress);
 

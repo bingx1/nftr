@@ -16,7 +16,7 @@ import NFTcardmini from '../../components/nft/NFTcardmini';
 import NFTlist from '../../components/nft/NFTlist';
 
 import { useRouter } from 'next/router';
-import useSwr from 'swr';
+import useSWR from 'swr';
 
 const useStyles = makeStyles({
   root: {
@@ -90,14 +90,30 @@ const useStyles = makeStyles({
 
 // const fetcher = (url) => fetch(url).then(console.log(url), (res) => res.json());
 
+// function useUser (id) {
+//   console.log("Sending a request to API endpoint: ", `/api/user/${id}`)
+//   const { data, error } = useSWR(`/api/user/${id}`, fetcher)
+
+//   return {
+//     user: data,
+//     isLoading: !error && !data,
+//     isError: error
+//   }
+// }
+
+Profile.getInitialProps = async () => {
+  return {};
+};
+
 
 function Profile() {
   const classes = useStyles();
-  const router = useRouter()
-  // const { data, error } = useSwr(
-  //   router.query.id ? `/api/user/${router.query.id}` : null,
-  //   fetcher
-  // )
+  const router = useRouter();
+  console.log(router);
+  console.log("Call to frontend route, profile/",router.query.id);
+  // const {data, isLoading, isError} = useUser(router.query.id)
+  // if (isError) return <div>Failed to load user</div>;
+  // if (isLoading) return <div>Loading...</div>;
   return (
     <Paper className={classes.wrapper}>
       <Paper className={classes.root}>
@@ -129,7 +145,7 @@ function Profile() {
           <Grid item xs={12}>
             <Typography className={classes.text}>Your NFTs.</Typography>
           </Grid>
-          <NFTlist />
+          <NFTlist id={router.query.id}/>
         </Grid>
       </Slide>
       <Box height='15px' />
