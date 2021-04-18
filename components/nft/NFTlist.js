@@ -63,16 +63,8 @@ function Items(props) {
     },
   ];
 
-  const getNFTMini = (NFTObj) => {
-    return (
-      <Grid item xs={6} sm={3}>
-        <NFTcardmini {...NFTObj} />
-      </Grid>
-    );
-  };
-
   return (
-    <Grid container spacing={1} justify='center'>
+    <Grid container justify='flex-start'>
       {data.map((NFTObj, i) => (
         <NFTcardmini
           id={i}
