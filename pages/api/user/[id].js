@@ -19,20 +19,24 @@ const usersContract = new web3.eth.Contract(contract2.abi, contractAddress2);
 
 // // Responds to student 
 export default async function (req, res) {
-    const { slug } = req.query
-    console.log(slug);
-    const address = await usersContract.methods.getAddressFromID(slug).call();
-    console.log(address);
+    const { id } = req.query
+    console.log("API Call to the users/<sid> endpoint, ", id);
+    const address = await usersContract.methods.getAddressFromID(id).call();
+    // console.log(address);
     const nfts = await fetch_json(address);
-    res.status(200).send(nfts);
+    console.log("Successfully compiled nfts")
+    console.log(nfts)
+    res.status(200).json(nfts);
 }
 
 
 async function fetch_json(address){
     const balances = await web3.alchemy.getTokenBalances(address, [contractAddress]);
+    console.log(balances)
     const balance = balances.tokenBalances[0].tokenBalance;
+    console.log(balance)
     const metadata = await web3.alchemy.getTokenMetadata(contractAddress);
-    console.log(metadata);
+    // console.log(metadata);
     var items = []
     for(var i = 0; i < balance; i++) {
         const id = await nftContract.methods.tokenOfOwnerByIndex(address, i).call();
@@ -41,7 +45,7 @@ async function fetch_json(address){
         // console.log(json);
         items.push(json);
       }
-    return items;    
+    return {"list": items};    
 }
 
 
