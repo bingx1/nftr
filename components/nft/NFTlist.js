@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 // const fetcher = (url) => fetch(url).then(console.log(url), (res) => res.json());
 
-function Items() {
+function Items(props) {
   // const router = useRouter();
   // const { slug } = router.query;
   // const { data, error } = useSWR(
@@ -81,6 +81,7 @@ function Items() {
           event={NFTObj.event}
           image={NFTObj.image}
           description={NFTObj.description}
+          handleNFTClick={props.handleNFTClick}
         />
       ))}
     </Grid>

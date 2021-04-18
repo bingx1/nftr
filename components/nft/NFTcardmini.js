@@ -8,9 +8,11 @@ import Link from 'next/link';
 import {
   Avatar,
   Box,
+  Button,
   CardActionArea,
   CardMedia,
   Grid,
+  IconButton,
 } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -62,15 +64,9 @@ function NFTcardmini(props) {
   return (
     <Grid item xs={6} sm={4} md={3}>
       <Grid container justify='center'>
-        <Link href={'/nfts/' + props.id}>
-          <a>
-            <Avatar
-              alt='NFT'
-              src={props.image}
-              className={avatarClasses.large}
-            />
-          </a>
-        </Link>
+        <IconButton onClick={props.handleNFTClick}>
+          <Avatar alt='NFT' src={props.image} className={avatarClasses.large} />
+        </IconButton>
       </Grid>
       <Grid container justify='center'>
         <Typography className={classes.text}>{props.issuer}</Typography>

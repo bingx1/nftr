@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
@@ -10,6 +10,7 @@ import {
   Box,
   Slide,
   IconButton,
+  Grow,
 } from '@material-ui/core';
 import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
 import NFTcardmini from '../../components/nft/NFTcardmini';
@@ -88,52 +89,57 @@ const useStyles = makeStyles({
   },
 });
 
-// const fetcher = (url) => fetch(url).then(console.log(url), (res) => res.json());
-
-
 function Profile() {
   const classes = useStyles();
-  const router = useRouter()
-  // const { data, error } = useSwr(
-  //   router.query.id ? `/api/user/${router.query.id}` : null,
-  //   fetcher
-  // )
+  const router = useRouter();
+  const [maximiseNFT, setMaximiseNFT] = useState(false);
+  const handleNFTClick = () => {
+    setMaximiseNFT((maximiseNFT) => !maximiseNFT);
+  };
+
   return (
-    <Paper className={classes.wrapper}>
-      <Paper className={classes.root}>
-        <Slide direction='right' in={true} timeout={1000} mountOnEnter>
+    <Box className={classes.wrapper}>
+      <Box className={classes.root}>
+        <Grow in={!maximiseNFT} out={maximiseNFT} timeout={1000} mountOnEnter>
           <Card className={classes.root}>
-            <Slide direction='right' in={true} timeout={1000} mountOnEnter>
-              <Box>
-                <Typography className={classes.title}>Your Profile.</Typography>
-                <Grid container className={classes.card} spacing={1}>
-                  <Grid item xs={8}>
-                    <Typography className={classes.subtitle}>{router.query.id}</Typography>
-                  </Grid>
-                  <Grid item xs={4}>
-                    <IconButton
-                      onClick={() => navigator.clipboard.writeText(router.query.id)}
-                      className={classes.button}
-                    >
-                      <FileCopyOutlinedIcon />
-                    </IconButton>
-                  </Grid>
+            <Box>
+              <Typography className={classes.title}>Your Profile.</Typography>
+              <Grid container className={classes.card} spacing={1}>
+                <Grid item xs={8}>
+                  <Typography className={classes.subtitle}>
+                    {router.query.id}
+                  </Typography>
                 </Grid>
-              </Box>
-            </Slide>
+                <Grid item xs={4}>
+                  <IconButton
+                    onClick={() =>
+                      navigator.clipboard.writeText(router.query.id)
+                    }
+                    className={classes.button}
+                  >
+                    <FileCopyOutlinedIcon />
+                  </IconButton>
+                </Grid>
+              </Grid>
+            </Box>
           </Card>
-        </Slide>
-      </Paper>
-      <Slide direction='left' in={true} timeout={1000} mountOnEnter>
+        </Grow>
+      </Box>
+      <Slide
+        direction='up'
+        in={!maximiseNFT}
+        out={maximiseNFT}
+        timeout={1000}
+        mountOnEnter
+      >
         <Grid container className={classes.grid} spacing={1}>
           <Grid item xs={12}>
             <Typography className={classes.text}>Your NFTs.</Typography>
           </Grid>
-          <NFTlist />
+          <NFTlist handleNFTClick={handleNFTClick} />
         </Grid>
       </Slide>
-      <Box height='15px' />
-    </Paper>
+    </Box>
   );
 }
 
