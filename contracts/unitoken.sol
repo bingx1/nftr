@@ -21,7 +21,7 @@ contract unitoken is ERC721, Ownable {
         _tokenIds.increment();
 
         uint256 newItemId = _tokenIds.current();
-        _mint(recipient, newItemId);
+        _safeMint(recipient, newItemId);
         _setTokenURI(newItemId, tokenURI);
 
         return newItemId;

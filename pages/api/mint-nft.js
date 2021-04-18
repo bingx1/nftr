@@ -24,16 +24,16 @@ export default async function (req, res) {
       );
       const ipfs_url = url_body + hashcode;
       // Mints an NFT for Bing
-      const result = await mintNFT(ipfs_url);
+      const result = await mintNFT(ipfs_url, req.body.destinationAddress);
       // Bing sends the NFT
-      const tokenid = await nftContract.methods.totalSupply().call();
-      console.log("The token id is ", tokenid + 1);
+      // const tokenid = await nftContract.methods.totalSupply().call();
+      // console.log("The token id is ", tokenid + 1);
       console.log(result);
       res.status(200).send(result);
     }
   }
   
-  async function mintNFT(tokenURI) {
+  async function mintNFT(tokenURI, destinationAddress) {
     return new Promise(async (resolve, reject) => {
       const nonce = await web3.eth.getTransactionCount(PUBLIC_KEY, "latest"); //get latest nonce
       console.log(tokenURI);
@@ -43,7 +43,7 @@ export default async function (req, res) {
         to: contractAddress,
         nonce: nonce,
         gas: 500000,
-        data: nftContract.methods.mintNFT(PUBLIC_KEY, tokenURI).encodeABI(),
+        data: nftContract.methods.mintNFT(destinationAddress, tokenURI).encodeABI(),
       };
       const signPromise = web3.eth.accounts.signTransaction(tx, PRIVATE_KEY);
   
