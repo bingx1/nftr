@@ -8,9 +8,11 @@ import Link from 'next/link';
 import {
   Avatar,
   Box,
+  Button,
   CardActionArea,
   CardMedia,
   Grid,
+  IconButton,
 } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -32,8 +34,8 @@ const useStyles = makeStyles({
     color: '#2A363B',
   },
   icon: {
-    width: 'spacing(7)',
-    height: 'spacing(7)',
+    width: 'spacing(8)',
+    height: 'spacing(8)',
   },
 });
 
@@ -44,13 +46,9 @@ const useAvatarStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
     },
   },
-  small: {
-    width: theme.spacing(3),
-    height: theme.spacing(3),
-  },
   large: {
-    width: theme.spacing(17),
-    height: theme.spacing(17),
+    width: theme.spacing(20),
+    height: theme.spacing(20),
   },
 }));
 
@@ -60,17 +58,11 @@ function NFTcardmini(props) {
   console.log(props.key);
 
   return (
-    <Grid item xs={6} sm={4} md={3}>
+    <Grid item xs={3} sm={2}>
       <Grid container justify='center'>
-        <Link href={'/nfts/' + props.id}>
-          <a>
-            <Avatar
-              alt='NFT'
-              src={props.image}
-              className={avatarClasses.large}
-            />
-          </a>
-        </Link>
+        <IconButton onClick={props.handleNFTClick}>
+          <Avatar alt='NFT' src={props.image} className={avatarClasses.large} />
+        </IconButton>
       </Grid>
       <Grid container justify='center'>
         <Typography className={classes.text}>{props.issuer}</Typography>

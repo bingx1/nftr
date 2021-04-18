@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, Button, Card, Paper, Typography } from '@material-ui/core';
+import {
+  Box,
+  Button,
+  Card,
+  CircularProgress,
+  Paper,
+  Slide,
+  Typography,
+} from '@material-ui/core';
 import Grow from '@material-ui/core/Grow';
 import TextField from '@material-ui/core/TextField';
 import { Field, Form } from 'react-final-form';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     borderRadius: 25,
     zIndex: 1,
-    height: '100%',
+    height: '40rem',
     backgroundColor: '#f5eacf',
     margin: '5rem',
   },
@@ -34,7 +43,15 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 700,
     lineHeight: 1.1,
     color: '#2A363B',
-    margin: '3rem 3rem',
+    margin: '2rem 3rem',
+  },
+  hash: {
+    fontSize: '2rem',
+    fontFamily: 'Poppins',
+    fontWeight: 500,
+    lineHeight: 1.1,
+    color: '#2A363B',
+    margin: '1rem 0rem',
   },
   button: {
     color: '#FECEAB',
@@ -49,6 +66,9 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: 'rgb(7, 177, 77, 0.42)',
     },
   },
+  successGrid: {
+    height: '40rem',
+  },
 }));
 
 function NFTFormPage() {
@@ -60,6 +80,14 @@ function NFTFormPage() {
   const [image, setImage] = useState('');
   const [description, setDescription] = useState('');
   const [destinationAddress, setDestinationAddress] = useState('');
+
+  const [formstage, setFormstage] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [finished, setFinished] = useState(false);
+  const [hash, setHash] = useState('');
+  const setProgress = () => {
+    setLoading((loading) => !loading);
+  };
 
   const handleChangeIssuer = (e) => {
     setIssuer(e.target.value);
@@ -81,6 +109,10 @@ function NFTFormPage() {
   };
 
   const onSubmit = async (e) => {
+    setFormstage(false);
+
+    setLoading(true);
+
     const res = await fetch('/api/mint-nft', {
       body: JSON.stringify({
         issuer,
@@ -95,8 +127,11 @@ function NFTFormPage() {
       },
       method: 'POST',
     });
+    setLoading(false);
+    setFinished(true);
 
-    const result = await res.json();
+    const resultHash = await res.json();
+    setHash((hash) => resultHash);
   };
 
   return (
@@ -106,117 +141,167 @@ function NFTFormPage() {
           <Grid item xs={false} sm={3} xl={4} />
           <Grid item xs={12} sm={6} xl={4}>
             <Card className={classes.root}>
-              <Form
-                onSubmit={onSubmit}
-                render={({ handleSubmit }) => (
-                  <form onSubmit={handleSubmit}>
-                    <Paper className={classes.form}>
-                      <Grid
-                        container
-                        justify='center'
-                        alignContent='center'
-                        direction='column'
-                        spacing={1}
-                      >
-                        <Typography className={classes.title}>
-                          Mint an NFT!
-                        </Typography>
+              <Grow in={formstage} timeout={1000} mountOnEnter unmountOnExit>
+                <Form
+                  onSubmit={onSubmit}
+                  render={({ handleSubmit }) => (
+                    <form onSubmit={handleSubmit}>
+                      <Paper className={classes.form}>
+                        <Grid
+                          container
+                          justify='center'
+                          alignContent='center'
+                          direction='column'
+                          spacing={1}
+                        >
+                          <Typography className={classes.title}>
+                            Mint an NFT
+                          </Typography>
 
-                        <Grid item xs={10}>
-                          <Field
-                            fullWidth
-                            name='issuer'
-                            value={issuer}
-                            onChange={handleChangeIssuer}
-                            component={TextField}
-                            type='text'
-                            label='Issuer'
-                            color='secondary'
-                          />
-                        </Grid>
-                        <Grid item xs={10}>
-                          <Field
-                            fullWidth
-                            name='recipient'
-                            value={recipient}
-                            onChange={handleChangeRecipient}
-                            component={TextField}
-                            type='text'
-                            label='Recipient'
-                            color='secondary'
-                          />
-                        </Grid>
-                        <Grid item xs={10}>
-                          <Field
-                            fullWidth
-                            name='event'
-                            value={event}
-                            onChange={handleChangeEvent}
-                            component={TextField}
-                            type='text'
-                            label='Event'
-                            color='secondary'
-                          />
-                        </Grid>
-
-                        <Grid item xs={10}>
-                          <Field
-                            fullWidth
-                            name='image'
-                            value={image}
-                            onChange={handleChangeImage}
-                            component={TextField}
-                            multiline
-                            type='text'
-                            label='Image URL'
-                            color='secondary'
-                          />
-                        </Grid>
-
-                        <Grid item xs={10}>
-                          <Field
-                            fullWidth
-                            name='description'
-                            value={description}
-                            onChange={handleChangeDescription}
-                            component={TextField}
-                            multiline
-                            type='text'
-                            label='Description'
-                            color='secondary'
-                          />
-                        </Grid>
-                        <Grid item xs={10}>
-                          <Field
-                            fullWidth
-                            name='destinationaddress'
-                            value={destinationAddress}
-                            onChange={handleChangeDestinationAddress}
-                            component={TextField}
-                            multiline
-                            type='text'
-                            label='Destination Address'
-                            color='secondary'
-                          />
-                        </Grid>
-
-                        <Grid item xs={10}>
-                          <Grid container justify='center'>
-                            <Button
-                              className={classes.button}
-                              variant='contained'
+                          <Grid item xs={10}>
+                            <Field
+                              fullWidth
+                              name='issuer'
+                              value={issuer}
+                              onChange={handleChangeIssuer}
+                              component={TextField}
+                              type='text'
+                              label='Issuer'
                               color='secondary'
-                              type='submit'
-                            >
-                              Submit
-                            </Button>
+                            />
+                          </Grid>
+                          <Grid item xs={10}>
+                            <Field
+                              fullWidth
+                              name='recipient'
+                              value={recipient}
+                              onChange={handleChangeRecipient}
+                              component={TextField}
+                              type='text'
+                              label='Recipient'
+                              color='secondary'
+                            />
+                          </Grid>
+                          <Grid item xs={10}>
+                            <Field
+                              fullWidth
+                              name='event'
+                              value={event}
+                              onChange={handleChangeEvent}
+                              component={TextField}
+                              type='text'
+                              label='Event'
+                              color='secondary'
+                            />
+                          </Grid>
+
+                          <Grid item xs={10}>
+                            <Field
+                              fullWidth
+                              name='image'
+                              value={image}
+                              onChange={handleChangeImage}
+                              component={TextField}
+                              multiline
+                              type='text'
+                              label='Image URL'
+                              color='secondary'
+                            />
+                          </Grid>
+
+                          <Grid item xs={10}>
+                            <Field
+                              fullWidth
+                              name='description'
+                              value={description}
+                              onChange={handleChangeDescription}
+                              component={TextField}
+                              multiline
+                              type='text'
+                              label='Description'
+                              color='secondary'
+                            />
+                          </Grid>
+                          <Grid item xs={10}>
+                            <Field
+                              fullWidth
+                              name='destinationaddress'
+                              value={destinationAddress}
+                              onChange={handleChangeDestinationAddress}
+                              component={TextField}
+                              multiline
+                              type='text'
+                              label='Destination Address'
+                              color='secondary'
+                            />
+                          </Grid>
+
+                          <Grid item xs={10}>
+                            <Grid container justify='center'>
+                              <Button
+                                className={classes.button}
+                                variant='contained'
+                                color='secondary'
+                                type='submit'
+                              >
+                                Submit
+                              </Button>
+                            </Grid>
                           </Grid>
                         </Grid>
-                      </Grid>
-                    </Paper>
-                  </form>
-                )}
-              />
+                      </Paper>
+                    </form>
+                  )}
+                />
+              </Grow>
+              <Grow in={loading} timeout={2000} mountOnEnter unmountOnExit>
+                <Grid
+                  container
+                  className={classes.successGrid}
+                  alignContent='center'
+                  justify='center'
+                  direction='column'
+                >
+                  <Grid container justify='center'>
+                    <CircularProgress
+                      size={200}
+                      thickness={3}
+                      style={{ color: '#FF847C' }}
+                    />
+                  </Grid>
+                  <Grid container justify='center'>
+                    <Typography className={classes.title}>Loading</Typography>
+                  </Grid>
+                </Grid>
+              </Grow>
+              <Grow in={finished} timeout={4000} mountOnEnter unmountOnExit>
+                <Grid
+                  container
+                  className={classes.successGrid}
+                  alignContent='center'
+                  justify='center'
+                  direction='column'
+                >
+                  <Grid container justify='center'>
+                    <CheckCircleIcon
+                      size={300}
+                      thickness={3}
+                      style={{ color: 'rgb(7, 177, 77, 0.42)', fontSize: 200 }}
+                    />
+                  </Grid>
+                  <Grid container justify='center'>
+                    <Typography className={classes.title}>Success!</Typography>
+                  </Grid>
+                  <Grid container justify='center'>
+                    <Typography className={classes.subtitle}>
+                      Here is the hash for your transaction:
+                    </Typography>
+                  </Grid>
+                  <Grid container justify='center'>
+                    <Typography className={classes.hash}>{hash}</Typography>
+                  </Grid>
+                </Grid>
+              </Grow>
             </Card>
           </Grid>
           <Grid xs={false} sm={3} xl={4} />

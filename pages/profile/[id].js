@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
@@ -10,6 +10,7 @@ import {
   Box,
   Slide,
   IconButton,
+  Grow,
 } from '@material-ui/core';
 import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
 import NFTcardmini from '../../components/nft/NFTcardmini';
@@ -105,51 +106,51 @@ Profile.getInitialProps = async () => {
   return {};
 };
 
-
 function Profile() {
   const classes = useStyles();
   const router = useRouter();
   console.log(router);
-  console.log("Call to frontend route, profile/",router.query.id);
+  console.log('Call to frontend route, profile/', router.query.id);
   // const {data, isLoading, isError} = useUser(router.query.id)
   // if (isError) return <div>Failed to load user</div>;
   // if (isLoading) return <div>Loading...</div>;
   return (
-    <Paper className={classes.wrapper}>
-      <Paper className={classes.root}>
-        <Slide direction='right' in={true} timeout={1000} mountOnEnter>
+    <Box className={classes.wrapper}>
+      <Box className={classes.root}>
+        <Grow in={true} timeout={1000} mountOnEnter>
           <Card className={classes.root}>
-            <Slide direction='right' in={true} timeout={1000} mountOnEnter>
-              <Box>
-                <Typography className={classes.title}>Your Profile.</Typography>
-                <Grid container className={classes.card} spacing={1}>
-                  <Grid item xs={8}>
-                    <Typography className={classes.subtitle}>{router.query.id}</Typography>
-                  </Grid>
-                  <Grid item xs={4}>
-                    <IconButton
-                      onClick={() => navigator.clipboard.writeText(router.query.id)}
-                      className={classes.button}
-                    >
-                      <FileCopyOutlinedIcon />
-                    </IconButton>
-                  </Grid>
+            <Box>
+              <Typography className={classes.title}>Your Profile.</Typography>
+              <Grid container className={classes.card} spacing={1}>
+                <Grid item xs={8}>
+                  <Typography className={classes.subtitle}>
+                    {router.query.id}
+                  </Typography>
                 </Grid>
-              </Box>
-            </Slide>
+                <Grid item xs={4}>
+                  <IconButton
+                    onClick={() =>
+                      navigator.clipboard.writeText(router.query.id)
+                    }
+                    className={classes.button}
+                  >
+                    <FileCopyOutlinedIcon />
+                  </IconButton>
+                </Grid>
+              </Grid>
+            </Box>
           </Card>
-        </Slide>
-      </Paper>
-      <Slide direction='left' in={true} timeout={1000} mountOnEnter>
+        </Grow>
+      </Box>
+      <Slide direction='up' in={true} timeout={1000} mountOnEnter>
         <Grid container className={classes.grid} spacing={1}>
           <Grid item xs={12}>
             <Typography className={classes.text}>Your NFTs.</Typography>
           </Grid>
-          <NFTlist id={router.query.id}/>
+          <NFTlist id={router.query.id} />
         </Grid>
       </Slide>
-      <Box height='15px' />
-    </Paper>
+    </Box>
   );
 }
 
