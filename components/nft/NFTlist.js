@@ -1,20 +1,20 @@
-import React, {useState, useCallback} from "react";
-import NFTcardmini from "./NFTcardmini";
-import {Grid} from "@material-ui/core";
-import useSWR from "swr";
-import {useRouter} from "next/router";
-import {useEffect} from "react";
+import React, { useState, useCallback } from 'react';
+import NFTcardmini from './NFTcardmini';
+import { Grid } from '@material-ui/core';
+import useSWR from 'swr';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 const fetcher = async (url) => {
-  console.log("Sending a request to API endpoint: ", url);
+  console.log('Sending a request to API endpoint: ', url);
   const res = await fetch(url);
   if (res.ok) return await res.json();
-  console.log("error in response", res);
+  console.log('error in response', res);
   return null;
 };
 
 function getUser(url) {
-  if (typeof window !== "undefined") {
+  if (typeof window !== 'undefined') {
     const [user, setUser] = useState();
     const [autoLoaded, setAutoLoaded] = useState(false);
 
@@ -35,11 +35,11 @@ function getUser(url) {
 }
 
 function Items(props) {
-  const user = getUser(`/api/user/834063`);
-  if (!user) return <div>Failed to load user</div>;
+  const user = getUser(`/api/user/1068412`);
+  if (!user) return <div></div>;
   // return <div> {data.list}</div>
   else {
-    console.log("Received payload from API, ", user);
+    console.log('Received payload from API, ', user);
     return (
       <>
         {user.list.map((NFTObj, i) => (

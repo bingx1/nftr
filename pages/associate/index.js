@@ -110,10 +110,11 @@ function LogInPage(props) {
                         spacing={1}
                       >
                         <Typography className={classes.title}>
-                          Log in first!
+                          Associate first!
                         </Typography>
                         <Typography className={classes.subtitle}>
-                          To see your NFTs enter in...
+                          To see your NFTs link your student ID <br /> to your
+                          wallet address...
                         </Typography>
 
                         <Grid item xs={10}>
@@ -143,19 +144,19 @@ function LogInPage(props) {
 
                         <Grid item xs={10}>
                           <Grid container justify='center'>
-                            <Link href={'/profile/' + walletid}>
-                              <a className={classes.link}>
-                                <Button
-                                  className={classes.button}
-                                  variant='contained'
-                                  color='secondary'
-                                  type='submit'
-                                  onClick={props.setLogIn}
-                                >
-                                  View
-                                </Button>
-                              </a>
-                            </Link>
+                            {/* <Link href={'/'}>
+                              <a className={classes.link}> */}
+                            <Button
+                              className={classes.button}
+                              variant='contained'
+                              color='secondary'
+                              type='submit'
+                              onClick={props.setLogIn}
+                            >
+                              View
+                            </Button>
+                            {/* </a>
+                            </Link> */}
                           </Grid>
                         </Grid>
                       </Grid>

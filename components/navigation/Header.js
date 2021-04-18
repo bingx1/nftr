@@ -69,15 +69,15 @@ const Header = (props) => {
         </Link>
 
         <NavButton url='/clubs' text='clubs.' />
-        <NavButton url='/view' text='view.' />
+        <NavButton url='/associate' text='associate.' />
 
         <NavButton url='/nftform' text='create.' />
-
+        {/* 
         {ret && ret[0] ? (
           <NavButton url={'/profile/' + id} text={id.slice(0, 6)} />
         ) : (
           ''
-        )}
+        )} */}
 
         <WalletButton
           provider={ret ? ret[0] : undefined}

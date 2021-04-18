@@ -76,14 +76,14 @@ const useStyles = makeStyles({
   },
   button: {
     marginTop: '-0.75rem',
-    marginLeft: '-1.2rem',
+    marginLeft: '-21rem',
     color: '#000000',
   },
   text: {
     fontFamily: 'Poppins',
     fontSize: 24,
     fontWeight: 700,
-    marginLeft: '50px',
+    marginLeft: '0px',
     color: '#2A363B',
     marginBottom: '10px',
   },
@@ -124,7 +124,7 @@ function Profile() {
               <Grid container className={classes.card} spacing={1}>
                 <Grid item xs={8}>
                   <Typography className={classes.subtitle}>
-                    {router.query.id}
+                    {1068412}
                   </Typography>
                 </Grid>
                 <Grid item xs={4}>
@@ -144,8 +144,8 @@ function Profile() {
       </Box>
       <Slide direction='up' in={true} timeout={1000} mountOnEnter>
         <Grid container className={classes.grid} spacing={1}>
-          <Grid item xs={12}>
-            <Typography className={classes.text}>Your NFTs.</Typography>
+          <Grid container justify='center'>
+            <Typography className={classes.text}> Your NFTs.</Typography>
           </Grid>
           <NFTlist id={router.query.id} />
         </Grid>

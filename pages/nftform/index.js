@@ -84,7 +84,6 @@ function NFTFormPage() {
   const [formstage, setFormstage] = useState(true);
   const [loading, setLoading] = useState(false);
   const [finished, setFinished] = useState(false);
-  const [hash, setHash] = useState('');
   const setProgress = () => {
     setLoading((loading) => !loading);
   };
@@ -131,7 +130,6 @@ function NFTFormPage() {
     setFinished(true);
 
     const resultHash = await res.json();
-    setHash((hash) => resultHash);
   };
 
   return (
@@ -294,11 +292,15 @@ function NFTFormPage() {
                   </Grid>
                   <Grid container justify='center'>
                     <Typography className={classes.subtitle}>
-                      Here is the hash for your transaction:
+                      View the progress of your token here:
                     </Typography>
                   </Grid>
                   <Grid container justify='center'>
-                    <Typography className={classes.hash}>{hash}</Typography>
+                    <Typography className={classes.hash}>
+                      <a href='https://ropsten.etherscan.io/address/0x2eb1cd1fdcbadc3ccf3f67e1283bafd888b1e7b5'>
+                        click here!
+                      </a>
+                    </Typography>
                   </Grid>
                 </Grid>
               </Grow>
