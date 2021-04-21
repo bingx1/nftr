@@ -56,6 +56,7 @@ const Header = (props) => {
   const ret = useWeb3Modal();
   const classes = useStyles();
   const id = ret && ret[0] ? ret[0].provider.selectedAddress : null;
+  // if (id) 
   return (
     <AppBar className={classes.root} position='static'>
       <Toolbar className={classes.toolbar} variant='dense'>

@@ -1,54 +1,50 @@
 require("dotenv").config();
 // Imports and environment variables
 const API_URL = process.env.API_URL;
-const PUBLIC_KEY = process.env.PUBLIC_KEY;
-const PRIVATE_KEY = process.env.PRIVATE_KEY;
-const PINATA_PUBLIC_KEY = process.env.PINATA_PUBLIC_KEY;
-const PINATA_SECRET_KEY = process.env.PINATA_SECRET_KEY;
+const TOKEN_ADDRESS = process.env.TOKEN_ADDRESS;
 const axios = require('axios');
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
-// Contract ABI and 
+// Token Contract ABI and Alchemy Web3 Instantiation 
 const contract = require("../../../artifacts/contracts/MyNFT.sol/MyNFT.json");
-const contractAddress = "0x2eb1cd1fdcbadc3ccf3f67e1283bafd888b1e7b5";
 const web3 = createAlchemyWeb3(API_URL);
-const nftContract = new web3.eth.Contract(contract.abi, contractAddress);
+const nftContract = new web3.eth.Contract(contract.abi, TOKEN_ADDRESS);
 
-const contract2 = require("../../../artifacts/contracts/users.sol/users.json"); // for Hardhat
-const contractAddress2 = "0xF57Dd24ac0150464494D5a162eb7227d9812726B";
-const usersContract = new web3.eth.Contract(contract2.abi, contractAddress2);
 
-// // Responds to student 
+
+// This API endpoint fetches all the NFTs associated with a particular wallet address
 export default async function (req, res) {
     const { id } = req.query
     console.log("API Call to the users/<sid> endpoint, ", id);
-    const address = await usersContract.methods.getAddressFromID(id).call();
-    // console.log(address);
-    const nfts = await fetch_json(address);
-    console.log("Successfully compiled nfts")
-    console.log(nfts)
-    res.status(200).json(nfts);
+    try {
+        const nfts = await fetch_json(id);
+        console.log("Successfully compiled nfts")
+        console.log(nfts)
+        res.status(200).json(nfts);
+    } catch (err){
+        console.log("An error occurred in finding this wallets NFTS. Either the user has no NFTs or the NFTs are incorrectly formatted.");
+        console.log("Error: ", err);
+        res.status(404);
+    }
 }
 
-
+// Function to fetch all NFTs owned by a particular wallet. Returns a JSON of the format {list:{nft1,nft2,etc.}}
 async function fetch_json(address){
-    const balances = await web3.alchemy.getTokenBalances(address, [contractAddress]);
+    const balances = await web3.alchemy.getTokenBalances(address, [TOKEN_ADDRESS]);
     console.log(balances)
     const balance = balances.tokenBalances[0].tokenBalance;
     console.log(balance)
-    const metadata = await web3.alchemy.getTokenMetadata(contractAddress);
-    // console.log(metadata);
+    // const metadata = await web3.alchemy.getTokenMetadata(contractAddress); // Not useful as the test token MyNFT has no metadata.
     var items = []
     for(var i = 0; i < balance; i++) {
         const id = await nftContract.methods.tokenOfOwnerByIndex(address, i).call();
         const uri = await nftContract.methods.tokenURI(id).call();
         const json = await getJSON(uri);
-        // console.log(json);
         items.push(json);
       }
     return {"list": items};    
 }
 
-
+// Function to get the metadata contained at the NFT's URI.
 const getJSON = (uri) => {
     console.log(uri);
     return axios.get(uri)
@@ -56,13 +52,8 @@ const getJSON = (uri) => {
             console.log("Successfully retrived the json from the URI");
             console.log(json.data);
             return json.data;
-            //handle response here
         })
         .catch(function (error) {
             console.log("An error occured while retreiving the json", error);
-            //handle error here
         });
 };
-
-
-// main();

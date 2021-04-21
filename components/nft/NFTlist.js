@@ -35,7 +35,7 @@ function getUser(url) {
 }
 
 function Items(props) {
-  const user = getUser(`/api/user/1068412`);
+  const user = getUser(`/api/user/` + props.id);
   if (!user) return <div></div>;
   // return <div> {data.list}</div>
   else {

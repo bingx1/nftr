@@ -124,7 +124,7 @@ function Profile() {
               <Grid container className={classes.card} spacing={1}>
                 <Grid item xs={8}>
                   <Typography className={classes.subtitle}>
-                    {1068412}
+                    {router.query.id }
                   </Typography>
                 </Grid>
                 <Grid item xs={4}>

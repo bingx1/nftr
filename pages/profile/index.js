@@ -90,7 +90,7 @@ function Profile() {
       <Grow in={true} timeout={1000} mountOnEnter>
         <Grid container className={classes.grid} spacing={2} justify='center'>
           <Grid container justify='center'>
-            <Typography className={classes.text}>Your NFTs.</Typography>
+            <Typography className={classes.text}>You have not registered! Please associate your student id with your wallet address.</Typography>
           </Grid>
           <NFTcardmini
             name='NFT 1'
