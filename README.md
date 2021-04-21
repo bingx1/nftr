@@ -1,5 +1,7 @@
 # NFTr
 A platform for University Clubs to issue NFTs. These may be Acheievments, Awards or Roles - anything.
+## Used:
+React.js, Next.js, Web3, Ethers.io, Alchemy API, Pinata API, Etherscan API
 ## To-do
 1. Write a better contract for the Base NFT 
     - **Requirements:**
@@ -12,3 +14,7 @@ A platform for University Clubs to issue NFTs. These may be Acheievments, Awards
 5. Explore how ENS names can be integrated into the app
 6. Migrate all blockchain interaction to either Web3Alchemy or Ethers.io for consistency
 7. Use metamask hook provided data in filling of forms, displaying profiles, etc.
+8. Use metamask so that the User is signing their own transaction instead of using Bing's API key
+    - This is probably going to involve moving the logic to the client-side as opposed to via an API call
+    - https://ethereum.stackexchange.com/questions/77028/sending-an-ethereum-transaction-with-ethers-js-and-metamask
+    - https://github.com/ethers-io/ethers.js/issues/308
