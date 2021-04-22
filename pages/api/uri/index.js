@@ -26,7 +26,6 @@ export default async function (req, res) {
     }
   }
   
-
 const pinJSONToIPFS = (pinataApiKey, pinataSecretApiKey, JSONBody) => {
     const url = `https://api.pinata.cloud/pinning/pinJSONToIPFS`;
     console.log(pinataApiKey, pinataSecretApiKey, JSONBody);
@@ -38,7 +37,7 @@ const pinJSONToIPFS = (pinataApiKey, pinataSecretApiKey, JSONBody) => {
             }
         })
         .then(function (hash, pin, time) {
-            console.log("Json pinning was succesful");
+            console.log("Sucessfully pinned the JSON to the IPFS", hash.data.IpfsHash);
             console.log(hash.data)
             return hash.data.IpfsHash;
             //handle response here

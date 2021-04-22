@@ -15,6 +15,10 @@ import TextField from '@material-ui/core/TextField';
 import { Field, Form } from 'react-final-form';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import useWeb3Modal from '../../components/hooks/UseWeb3Modal';
+const NEXT_PUBLIC_TOKEN_ADDRESS = process.env.NEXT_PUBLIC_TOKEN_ADDRESS;
+const token_contract = require('../../artifacts/contracts/MyNFT.sol/MyNFT.json');
+import { ethers } from 'ethers';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -72,15 +76,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+async function loadContract() {
+  return await new window.web3.eth.Contract(ABI, contractAddress);
+}
+
+async function getName(nft_contract) {
+  const name = await nft_contract.name();
+  console.log("The NFTs name is, ", name);
+}
+
 function NFTFormPage() {
   const classes = useStyles();
   const ret = useWeb3Modal();
-  const {ethereum} = globalThis;
-  console.log(ethereum && ethereum.isMetaMask);
-  const id = ret && ret[0] ? ret[0].provider.selectedAddress : null;
-  console.log("The wallet address of the current user is:", id); 
-  const signer = ret && ret[0] ? ret[0].getSigner() : null;
-  console.log("The current signer is: ", signer);
+  // const {ethereum} = globalThis;
+  // console.log(ethereum && ethereum.isMetaMask);
+  // const id = ret && ret[0] ? ret[0].provider.selectedAddress : null;
+  // console.log("The wallet address of the current user is:", id); 
+  // const signer = ret && ret[0] ? ret[0].getSigner() : null;
+  // console.log("The current signer is: ", signer);
+  // const nft_contract = new ethers.Contract(NEXT_PUBLIC_TOKEN_ADDRESS, token_contract.abi, signer);
+  // getName(nft_contract);
+  const [lastTxHash, setLastTxHash] = useState('');
   // console.log("The signer's address is: ", signer.getAddress());
   const [issuer, setIssuer] = useState('');
   const [recipient, setRecipient] = useState('');
@@ -115,27 +131,40 @@ function NFTFormPage() {
     setDestinationAddress(e.target.value);
   };
 
+  const makeTransaction = async () => {
+    const tx = {
+      from: ethereum.selectedAddress,
+      to: destinationAddress,
+      gas: 500000,
+      data: nftContract.methods.mintNFT(destinationAddress, tokenURI).encodeABI(),
+    };
+  }
+
+
   const onSubmit = async (e) => {
     setFormstage(false);
     setLoading(true);
     // Submitting call to mint the NFT.
     console.log("The wallet address of the current user is:", id);
     console.log("The current signer is: ", signer);
- 
-    // const res = await fetch('/api/mint-nft', {
-    //   body: JSON.stringify({
-    //     issuer,
-    //     recipient,
-    //     event,
-    //     image,
-    //     description,
-    //     destinationAddress,
-    //   }),
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   method: 'POST',
-    // });
+    const nft_contract = new ethers.Contract(NEXT_PUBLIC_TOKEN_ADDRESS, token_contract.ABI, signer);
+    console.log(nft_contract)
+    // const hash = await ethereum.request({method: 'eth_sendTRansaction', params: [tx]})
+    const uri_url = await fetch('/api/uri', {
+      body: JSON.stringify({
+        issuer,
+        recipient,
+        event,
+        image,
+        description,
+        destinationAddress,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    });
+    console.log("The NFT's metadata has been succesfully uploaded to the IPFS, ", uri_url);
     setLoading(false);
     setFinished(true);
 
