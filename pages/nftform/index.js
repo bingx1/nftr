@@ -14,6 +14,7 @@ import Grow from '@material-ui/core/Grow';
 import TextField from '@material-ui/core/TextField';
 import { Field, Form } from 'react-final-form';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import useWeb3Modal from '../../components/hooks/UseWeb3Modal';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -73,7 +74,14 @@ const useStyles = makeStyles((theme) => ({
 
 function NFTFormPage() {
   const classes = useStyles();
-
+  const ret = useWeb3Modal();
+  const {ethereum} = globalThis;
+  console.log(ethereum && ethereum.isMetaMask);
+  const id = ret && ret[0] ? ret[0].provider.selectedAddress : null;
+  console.log("The wallet address of the current user is:", id); 
+  const signer = ret && ret[0] ? ret[0].getSigner() : null;
+  console.log("The current signer is: ", signer);
+  // console.log("The signer's address is: ", signer.getAddress());
   const [issuer, setIssuer] = useState('');
   const [recipient, setRecipient] = useState('');
   const [event, setEvent] = useState('');
@@ -109,23 +117,25 @@ function NFTFormPage() {
 
   const onSubmit = async (e) => {
     setFormstage(false);
-
     setLoading(true);
-
-    const res = await fetch('/api/mint-nft', {
-      body: JSON.stringify({
-        issuer,
-        recipient,
-        event,
-        image,
-        description,
-        destinationAddress,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-    });
+    // Submitting call to mint the NFT.
+    console.log("The wallet address of the current user is:", id);
+    console.log("The current signer is: ", signer);
+ 
+    // const res = await fetch('/api/mint-nft', {
+    //   body: JSON.stringify({
+    //     issuer,
+    //     recipient,
+    //     event,
+    //     image,
+    //     description,
+    //     destinationAddress,
+    //   }),
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   method: 'POST',
+    // });
     setLoading(false);
     setFinished(true);
 
