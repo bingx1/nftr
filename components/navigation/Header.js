@@ -68,7 +68,7 @@ const Header = (props) => {
             </IconButton>
           </a>
         </Link>
-
+        <NavButton url='/faq' text='FAQ.' />
         <NavButton url='/clubs' text='clubs.' />
         <NavButton url='/associate' text='associate.' />
         {

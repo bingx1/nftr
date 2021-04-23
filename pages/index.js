@@ -43,6 +43,12 @@ const useStyles = makeStyles({
     fontWeight: 500,
     lineHeight: 1,
   },
+  subsubtitle: {
+    fontFamily: 'Poppins',
+    fontSize: 18,
+    fontWeight: 450,
+    lineHeight: 1,
+  },
   link: {
     textDecoration: 'none',
   },
@@ -83,8 +89,11 @@ function Home() {
           <Typography className={classes.textLayout}>
             <Typography className={classes.title}>NFTR.</Typography>
             <Typography className={classes.subtitle}>
-              Create and collect NFTs for university and clubs
+              The decentralized platform where you can own your university acheivements.
             </Typography>
+            {/* <Typography className={classes.subsubtitle}>
+              Mint and view the NFTs you've received at University from Clubs and Faculty.
+            </Typography> */}
             <Typography className={classes.subtitle}>
               {/* <Link href='clubs'>
                 <a className={classes.linkStyle}> */}
@@ -93,7 +102,7 @@ function Home() {
                 onClick={handleChangeSlide}
               >
                 <KeyboardArrowRightIcon size='100px' />
-                start checking out our clubs now...
+                Check out all the clubs that are issuing NFTs!
               </Button>
               {/* </a>
               </Link> */}
