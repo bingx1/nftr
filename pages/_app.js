@@ -4,8 +4,7 @@ import Footer from '../components/navigation/Footer';
 import { ThemeProvider } from 'styled-components';
 import theme from '../components/theme';
 import { useState } from 'react';
-import { useRouter } from 'next/router';
-
+import '../public/styles.css'
 function MyApp({ Component, pageProps }) {
   const [loggedIn, setLoggedIn] = useState(false);
 
