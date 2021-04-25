@@ -19,7 +19,6 @@ const NEXT_PUBLIC_TOKEN_ADDRESS = process.env.NEXT_PUBLIC_TOKEN_ADDRESS;
 const token_contract = require('../../artifacts/contracts/MyNFT.sol/MyNFT.json');
 import { ethers } from 'ethers';
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     borderRadius: 25,
@@ -85,26 +84,52 @@ async function getName(nft_contract) {
   console.log("The NFTs name is, ", name);
 }
 
+async function eventFilterv5(contractAddress, erc20abi, _provider)  {
+  const iface = new ethers.utils.Interface(erc20abi);    
+  const logs = await _provider.getLogs({address:contractAddress});
+  console.log(logs);    
+  const decodedEvents = logs.map(log => {iface.decodeEventLog("Transfer", log.data)});
+  const toAddresses = decodedEvents.map(event => event["values"]["to"]);
+  const fromAddresses = decodedEvents.map(event => event["values"]["from"]);
+  const amounts = decodedEvents.map(event => event["values"]["value"]);    
+  return [fromAddresses, toAddresses, amounts]}
+
+
+async function fetchProvider() {
+  if (typeof window.ethereum !== 'undefined') {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    console.log("The injected provider is", provider);
+    console.log("The signer associated with the provider is", provider.getSigner());
+    console.log("The provider is connected to the following network ", await provider.getNetwork());
+    const contract = new ethers.Contract(NEXT_PUBLIC_TOKEN_ADDRESS, token_contract.abi, provider);
+    console.log("The contract is ", contract);
+    // const events = await eventFilterv5(NEXT_PUBLIC_TOKEN_ADDRESS, token_contract.abi, provider);
+    const filter =contract.filters.Transfer(); 
+    const events = await contract.queryFilter(filter);
+    console.log("The transfer events are:", events);
+    // const contract = new ethers.Contract(greeterAddress, Greeter.abi, provider)
+    // try {
+    //   const data = await contract.greet()
+    //   console.log('data: ', data)
+    // } catch (err) {
+    //   console.log("Error: ", err)
+    // }
+  }    
+}
+
+
+
 function NFTFormPage() {
   const classes = useStyles();
-  const ret = useWeb3Modal();
-  // const {ethereum} = globalThis;
-  // console.log(ethereum && ethereum.isMetaMask);
-  // const id = ret && ret[0] ? ret[0].provider.selectedAddress : null;
-  // console.log("The wallet address of the current user is:", id); 
-  // const signer = ret && ret[0] ? ret[0].getSigner() : null;
-  // console.log("The current signer is: ", signer);
-  // const nft_contract = new ethers.Contract(NEXT_PUBLIC_TOKEN_ADDRESS, token_contract.abi, signer);
-  // getName(nft_contract);
-  const [lastTxHash, setLastTxHash] = useState('');
-  // console.log("The signer's address is: ", signer.getAddress());
+  fetchProvider();
+
+
   const [issuer, setIssuer] = useState('');
   const [recipient, setRecipient] = useState('');
   const [event, setEvent] = useState('');
   const [image, setImage] = useState('');
   const [description, setDescription] = useState('');
   const [destinationAddress, setDestinationAddress] = useState('');
-
   const [formstage, setFormstage] = useState(true);
   const [loading, setLoading] = useState(false);
   const [finished, setFinished] = useState(false);

@@ -18,3 +18,8 @@ React.js, Next.js, Web3, Ethers.io, Alchemy API, Pinata API, Etherscan API
     - This is probably going to involve moving the logic to the client-side as opposed to via an API call
     - https://ethereum.stackexchange.com/questions/77028/sending-an-ethereum-transaction-with-ethers-js-and-metamask
     - https://github.com/ethers-io/ethers.js/issues/308
+
+## New architecture
+- All calls to the blockchain should be done clientside. No need to interact with the Apps' API - do it directly using the injected Web3 provider.
+- Viewing the NFTs can be done client-side, Minting NFTs can be done client-side, etc.
+- Only thing that really needs to happen using our API is to connect to the Pinata API
